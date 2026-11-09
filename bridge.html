@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pipeline & Compliance | Agent Kammer</title><meta name="description" content="Module 3: lead scoring, routing, analytics and the data boundary."><meta name="theme-color" content="#2A3447">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/styles.css"></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ak" viewBox="76.1 117.3 626.4 611.6" fill="currentColor"><path d="M 700.32 727.95 C 696.92 727.95 693.54 727.57 690.23 726.82 C 674.23 723.20 660.06 713.99 650.26 700.84 L 457.98 442.87 L 592.30 294.14 C 603.60 281.63 618.06 272.41 634.17 267.43 L 634.69 267.27 C 639.83 265.68 645.19 264.87 650.57 264.87 L 650.57 263.97 L 560.62 263.97 L 560.62 264.87 L 561.93 264.87 C 564.32 264.87 566.68 265.35 568.88 266.26 C 589.55 275.03 575.97 297.98 566.84 308.17 L 406.11 487.69 L 406.11 117.26 L 355.69 178.96 L 355.69 694.33 C 355.69 712.90 340.65 727.95 322.08 727.95 L 318.92 727.95 L 318.92 728.85 L 442.84 728.85 L 442.84 727.95 L 439.73 727.95 C 421.16 727.95 406.11 712.90 406.11 694.33 L 406.11 500.29 L 423.85 480.66 L 588.94 700.86 C 595.89 710.12 591.09 723.48 579.83 726.20 L 572.60 727.95 L 572.60 728.85 L 702.46 728.85 L 702.46 727.95 Z M 700.32 727.95"></path><path d="M 222.31 500.74 L 335.32 500.74 L 335.32 494.04 L 225.37 494.04 L 333.76 257.12 L 328.46 255.01 L 130.66 681.37 C 121.91 700.35 98.93 727.95 76.11 727.95 L 76.11 728.85 L 163.15 728.85 L 163.15 727.95 C 161.20 727.95 159.26 727.64 157.41 727.05 L 150.51 724.85 C 136.01 719.67 130.24 702.76 139.08 682.67 Z M 222.31 500.74"></path></symbol><symbol id="ar" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"></path></symbol></svg>
+<header class="bar head"><div class="wrap hd">
+<a class="brand" href="index.html" aria-label="Agent Kammer home"><svg class="mk" aria-hidden="true"><use href="#ak"></use></svg><span>Agent Kammer</span></a>
+<nav class="pill" aria-label="Primary"><a href="index.html">The Pitch</a><a href="deck.html">Deck</a><a href="portal.html">Portal</a><a href="desk.html">Desk</a><a href="bridge.html" class="on">Pipeline</a></nav>
+<a class="gbtn" href="index.html#pilot"><i aria-hidden="true"></i>Request a pilot</a>
+<details class="mnav"><summary aria-label="Menu"><svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary><nav aria-label="Menu"><a href="index.html">The Pitch</a><a href="deck.html">Deck</a><a href="portal.html">Portal</a><a href="desk.html">Desk</a><a href="bridge.html">Pipeline</a></nav></details>
+</div></header>
+<main>
+<section class="sec" style="padding-bottom:clamp(24px,3vw,40px)"><div class="wrap">
+<div class="sec-hd" style="margin-bottom:0"><div class="eyebrow">Module 3 · Conversion &amp; compliance</div><h2 class="h2">Pipeline &amp; the <em>boundary</em></h2>
+<p class="lead">Inquiries scored, routed and measured. Financial data never enters.</p></div></div></section>
+
+<section class="sec tint" style="padding-top:clamp(24px,3vw,40px)" id="bridge"><div class="wrap">
+<div class="eyebrow" style="margin-bottom:14px">Activity analytics · last 30 days · sample data</div>
+<div class="kpis" id="kpis"></div>
+<div class="grid c3" style="margin-bottom:28px">
+<div class="cell"><span class="k">Requests by type</span><div id="b-type"></div></div>
+<div class="cell"><span class="k">Most-read stories</span><div id="b-story"></div></div>
+<div class="cell"><span class="k">Leads by tier</span><div id="b-tier"></div></div></div>
+<div class="eyebrow" style="margin-bottom:14px">Lead scoring &amp; routing</div>
+<div class="box" style="overflow-x:auto;margin-bottom:12px"><div id="leads"></div></div>
+<p class="note" style="font:400 12px/1.6 var(--sans);color:var(--titanium);max-width:80ch">Rules (demo): score = acquisition scale + timeline + breadth of interest + channel + detail. 70+ → Tier A to the senior advisor; 45–69 → Tier B to a private client associate; below 45 → editorial nurture. Tune the weights per practice.</p>
+</div></section>
+
+<section class="sec" aria-labelledby="bd"><div class="wrap">
+<div class="sec-hd"><div class="eyebrow">Non-financial data separation</div><h2 class="h2" id="bd">Two stores. <em>One</em> gate.</h2>
+<p class="lead">Lifestyle and prospect data live in separate stores. Only a consented contact and a tier cross the gate. Regulated data stays in the firm’s own systems.</p></div>
+<div class="zones">
+<div class="zone"><h3>Lifestyle layer</h3><ul><li>Concierge requests &amp; vendors</li><li>Audit trail of every action</li><li>Editorial reads (anonymous)</li><li>Inbound inquiry answers</li></ul></div>
+<div class="gate"><span>Gate<br>name · contact · tier · consent</span></div>
+<div class="zone reg"><h3>Regulated layer</h3><ul><li>Accounts &amp; holdings</li><li>Planning &amp; recommendations</li><li>Performance reporting</li><li>Client agreements</li></ul><p class="m" style="font-size:12px;color:var(--titanium)">The firm’s own custodian and CRM. Not part of this platform.</p></div>
+</div>
+<div class="stores" id="stores" style="margin-top:24px"></div>
+<p class="note" style="font:400 12px/1.6 var(--sans);color:var(--titanium);margin-top:16px;max-width:80ch">The demo blocks account numbers and similar text at entry. A production build needs the firm’s compliance review of the intake wording, retention policy and any marketing-rule obligations. This page is not legal advice. <button id="reset" style="all:unset;cursor:pointer;text-decoration:underline">Reset demo data</button></p>
+</div></section>
+<script src="assets/app.js"></script>
+</main>
+<footer class="foot"><div class="wrap"><div class="fw">
+<div><div class="name">Agent Kammer</div><div class="tagl">Private Wealth Concierge</div></div>
+<nav aria-label="Footer"><a href="index.html">The Pitch</a><a href="deck.html">Deck</a><a href="portal.html">Portal</a><a href="desk.html">Desk</a><a href="bridge.html">Pipeline</a></nav>
+</div><p class="cp">Concept prototypes. Sample data and imagery are illustrative only. Operational and lifestyle software — not investment, tax or legal advice.</p></div></footer>
+</body></html>
