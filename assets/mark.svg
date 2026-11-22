@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Kammer mark">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1e27"/><stop offset="1" stop-color="#050609"/></linearGradient>
+  </defs>
+  <rect x="8" y="8" width="144" height="144" rx="36" fill="url(#g)" stroke="#2b5bff" stroke-width="3"/>
+  <path d="M52 40v80" stroke="#e8ff1a" stroke-width="18" stroke-linecap="round"/>
+  <path d="M112 40 70 80l42 40" stroke="#e8ff1a" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="120" cy="40" r="9" fill="#2b5bff"/>
+</svg>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kammer | Leather Stationery Set</title>
+<meta name="description" content="Editable, print-ready leather letterhead, business card and envelope templates from the Kammer launch kit.">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/v3.css">
+<style>
+/* leather: layered SVG noise + soft sheen */
+:root{--leather:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+.leather{position:relative;color:#fff;background:var(--leather),linear-gradient(145deg,#2a2a30 0%,#111115 55%,#050507 100%);background-blend-mode:overlay,normal;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 2px 0 rgba(255,255,255,.12),0 24px 50px -20px rgba(0,0,0,.9)}
+.leather:after{content:"";position:absolute;inset:7px;border:1px dashed rgba(232,255,26,.55);border-radius:inherit;pointer-events:none}
+.foil{color:var(--y);text-shadow:0 0 14px rgba(232,255,26,.35)}
+.stage{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));align-items:start}
+.editable{outline:none}
+.editable:focus{outline:2px dashed var(--bt);outline-offset:3px}
+
+/* letterhead sheet 8.5x11 ratio */
+.sheet{background:#fff;color:#14161d;aspect-ratio:8.5/11;width:100%;max-width:520px;border-radius:6px;box-shadow:0 30px 60px -25px rgba(0,0,0,.9);display:flex;flex-direction:column;overflow:hidden;margin:0 auto}
+.sheet .lh{padding:22px 28px;border-radius:0;display:flex;align-items:center;gap:14px;box-shadow:inset 0 2px 0 rgba(255,255,255,.12)}
+.sheet .lh img{width:42px;height:42px}
+.sheet .lh b{font:700 1.3rem var(--disp);letter-spacing:-.03em}
+.sheet .lh small{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#cfd5e6}
+.sheet .lh .meta{margin-left:auto;text-align:right;font-size:.62rem;line-height:1.6;color:#cfd5e6}
+.sheet .bar2{height:6px;background:linear-gradient(90deg,var(--b) 0 70%,var(--y) 70% 100%)}
+.sheet .body{padding:34px 36px;font-size:.78rem;line-height:1.75;flex:1}
+.sheet .body p{margin-bottom:12px}
+.sheet .ft{padding:12px 36px;font-size:.6rem;color:#707690;border-top:1px solid #e3e6ef;display:flex;justify-content:space-between}
+
+/* card 3.5x2 */
+.card-s{aspect-ratio:3.5/2;max-width:420px;width:100%;border-radius:14px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;margin:0 auto 22px}
+.card-s .nm{font:700 1.15rem var(--disp);letter-spacing:-.02em}
+.card-s .rl{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#bfc6dc}
+.card-s .ct{font-size:.72rem;line-height:1.6;color:#e5e9f6}
+.card-s.back{align-items:center;justify-content:center;flex-direction:column;gap:10px}
+.card-s.back img{width:84px}
+.card-w{background:#fff;color:#11131a;box-shadow:0 24px 50px -20px rgba(0,0,0,.9)}
+.card-w:after{display:none}
+
+/* envelope */
+.env{aspect-ratio:2.2/1;max-width:520px;width:100%;margin:0 auto;border-radius:10px;padding:22px 26px;display:flex;justify-content:space-between}
+.env .from{font-size:.62rem;line-height:1.6;color:#d3d9ec}
+.env .to{align-self:flex-end;font-size:.78rem;color:#fff;margin-right:12%}
+.env .fl{position:absolute;inset:0 0 auto 0;height:48%;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(0,0,0,.25));clip-path:polygon(0 0,100% 0,50% 100%);border-radius:10px 10px 0 0}
+
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 40px}
+@media print{
+  body{background:#fff!important}
+  header.top,footer,.tools,.page-hd,.noprint{display:none!important}
+  .stage{display:block}
+  .sheet{box-shadow:none;max-width:none;width:8.5in;height:11in;break-after:page;border-radius:0}
+  .leather,.sheet .bar2{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@page{size:letter;margin:0}
+</style></head><body>
+
+<header class="top"><div class="wrap hd">
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a href="kit.html">Launch kit</a><a class="on" href="stationery.html">Stationery</a><a class="cta-s" href="index.html#start">Start free</a></nav>
+</div></header>
+
+<main class="wrap">
+<div class="page-hd"><div class="eyebrow">Launch kit · Print</div><h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Leather <em>stationery</em> set</h1>
+<p class="lede" style="margin-top:1rem">Black leather finish, neon foil mark. Click any text below to edit it, then print the letterhead to PDF. The same layers are included as vector artwork for your printer.</p>
+<div class="tools"><button class="btn y" onclick="window.print()">Print letterhead / save PDF</button><a class="btn g" href="assets/logo.svg" download>Download logo SVG</a><a class="btn g" href="assets/mark.svg" download>Download mark SVG</a></div></div>
+
+<section style="padding:0 0 80px">
+<div class="stage">
+<div>
+<h3 class="noprint" style="margin-bottom:16px">Letterhead</h3>
+<div class="sheet">
+<div class="lh leather"><img src="assets/mark.svg" alt="">
+<div><b class="foil editable" contenteditable="true" spellcheck="false">Your Business</b><small class="editable" contenteditable="true" spellcheck="false">Luxury Real Estate</small></div>
+<div class="meta editable" contenteditable="true" spellcheck="false">123 Main Street<br>City, ST 00000<br>(555) 000-0000<br>you@yourbusiness.com</div></div>
+<div class="bar2"></div>
+<div class="body editable" contenteditable="true" spellcheck="false">
+<p>November 22, 2026</p>
+<p>Dear Client,</p>
+<p>Thank you for choosing us. This letterhead was generated by your Kammer launch kit and is ready for proposals, offers, listing presentations and thank-you notes.</p>
+<p>Edit this text directly in the browser, then print or save as PDF. Your logo, colors and contact details stay on every page.</p>
+<p>Warm regards,<br><br><b>Your Name</b><br>Founder</p></div>
+<div class="ft"><span class="editable" contenteditable="true" spellcheck="false">yourbusiness.com</span><span>License #000000</span></div>
+</div></div>
+
+<div>
+<h3 class="noprint" style="margin-bottom:16px">Business card</h3>
+<div class="card-s leather"><div><div class="nm foil editable" contenteditable="true" spellcheck="false">Your Name</div><div class="rl editable" contenteditable="true" spellcheck="false">Founder · Your Business</div></div>
+<div class="ct editable" contenteditable="true" spellcheck="false">(555) 000-0000<br>you@yourbusiness.com<br>yourbusiness.com</div></div>
+<div class="card-s leather back"><img src="assets/mark.svg" alt=""><div class="rl">Your Business</div></div>
+<h3 class="noprint" style="margin:30px 0 16px">Envelope</h3>
+<div class="env leather"><div class="fl"></div><div class="from" style="position:relative"><b class="foil">Your Business</b><br>123 Main Street<br>City, ST 00000</div><div class="to" style="position:relative">Client Name<br>456 Oak Avenue<br>City, ST 00000</div></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="noprint"><div class="wrap row"><div>Kammer launch kit · Stationery templates</div><div><a href="kit.html">Back to kit</a></div></div></footer>
+</body></html>
