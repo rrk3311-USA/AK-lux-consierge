@@ -145,3 +145,58 @@ footer a:hover{color:var(--y)}
 .tbl .yes{color:var(--y);font-weight:700}
 .tbl-wrap{overflow-x:auto;padding:0}
 code.p{font:500 .85rem ui-monospace,Menlo,monospace;background:rgba(255,255,255,.08);padding:2px 8px;border-radius:6px;color:var(--y)}
+
+/* ===== v3.1 theme: turquoise pin-dot page, navy carbon gloss, alien green ===== */
+:root{
+  --g:#39ff88; --gd:rgba(57,255,136,.35); --tq:#08727a; --bare:#effcff; --mut:#c3cce4; --bt:#39ff88;
+  --navy:#0a1534;
+  --carbon-n:linear-gradient(27deg,#070d22 5px,transparent 5px),linear-gradient(207deg,#070d22 5px,transparent 5px),linear-gradient(27deg,#17285e 5px,transparent 5px),linear-gradient(207deg,#17285e 5px,transparent 5px),linear-gradient(90deg,#0c1a40 10px,transparent 10px),linear-gradient(#0d1b45 25%,#0a1534 25%,#0a1534 50%,transparent 50%,transparent 75%,#16275c 75%);
+  --carbon-g:linear-gradient(27deg,#0e0e0e 5px,transparent 5px),linear-gradient(207deg,#0e0e0e 5px,transparent 5px),linear-gradient(27deg,#2a2c31 5px,transparent 5px),linear-gradient(207deg,#2a2c31 5px,transparent 5px),linear-gradient(90deg,#1a1b1f 10px,transparent 10px),linear-gradient(#1e1f24 25%,#17181c 25%,#17181c 50%,transparent 50%,transparent 75%,#2c2e34 75%);
+}
+/* page: turquoise with micro pin dots */
+body{background-color:var(--tq);
+  background-image:radial-gradient(rgba(255,255,255,.3) 1px,transparent 1.7px),radial-gradient(900px 520px at 85% -5%,rgba(57,255,136,.3),transparent 60%),linear-gradient(180deg,#0b8c93 0%,#07686f 55%,#054852 100%);
+  background-size:9px 9px,auto,auto;background-attachment:fixed}
+/* cards: navy carbon gloss */
+.gloss{background-color:var(--navy);
+  background-image:linear-gradient(160deg,rgba(255,255,255,.13),rgba(255,255,255,0) 38%,rgba(0,0,0,.45)),var(--carbon-n);
+  background-size:100% 100%,20px 20px,20px 20px,20px 20px,20px 20px,20px 20px,20px 20px;
+  background-position:0 0,0 5px,10px 0,0 10px,10px 5px,0 0,0 0;
+  border-color:rgba(57,255,136,.28);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 0 1px rgba(0,0,0,.35),0 26px 50px -24px rgba(0,20,30,.9)}
+.band{background-image:linear-gradient(135deg,#0f2a99 0%,var(--b) 45%,#0a1a66 100%);background-size:auto;background-position:0 0;border-color:rgba(57,255,136,.45)}
+/* alien corner ticks on cards */
+.gloss:not(.step):not(.band):after{content:"";position:absolute;inset:9px;pointer-events:none;opacity:.8;
+  background:linear-gradient(var(--g),var(--g)) 0 0/14px 2px no-repeat,linear-gradient(var(--g),var(--g)) 0 0/2px 14px no-repeat,linear-gradient(var(--g),var(--g)) 100% 100%/14px 2px no-repeat,linear-gradient(var(--g),var(--g)) 100% 100%/2px 14px no-repeat}
+.price.feat{border-color:var(--g);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px var(--g),0 30px 80px -30px rgba(57,255,136,.5)}
+a.kit-item:hover{border-color:var(--g)}
+/* header + footer: navy carbon strips */
+header.top{background-color:var(--navy);background-image:var(--carbon-n);background-size:20px 20px;background-position:0 5px,10px 0,0 10px,10px 5px,0 0,0 0;border-bottom:1px solid rgba(57,255,136,.55);box-shadow:0 8px 28px -12px rgba(57,255,136,.45);backdrop-filter:none}
+footer{background-color:var(--navy);background-image:var(--carbon-n);background-size:20px 20px;background-position:0 5px,10px 0,0 10px,10px 5px,0 0,0 0;border-top:1px solid rgba(57,255,136,.55);color:var(--mut)}
+footer a:hover{color:var(--g)}
+/* grey carbon separator bars with green end caps between sections */
+main>section+section{position:relative}
+main>section+section:before,main>section+section:after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1160px,100% - 32px);height:9px;border-radius:5px;pointer-events:none}
+main>section+section:before{border:1px solid #50545f;background-color:#15171c;background-image:var(--carbon-g);background-size:20px 20px;background-position:0 5px,10px 0,0 10px,10px 5px,0 0,0 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 4px 10px -4px rgba(0,0,0,.6)}
+main>section+section:after{background:linear-gradient(90deg,var(--g) 0 30px,transparent 30px calc(100% - 30px),var(--g) calc(100% - 30px));filter:drop-shadow(0 0 5px var(--g));opacity:.9}
+/* eyebrow pill */
+.eyebrow{background:#07102b;border:1px solid rgba(57,255,136,.45);padding:8px 14px;border-radius:99px;color:var(--g)}
+.eyebrow:before{background:var(--g);box-shadow:0 0 12px var(--g)}
+/* readable text on turquoise */
+.sec-hd p,.lede,.proof,.side ul,section>.wrap>.note{color:var(--bare)}
+.page-hd .lede,.hero .lede{color:var(--bare)}
+em{text-shadow:0 2px 0 rgba(0,40,50,.35)}
+/* green accents */
+.ic.b{background:var(--g);color:#031a0d;box-shadow:0 0 24px -4px rgba(57,255,136,.8)}
+.price li:before{background:var(--g);box-shadow:0 0 10px rgba(57,255,136,.7)}
+details.q summary:after{color:var(--g)}
+.chip{background:var(--navy);border-color:rgba(57,255,136,.35);color:#fff}
+.chip.hot{background:var(--y);color:#080a00}
+.prog i{background:linear-gradient(90deg,var(--b),var(--g),var(--y))}
+.log .ag{color:var(--g)}
+.btn.g{background:var(--navy);border-color:rgba(57,255,136,.45)}
+.btn.g:hover{border-color:var(--g)}
+.step:after{color:rgba(57,255,136,.12)}
+.tbl th{color:var(--g)}
+.tbl a{color:var(--g)}
+a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid var(--y);outline-offset:3px}
