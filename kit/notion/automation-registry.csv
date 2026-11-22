@@ -1,0 +1,4 @@
+Workflow,Tool,Owner,Status,Trigger,Monthly Cost,Last Run,Risk,Butler Notes
+Lead to CRM,Zapier,Sales Ops,Healthy,Website form,12,2026-11-22,Medium,Sample row. Delete and add yours
+Invoice reminders,Make,Finance,Needs review,Overdue invoice,8,2026-11-21,High,Duplicate of "Invoice nudge"
+Demo request auto-reply,n8n,Marketing,Draft,New demo request,0,,Low,Drafted by butler. Awaiting approval

@@ -1,10 +1,11 @@
 # Command Center
 
-> Your business home base. Pin this page, then link the hubs below.
+> Home base for your butler. Pin this page, then link the hubs below.
 
 ## Hubs
-- Client CRM (import `client-crm.csv`)
-- Content Calendar (import `content-calendar.csv`)
+- Automation Registry (import `automation-registry.csv`): every workflow, owner, cost and risk
+- Run Log (import `run-log.csv`): what the butler did, and who approved it
+- Approvals & Rules (import `approvals-and-rules.md`)
 - Launch Checklist (import `launch-checklist.md`)
 - SOP Wiki (import `sop-wiki.md`)
 
@@ -14,11 +15,11 @@
 - [ ] Goal 3: Collect ___ new reviews
 
 ## Weekly rhythm
-- **Monday:** Review Kammer weekly report, approve agent changes
-- **Tuesday:** Follow up with every lead in "Warm"
-- **Wednesday:** Publish content from the calendar
-- **Thursday:** Client meetings and showings
-- **Friday:** Update CRM, send review requests, plan next week
+- **Monday:** Read the butler's briefing, answer pending approvals
+- **Tuesday:** Review Registry items marked Needs review
+- **Wednesday:** Check Run Log for anything unusual
+- **Thursday:** Approve new workflow drafts
+- **Friday:** Review cost vs. cap, adjust standing rules
 
 ## Brand
 - Yellow `#E8FF1A` · Blue `#2B5BFF` · White `#FFFFFF` · Black `#06070A`

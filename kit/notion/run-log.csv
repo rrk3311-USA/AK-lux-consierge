@@ -1,0 +1,4 @@
+Date,Workflow,Event,Action Taken,Approved By,Result
+2026-11-22,Lead to CRM,Failed: expired token,Re-authenticated and replayed 6 leads,Auto (standing rule),Fixed
+2026-11-22,Invoice reminders,Duplicate found,Proposed merge with Invoice nudge,Pending,Waiting
+2026-11-21,Support triage,Latency spike,Monitoring,Auto (standing rule),Watching

@@ -1,7 +1,7 @@
 # 30-Day Launch Checklist
 
 ## Week 1: Foundation
-- [ ] Complete Kammer brief
+- [ ] Connect your automation tools (read-only)
 - [ ] Approve logo and color system
 - [ ] Connect your domain
 - [ ] Order business cards and letterhead from the leather set
@@ -9,17 +9,17 @@
 ## Week 2: Go live
 - [ ] Review and approve the site draft
 - [ ] Add your photos, bio and testimonials
-- [ ] Connect forms to the Client CRM
+- [ ] Review the Automation Registry the butler built
 - [ ] Publish the site
 
-## Week 3: Visibility
-- [ ] Claim your Google Business Profile
-- [ ] Publish 3 posts from the Content Calendar
-- [ ] Send launch email to your contacts
-- [ ] Set up your email signature
+## Week 3: Delegate
+- [ ] Fill in Approvals & Rules
+- [ ] Turn on auto-repair for low-risk workflows
+- [ ] Read 5 daily briefings
+- [ ] Retire any duplicate workflows
 
 ## Week 4: Momentum
-- [ ] Request 5 reviews
-- [ ] Review first Kammer weekly report
-- [ ] Book 3 conversations from new leads
-- [ ] Plan next month's content
+- [ ] Review first monthly cost report
+- [ ] Ask the butler to draft one new workflow
+- [ ] Raise the autonomy level where trusted
+- [ ] Share the SOP Wiki with your team

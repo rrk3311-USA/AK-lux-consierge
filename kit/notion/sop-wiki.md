@@ -1,23 +1,21 @@
 # SOP Wiki
 
-## SOP 1: New lead
-1. Lead arrives via site form and is added to the CRM automatically.
-2. Reply within 15 minutes using the intro template.
-3. Move stage to **Warm** once they reply.
-4. Book a consultation and set the next step date.
+## SOP 1: Workflow fails
+1. Butler retries up to 3 times and logs it in the Run Log.
+2. If still failing, it pauses the workflow and notes the cause in the Registry.
+3. You get one line in the briefing. Approve the fix or reassign the owner.
 
-## SOP 2: New listing / new offer
-1. Gather photos, details and pricing.
-2. Ask the Writer agent for copy and the Site manager to publish.
-3. Schedule 3 social posts in the Content Calendar.
-4. Send to your email list.
+## SOP 2: New workflow request
+1. Describe it in one sentence to the butler.
+2. Butler drafts it and adds it to the Registry as Draft.
+3. Owner reviews, approves, and it goes live.
 
-## SOP 3: Client onboarding
-1. Send welcome email and letterhead thank-you note.
-2. Share the timeline and what to expect.
-3. Add milestones to the CRM.
+## SOP 3: Monthly cost review
+1. Open the Registry sorted by Monthly Cost.
+2. Accept or decline the butler's merge and trim proposals.
+3. Update the spend cap in Approvals & Rules.
 
-## SOP 4: Review request
-1. Wait 7 days after a successful close or project.
-2. Send the one-tap review link by text.
-3. Reply to every review within 48 hours.
+## SOP 4: Someone leaves the team
+1. Filter the Registry by their name.
+2. Reassign each workflow owner.
+3. Rotate connections they created.
