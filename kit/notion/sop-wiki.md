@@ -19,3 +19,9 @@
 1. Filter the Registry by their name.
 2. Reassign each workflow owner.
 3. Rotate connections they created.
+
+## SOP 5: Outreach
+1. Butler researches the niche and refreshes the calibration file.
+2. It finds and enriches prospects inside the credit cap and skips the suppression list.
+3. Drafts land in your approval queue with the signal and source beside each.
+4. Approve, edit or skip. Replies and opt-outs are logged; opt-outs are never contacted again.

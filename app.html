@@ -119,7 +119,7 @@
 <div class="eyebrow">Butler app · preview</div>
 <h1>Your whole business, <em>one pocket</em>.</h1>
 <p class="lede">Toggles turn things on or off. Health bars show whether an automation is working or broken. The butler fixes problems on its own, and you just read the history.</p>
-<ul><li><b>Folder tabs</b> group everything: Design, Workflows, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Health bar</b> on each automation: green is healthy, yellow is degraded, red is broken. Sort by health from the top.</li><li><b>Callout</b> at the top says how many need attention and that the butler is already on it. Tap it for the maintenance history.</li><li><b>Enter icon</b> in the middle opens the editor.</li></ul>
+<ul><li><b>Folder tabs</b> group everything: Design, Workflows, Outreach, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Health bar</b> on each automation: green is healthy, yellow is degraded, red is broken. Sort by health from the top.</li><li><b>Callout</b> at the top says how many need attention and that the butler is already on it. Tap it for the maintenance history.</li><li><b>Enter icon</b> in the middle opens the editor.</li></ul>
 <a class="btn g" href="connect.html">Back to setup</a>
 </div>
 
@@ -152,7 +152,8 @@
     flows:'<path d="M5 6h6v4H5zM13 14h6v4h-6zM8 10v4a2 2 0 0 0 2 2h3"/>',
     notion:'<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/>',
     web:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
-    rules:'<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/>'
+    rules:'<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/>',
+    out:'<path d="M4 11v3l9 4V7z"/><path d="M13 9a4 4 0 0 1 0 6M6 14v4"/>'
   };
   /* item: [name, file, href, on, group, health, status] */
   var DATA=[
@@ -165,6 +166,13 @@
       ['Invoice reminders','invoice-reminders.flow','',1,'Ops flow',58,'Butler fixing · merging duplicate'],
       ['Support triage','support-triage.flow','',1,'Ops flow',97,'Healthy'],
       ['Weekly report','weekly-report.flow','',1,'Ops flow',88,'Healthy · fixed 6h ago']]},
+    {id:'out',name:'Outreach',dir:'/outreach',health:true,items:[
+      ['Market research','research.brief','hustle.html',1,'Find',94,'Healthy · refreshed 2d ago'],
+      ['Prospect search (Apollo)','search.apollo','hustle.html',1,'Find',88,'Healthy'],
+      ['Enrichment (Clay)','enrich.clay','hustle.html',1,'Find',71,'Credits at 42% of cap'],
+      ['Draft messages','drafts.msg','hustle.html',1,'Reach',96,'Healthy · 3 waiting for you'],
+      ['Follow-up sequences','followups.seq','',0,'Reach',100,'Paused'],
+      ['Meeting booking','book.cal','',1,'Reach',63,'Butler fixing · calendar re-auth']]},
     {id:'notion',name:'Notion',dir:'/notion',items:[
       ['Command Center','command-center.md','kit/notion/command-center.md',1],['Automation Registry','automation-registry.csv','kit/notion/automation-registry.csv',1],['Run Log','run-log.csv','kit/notion/run-log.csv',1],['Approvals & Rules','approvals-and-rules.md','kit/notion/approvals-and-rules.md',1],['Launch Checklist','launch-checklist.md','kit/notion/launch-checklist.md',0],['SOP Wiki','sop-wiki.md','kit/notion/sop-wiki.md',1]]},
     {id:'web',name:'Website',dir:'/website',items:[
@@ -173,6 +181,7 @@
       ['Auto-retry failed runs','retry.rule','',1,'Butler acts alone'],['Re-authenticate','reauth.rule','',1,'Butler acts alone'],['Pause failing flows','pause.rule','',1,'Butler acts alone'],['Send customer messages','messages.rule','',0,'Needs your yes'],['Touch billing','billing.rule','',0,'Needs your yes'],['Delete workflows','delete.rule','',0,'Needs your yes']]}
   ];
   var HISTORY=[
+    ['Prospect search','Added 14 new expired-listing prospects, skipped 3 on the suppression list','2h ago'],
     ['Lead to CRM','Re-authenticated expired token, replayed 6 leads','4m ago'],
     ['Support triage','Retried 2 failed runs, both succeeded','1h ago'],
     ['Weekly report','Fixed broken Sheets column mapping','6h ago'],
@@ -190,10 +199,9 @@
   function svg(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function tone(h){return h>=85?'hg':h>=70?'hy':'hr'}
-  function flows(){return DATA[1]}
   function stats(){
-    var f=flows(),att=0,sum=0,n=0;
-    f.items.forEach(function(it,i){if(S[f.id+':'+i].on){n++;sum+=it[5];if(it[5]<70)att++}});
+    var att=0,sum=0,n=0;
+    DATA.forEach(function(f){if(!f.health)return;f.items.forEach(function(it,i){if(S[f.id+':'+i].on){n++;sum+=it[5];if(it[5]<70)att++}})});
     return {att:att,avg:n?Math.round(sum/n):0,n:n}
   }
   function callout(){

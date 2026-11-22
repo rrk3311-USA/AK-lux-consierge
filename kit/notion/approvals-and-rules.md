@@ -4,6 +4,9 @@
 
 ## Always ask first
 - Sending messages to customers or prospects
+- Sending outreach to new prospects (every email carries an opt-out and your postal address)
+- Texting anyone (needs recorded consent first)
+- Spending enrichment credits above the monthly cap
 - Anything touching money, billing or refunds
 - Deleting workflows or data
 - Connecting a new app or widening access
@@ -17,6 +20,9 @@
 
 ## Limits
 - Spend cap per month: $___
+- Outreach daily send cap: ___
+- Monthly enrichment credit cap: ___
+- Suppression list owner: ___
 - Quiet hours: ___ to ___
 - Escalate to: ___ (name / channel)
 

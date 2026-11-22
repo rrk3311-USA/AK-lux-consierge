@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Kammer | The Hustler</title>
+<meta name="description" content="Agent Kammer doesn't just maintain your automations, it hunts. Calibrated to your niche, it researches the market, finds prospects through Apollo or Clay, drafts outreach, and asks before anything is sent.">
+<meta name="theme-color" content="#07686f">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/v3.css">
+<style>
+.flow{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;padding:30px 30px 26px}
+@media(max-width:1000px){.flow{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){.flow{grid-template-columns:repeat(2,minmax(0,1fr));padding:26px 20px}}
+.nd{background:#0e2a6a;border:1px solid #2a55b5;border-radius:14px;padding:12px 10px;text-align:center;position:relative}
+.nd i{display:block;font:700 .66rem var(--disp);letter-spacing:.14em;color:var(--g);font-style:normal}
+.nd b{display:block;font:600 .84rem var(--disp);margin:4px 0 2px}
+.nd small{display:block;font-size:.7rem;color:#aebbe0;line-height:1.35}
+.nd.you{border-color:var(--y)}.nd.you i{color:var(--y)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;align-items:start;margin-top:22px}
+@media(max-width:960px){.grid2{grid-template-columns:1fr}}
+.panel{padding:30px 34px 28px}
+.panel h2{font-size:1.15rem;font-family:var(--disp);letter-spacing:-.01em;margin-bottom:4px}
+.panel .sub{color:var(--mut);font-size:.88rem;margin-bottom:16px}
+.lbl,.fld label{font:600 .72rem var(--disp);letter-spacing:.14em;text-transform:uppercase;color:#aebbe0}
+.fld{display:grid;gap:6px;margin-bottom:14px}
+.fld input,.fld select,.fld textarea{width:100%;min-width:0;padding:12px 16px;border-radius:14px;border:1px solid #2a55b5;background:#061440;color:#fff;font:500 .95rem var(--body)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opt span{display:block;padding:9px 16px;border-radius:99px;border:1px solid #2a55b5;background:#0e2a6a;font-weight:500;font-size:.9rem}
+.opt input:checked+span{background:var(--y);color:#080a00;border-color:var(--y);font-weight:600}
+.opt input:disabled+span{opacity:.5;cursor:not-allowed}
+.opt input:focus-visible+span{outline:3px solid var(--y);outline-offset:2px}
+.opt small{font-size:.68rem;color:#aebbe0;margin-left:6px}
+.sig{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.sig span{font-size:.78rem;border:1px solid rgba(57,255,136,.45);color:#c9ffe0;border-radius:99px;padding:5px 11px;background:#07204d}
+.meter{height:10px;border-radius:99px;background:#061440;border:1px solid rgba(57,255,136,.35);overflow:hidden;margin:6px 0 4px}
+.meter i{display:block;height:100%;width:42%;background:linear-gradient(90deg,var(--b),var(--g));border-radius:99px}
+.mtxt{display:flex;justify-content:space-between;font-size:.76rem;color:#aebbe0}
+/* feed */
+.lead{border:1px solid #2a55b5;border-radius:16px;background:#0e2a6a;padding:14px 16px;margin-bottom:10px}
+.lead.done{opacity:1;border-color:var(--g)}
+.lead .hd2{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.lead b{font:600 .98rem var(--disp)}
+.lead .meta{font-size:.76rem;color:#aebbe0}
+.lead .sg{display:inline-block;margin:8px 0 6px;font-size:.74rem;background:var(--g);color:#031a0d;font-weight:700;border-radius:99px;padding:3px 10px}
+.lead p{font-size:.86rem;color:#dbe6ff;line-height:1.55;margin:4px 0 10px}
+.lead textarea{width:100%;min-height:96px;padding:10px 12px;border-radius:12px;border:1px solid #2a55b5;background:#061440;color:#fff;font:500 .86rem/1.5 var(--body);margin-bottom:10px}
+.lead .acts{display:flex;gap:8px;flex-wrap:wrap}
+.lead .btn{padding:9px 16px;font-size:.82rem}
+.tag{font:700 .68rem var(--disp);letter-spacing:.1em;text-transform:uppercase;border-radius:99px;padding:3px 10px;background:var(--y);color:#080a00}
+.tag.ok{background:var(--g);color:#031a0d}
+.empty{padding:22px;text-align:center;color:#aebbe0;font-size:.9rem;border:1px dashed #2a55b5;border-radius:16px}
+.sumline{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;font-size:.82rem;color:#c8d6ff}
+.sumline b{color:#fff;font-family:ui-monospace,Menlo,monospace}
+details.step2{border:1px solid #2a55b5;border-radius:16px;background:#0e2a6a;margin-bottom:9px}
+details.step2 summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 16px;font:600 .95rem var(--disp)}
+details.step2 summary::-webkit-details-marker{display:none}
+details.step2 summary:after{content:"+";color:var(--g);font-size:1.3rem;line-height:1}
+details.step2[open] summary:after{content:"–"}
+details.step2 summary small{display:block;font:500 .76rem var(--body);color:#aebbe0;margin-top:2px}
+details.step2 pre{margin:0;padding:0 16px 16px;white-space:pre-wrap;font:500 .8rem/1.7 ui-monospace,Menlo,monospace;color:#d6e2ff}
+details.step2 summary:focus-visible{outline:3px solid var(--y);outline-offset:-3px;border-radius:16px}
+.guard{display:grid;gap:10px}
+.guard div{padding-left:26px;position:relative;font-size:.92rem;color:#dbe6ff}
+.guard div:before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:50%;background:var(--g);box-shadow:0 0 10px rgba(57,255,136,.6)}
+.guard b{color:#fff}
+.foot2{margin-top:12px;font-size:.78rem;color:#aebbe0}
+</style></head><body>
+<header class="top"><div class="wrap hd">
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a class="on" href="hustle.html">Hustler</a><a href="studio.html">Studio</a><a href="kit.html">Move-in kit</a><a href="connect.html">Connect</a><a href="app.html">Butler app</a><a class="cta-s" href="index.html#start">Get a butler</a></nav>
+</div></header>
+
+<main class="wrap">
+<div class="page-hd"><div class="eyebrow">The hustler</div>
+<h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">A butler that also <em>hunts</em>.</h1>
+<p class="lede" style="margin-top:1rem">Kammer keeps your automations healthy, and it goes out and finds your next customers. First it calibrates to your niche, then it researches the market, finds the right businesses, drafts the outreach, and asks before anything is sent. Real estate is the first niche.</p></div>
+
+<div class="gloss mod flow" aria-label="The hustle pipeline">
+<div class="nd"><i>01</i><b>Research</b><small>Market and competitors</small></div>
+<div class="nd"><i>02</i><b>Calibrate</b><small>Niche model and ICP</small></div>
+<div class="nd"><i>03</i><b>Find</b><small>Search for prospects</small></div>
+<div class="nd"><i>04</i><b>Enrich</b><small>Verify and add contact data</small></div>
+<div class="nd"><i>05</i><b>Draft</b><small>Personalized messages</small></div>
+<div class="nd you"><i>06</i><b>You approve</b><small>One tap, or autopilot</small></div>
+<div class="nd"><i>07</i><b>Follow up</b><small>Sequences and replies</small></div>
+<div class="nd"><i>08</i><b>Book</b><small>Meetings on your calendar</small></div>
+</div>
+
+<div class="grid2">
+<section style="padding:0" aria-label="Calibration">
+<div class="gloss mod panel">
+<h2>1. Calibrate to a niche</h2><p class="sub">The hustler starts with one niche and gets it right before it widens.</p>
+<span class="lbl" id="nl">Niche</span>
+<div class="opts" role="radiogroup" aria-labelledby="nl">
+<label class="opt"><input type="radio" name="niche" value="re" checked><span>Real estate</span></label>
+<label class="opt"><input type="radio" name="niche" value="mo" disabled><span>Mortgage<small>soon</small></span></label>
+<label class="opt"><input type="radio" name="niche" value="hs" disabled><span>Home services<small>soon</small></span></label>
+<label class="opt"><input type="radio" name="niche" value="id" disabled><span>Interior design<small>soon</small></span></label>
+</div>
+<div class="two"><div class="fld"><label for="mk">Market</label><input id="mk" value="Columbus, OH" autocomplete="off"></div>
+<div class="fld"><label for="who">Who to find</label><select id="who"><option>Solo agents</option><option>Small teams (2 to 5)</option><option>Boutique brokerages</option></select></div></div>
+<span class="lbl">Signals it watches</span>
+<div class="sig"><span>Expired listings</span><span>Price drops</span><span>New to the market</span><span>Outdated website</span><span>Missed-lead reviews</span></div>
+<span class="lbl" id="dsl">Data source</span>
+<div class="opts" role="radiogroup" aria-labelledby="dsl">
+<label class="opt"><input type="radio" name="src" value="Apollo" checked><span>Apollo</span></label>
+<label class="opt"><input type="radio" name="src" value="Clay"><span>Clay</span></label>
+</div>
+<p class="sub" id="srcnote" style="margin-top:-6px"></p>
+<div class="fld"><label for="cap">Daily send cap</label><select id="cap"><option>10 messages</option><option selected>25 messages</option><option>50 messages</option></select></div>
+<span class="lbl">Credits this month (sample)</span>
+<div class="meter" role="img" aria-label="212 of 500 credits used"><i></i></div>
+<div class="mtxt"><span>212 used</span><span>500 cap</span></div>
+</div>
+</section>
+
+<section style="padding:0" aria-label="Today's hustle">
+<div class="gloss mod panel">
+<h2>2. Today's hustle</h2><p class="sub">Sample prospects and drafts. Nothing sends until you say so.</p>
+<div class="sumline" id="sum" aria-live="polite"></div>
+<div id="feed"></div>
+</div>
+</section>
+</div>
+
+<div class="grid2" style="margin-top:22px">
+<section style="padding:0" aria-label="The recipe">
+<div class="gloss mod panel">
+<h2>The recipe, in the open</h2><p class="sub">The first three steps decide the quality of everything after them.</p>
+<div id="rec"></div>
+</div>
+</section>
+<section style="padding:0" aria-label="Guardrails">
+<div class="gloss mod panel">
+<h2>Proactive, with guardrails</h2><p class="sub">The hustler is aggressive about finding opportunities, and careful about sending.</p>
+<div class="guard">
+<div><b>Approvals first.</b> Outreach to new prospects is set to Ask until you raise it.</div>
+<div><b>Email by default.</b> Every message carries a working opt-out and your postal address, and opt-outs are honored promptly.</div>
+<div><b>No cold texts without consent.</b> Texting marketing messages needs prior written consent, so SMS stays off unless you have it.</div>
+<div><b>Spend caps.</b> Searches are cheap, but enrichment spends credits. A monthly cap stops it at the limit.</div>
+<div><b>Suppression list.</b> Anyone who opts out, bounces or replies "stop" is never contacted again.</div>
+</div>
+<p class="foot2">General guidance, not legal advice. Have counsel review your outreach before you send at scale.</p>
+</div>
+</section>
+</div>
+<div style="height:90px"></div>
+</main>
+<footer><div class="wrap row"><div>Agent Kammer · The hustler</div><div><a href="index.html">Home</a><a href="app.html">Butler app</a></div></div></footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  var SAMPLES=[
+    {n:'Dana R. (sample)',co:'Solo agent',sig:'3 expired listings this month',t:function(m){return 'Hi Dana, I noticed three of your '+m+' listings expired this month. Most agents in that spot are not short on skill, just on follow-up time. We run an assistant that re-engages past leads and keeps your site fresh. Worth a 10-minute look?'}},
+    {n:'Marcus T. (sample)',co:'Team of 3',sig:'Website last updated 2 years ago',t:function(m){return 'Hi Marcus, your team shows up well in '+m+', but your site looks like it has not changed in a while, and that is where most buyers land first. We rebuild and then maintain it automatically. Happy to show you a draft using your own listings.'}},
+    {n:'Priya S. (sample)',co:'Boutique brokerage',sig:'Price drops on 4 listings',t:function(m){return 'Hi Priya, I saw a handful of price reductions across your '+m+' listings. When that happens, speed of follow-up decides who gets the next showing. We automate that and report back every morning. Open to a quick chat this week?'}}
+  ];
+  var st={},SRC={Apollo:'Apollo finds the businesses and people. Searching is light, while enrichment (verified emails, phones) spends credits against your cap.',Clay:'Clay enriches in layers. Kammer sends rows to a Clay table and reads the finished results back. Table setup is a one-time manual step in Clay.'};
+  var RE=[
+    {t:'1. Market research',s:'Know the niche before touching a single prospect',p:'ROLE: Market researcher for independent real estate agents in {market}.\nTASK: Review 15 local agent websites and 10 competing "all-in-one agent" offers. Capture: pricing, promises, what they never mention, and the top 5 complaints agents voice in reviews and forums.\nOUTPUT: a one-page brief with (a) 3 messaging angles that are not already overused, (b) objections to expect, (c) price ranges buyers tolerate.\nRULE: Every claim cites where it was seen. No unsupported statistics.'},
+    {t:'2. Calibrate the niche',s:'Turn the research into a model of who to find and what to say',p:'INPUT: the brief from step 1, plus your market, target segment and offer.\nTASK: Write the ideal-customer profile, the buying signals to watch (expired listings, price drops, outdated sites), the tone of voice agents respond to, and 10 example messages scored against a rubric: specific, short, one clear ask, no hype.\nOUTPUT: a calibration file the hustler loads before every run.\nRULE: Re-score after every 50 replies. Retire angles that underperform.'},
+    {t:'3. Find and enrich',s:'Search broad, enrich narrow, within the credit cap',p:'TASK: Using the connected data source, search for businesses that match the profile in {market}, rank them by signal strength, then enrich only the top group.\nCONSTRAINTS: stop at the monthly credit cap; skip anyone on the suppression list; prefer verified business email; record the source and date for every contact.\nOUTPUT: a ranked prospect list with signal, source and confidence.'},
+    {t:'4. Draft and ask',s:'Personalized, short, and always your call',p:'TASK: For each prospect, write one short message that references their specific signal and makes one ask. Add the opt-out line and your postal address.\nRULE: Hold every draft for approval. Never send to anyone who has opted out. Never send texts without recorded consent.\nOUTPUT: drafts in the approval queue with the signal and source shown beside each.'}
+  ];
+  function feed(){
+    var m=($('mk').value||'your market').trim();
+    var alive=SAMPLES.map(function(s,i){return {s:s,i:i,state:st[i]||'pending',txt:st['t'+i]||s.t(m)}});
+    var appr=alive.filter(function(x){return x.state==='approved'}).length,sk=alive.filter(function(x){return x.state==='skipped'}).length,pen=alive.length-appr-sk;
+    $('sum').innerHTML='<span><b>'+pen+'</b> to review</span><span><b>'+appr+'</b> approved</span><span><b>'+sk+'</b> skipped</span>';
+    var h='';
+    alive.forEach(function(x){
+      if(x.state==='skipped')return;
+      var edit=st['e'+x.i];
+      h+='<div class="lead'+(x.state==='approved'?' done':'')+'"><div class="hd2"><b>'+esc(x.s.n)+'</b><span class="tag'+(x.state==='approved'?' ok':'')+'">'+(x.state==='approved'?'Queued':'Needs you')+'</span></div><div class="meta">'+esc(x.s.co)+' · '+esc(m)+' · via '+esc(st.src||'Apollo')+'</div><span class="sg">Signal: '+esc(x.s.sig)+'</span>'+
+        (edit?'<textarea id="ta'+x.i+'" aria-label="Edit draft for '+esc(x.s.n)+'">'+esc(x.txt)+'</textarea>':'<p>'+esc(x.txt)+'</p>')+
+        '<div class="acts">'+(x.state==='approved'?'<button class="btn g" data-a="undo" data-i="'+x.i+'" type="button">Undo</button>':
+          (edit?'<button class="btn y" data-a="save" data-i="'+x.i+'" type="button">Save draft</button>':'<button class="btn y" data-a="ok" data-i="'+x.i+'" type="button">Approve</button><button class="btn g" data-a="edit" data-i="'+x.i+'" type="button">Edit</button><button class="btn g" data-a="skip" data-i="'+x.i+'" type="button">Skip</button>'))+'</div></div>'});
+    $('feed').innerHTML=h||'<div class="empty">All caught up. The hustler will keep looking and bring new prospects tomorrow.</div>';
+  }
+  function rec(){
+    var m=($('mk').value||'your market').trim();
+    $('rec').innerHTML=RE.map(function(r){return '<details class="step2"><summary><span>'+esc(r.t)+'<small>'+esc(r.s)+'</small></span></summary><pre>'+esc(r.p.replace(/\{market\}/g,m))+'</pre></details>'}).join('');
+  }
+  function openState(){return [].map.call(document.querySelectorAll('#rec details'),function(d){return d.open})}
+  function srcNote(){$('srcnote').textContent=SRC[st.src||'Apollo']}
+  $('feed').addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;var i=b.dataset.i,a=b.dataset.a;
+    if(a==='ok')st[i]='approved';else if(a==='skip')st[i]='skipped';else if(a==='undo')st[i]='pending';
+    else if(a==='edit')st['e'+i]=true;
+    else if(a==='save'){var ta=$('ta'+i);if(ta)st['t'+i]=ta.value;st['e'+i]=false}
+    feed();var nb=document.querySelector('#feed [data-i="'+i+'"]');if(nb)nb.focus()});
+  $('mk').addEventListener('input',function(){var o=openState();feed();rec();[].forEach.call(document.querySelectorAll('#rec details'),function(d,i){d.open=!!o[i]})});
+  document.addEventListener('change',function(e){if(e.target.name==='src'){st.src=e.target.value;srcNote();feed()}});
+  srcNote();feed();rec();
+})();
+</script>
+</body></html>
