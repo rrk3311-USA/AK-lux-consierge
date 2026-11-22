@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agent Kammer | Butler App</title>
+<meta name="description" content="Phone-style control panel for your Agent Kammer butler: folder tabs, toggles and editing for every asset and workflow.">
+<meta name="theme-color" content="#06070a">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/v3.css">
+<style>
+body{min-height:100vh}
+.stage{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;padding:40px 0 80px}
+@media(max-width:900px){.stage{grid-template-columns:1fr;padding:0}.side{display:none}}
+.side h1{font-size:clamp(2.2rem,4.5vw,3.6rem)}
+.side ul{list-style:none;padding:0;margin:26px 0;display:grid;gap:12px;color:var(--mut)}
+.side li b{color:var(--w)}
+/* phone */
+.phone{width:390px;height:780px;border-radius:52px;padding:12px;background:linear-gradient(145deg,#2a2e3b,#07080c 60%);box-shadow:0 0 0 2px #000,0 0 0 3px rgba(255,255,255,.14),0 50px 100px -30px rgba(43,91,255,.45),0 30px 60px -20px #000;position:relative}
+.scr{height:100%;border-radius:42px;overflow:hidden;background:var(--k);display:flex;flex-direction:column;position:relative;background-image:radial-gradient(400px 260px at 100% 0,rgba(43,91,255,.3),transparent 70%)}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:104px;height:28px;border-radius:99px;background:#000;z-index:5}
+@media(max-width:900px){.phone{width:100%;height:100dvh;border-radius:0;padding:0;box-shadow:none;background:none}.scr{border-radius:0}.notch{display:none}}
+.top2{padding:46px 20px 10px}
+@media(max-width:900px){.top2{padding-top:max(env(safe-area-inset-top),18px)}}
+.hdr{display:flex;align-items:center;gap:10px}
+.hdr img{width:30px;height:30px}
+.hdr b{font:700 1.1rem var(--disp);letter-spacing:-.03em}
+.hdr .live{margin-left:auto;font:600 .7rem var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--y);display:flex;align-items:center;gap:6px}
+.hdr .live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--y);box-shadow:0 0 10px var(--y)}
+.path{margin-top:14px;font:500 .78rem ui-monospace,Menlo,monospace;color:var(--mut)}
+.path b{color:var(--y);font-weight:500}
+/* folder tabs */
+.tabs{display:flex;gap:4px;padding:10px 14px 0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:10px 16px 11px;border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0;background:rgba(255,255,255,.04);color:var(--mut);font:600 .82rem var(--disp);cursor:pointer;position:relative;top:1px}
+.tab svg{width:15px;height:15px}
+.tab[aria-selected=true]{background:var(--y);color:#080a00;border-color:var(--y);box-shadow:0 -6px 22px -6px rgba(232,255,26,.55)}
+.tab:focus-visible,.row button:focus-visible,.tg:focus-visible{outline:3px solid var(--bt);outline-offset:2px}
+.folder{flex:1;overflow:auto;margin:0 0 0;border-top:2px solid var(--y);background:linear-gradient(180deg,#141722,#07080c);padding:14px 14px 90px}
+.count{display:flex;justify-content:space-between;color:var(--mut);font-size:.78rem;padding:2px 6px 10px}
+/* rows */
+.row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:12px 12px 12px 14px;margin-bottom:9px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,#1b1f2c,#0b0d13);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.row.off{opacity:.55}
+.row .nm{min-width:0}
+.row .nm b{display:block;font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .nm small{font:500 .72rem ui-monospace,Menlo,monospace;color:var(--bt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.ent{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--y);display:grid;place-items:center;cursor:pointer}
+.ent:hover{background:var(--y);color:#080a00}
+.ent svg{width:20px;height:20px}
+.tg{width:54px;height:32px;border-radius:99px;border:0;background:#2a2e3b;position:relative;cursor:pointer;transition:background .2s}
+.tg:after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 2px 6px rgba(0,0,0,.5)}
+.tg[aria-checked=true]{background:var(--b);box-shadow:0 0 16px -2px rgba(43,91,255,.9)}
+.tg[aria-checked=true]:after{transform:translateX(22px);background:var(--y)}
+@media(prefers-reduced-motion:reduce){.tg,.tg:after,.sheet{transition:none}}
+/* bottom bar */
+.bar3{position:absolute;left:0;right:0;bottom:0;padding:12px 18px 22px;background:linear-gradient(180deg,transparent,#06070a 40%);display:flex;gap:10px}
+.bar3 .btn{flex:1;justify-content:center;padding:13px 10px;font-size:.88rem}
+/* sheet */
+.sheet{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet.on{opacity:1;pointer-events:auto}
+.sheet .pn{background:linear-gradient(180deg,#1b1f2c,#0b0d13);border-top:1px solid rgba(255,255,255,.18);border-radius:28px 28px 0 0;padding:20px 20px 28px;transform:translateY(30px);transition:transform .25s}
+.sheet.on .pn{transform:none}
+.grab{width:44px;height:5px;border-radius:9px;background:rgba(255,255,255,.2);margin:0 auto 16px}
+.pn h2{font-size:1.3rem;margin-bottom:4px}
+.pn .pp{font:500 .75rem ui-monospace,Menlo,monospace;color:var(--bt);margin-bottom:14px}
+.pn label{display:block;font-weight:600;font-size:.82rem;margin:12px 0 6px}
+.pn input,.pn textarea{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.45);color:#fff;font:500 .95rem var(--body)}
+.pn textarea{min-height:76px;resize:vertical}
+.pn .acts{display:flex;gap:8px;margin-top:18px}
+.pn .acts .btn{flex:1;justify-content:center;padding:13px 8px;font-size:.88rem}
+.toast{position:absolute;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--y);color:#080a00;font:600 .82rem var(--disp);padding:10px 16px;border-radius:99px;opacity:0;transition:.25s;z-index:7;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style></head><body>
+<header class="top"><div class="wrap hd">
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a href="kit.html">Move-in kit</a><a href="connect.html">Connect</a><a class="on" href="app.html">Butler app</a><a class="cta-s" href="index.html#start">Get a butler</a></nav>
+</div></header>
+
+<main class="wrap stage">
+<div class="side">
+<div class="eyebrow">Butler app · preview</div>
+<h1>Your whole business, <em>one pocket</em>.</h1>
+<p class="lede">Every asset and workflow lives in a folder tab. Flip a toggle to turn it on or off. Tap the enter icon to edit it.</p>
+<ul><li><b>Folder tabs</b> group things: Design, Workflows, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Enter icon</b> in the middle opens the editor.</li><li>Changes save in this browser while we build the real backend.</li></ul>
+<a class="btn g" href="connect.html">Back to setup</a>
+</div>
+
+<div class="phone"><div class="scr" id="scr"><div class="notch"></div>
+<div class="top2"><div class="hdr"><img src="assets/mark.svg" alt=""><b>Kammer</b><span class="live" id="live"></span></div>
+<div class="path" id="path"></div></div>
+<div class="tabs" role="tablist" aria-label="Folders" id="tabs"></div>
+<div class="folder" role="tabpanel" id="folder"></div>
+<div class="bar3"><button class="btn y" id="allOn" type="button">All on</button><button class="btn g" id="allOff" type="button">All off</button></div>
+<div class="toast" id="toast" role="status"></div>
+<div class="sheet" id="sheet" aria-hidden="true"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="sh">
+<div class="grab"></div><h2 id="sh"></h2><div class="pp" id="sp"></div>
+<label for="en">Name</label><input id="en"><label for="eo">Notes for the butler</label><textarea id="eo"></textarea>
+<div class="acts"><a class="btn g" id="open" href="#" target="_blank" rel="noopener">Open file</a><button class="btn g" id="cx" type="button">Cancel</button><button class="btn y" id="sv" type="button">Save</button></div>
+</div></div>
+</div></div>
+</main>
+
+<script>
+(function(){
+  var ICON={
+    design:'<path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.4-2-.6-1 0-2.2 1.3-2.2H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/>',
+    flows:'<path d="M5 6h6v4H5zM13 14h6v4h-6zM8 10v4a2 2 0 0 0 2 2h3"/>',
+    notion:'<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/>',
+    web:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+    rules:'<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/>'
+  };
+  var DATA=[
+    {id:'design',name:'Design',dir:'/design',items:[
+      ['Logo & mark','logo.svg','assets/logo.svg',1],['Color system','colors.json','kit.html#logo',1],['Leather letterhead','letterhead.pdf','stationery.html',1],['Business card','card.pdf','stationery.html',1],['Envelope','envelope.pdf','stationery.html',0],['Email signature','signature.html','',0]]},
+    {id:'flows',name:'Workflows',dir:'/workflows',items:[
+      ['Lead to CRM','lead-to-crm.flow','',1],['Invoice reminders','invoice-reminders.flow','',1],['Demo auto-reply','demo-reply.flow','',0],['Support triage','support-triage.flow','',1]]},
+    {id:'notion',name:'Notion',dir:'/notion',items:[
+      ['Command Center','command-center.md','kit/notion/command-center.md',1],['Automation Registry','automation-registry.csv','kit/notion/automation-registry.csv',1],['Run Log','run-log.csv','kit/notion/run-log.csv',1],['Approvals & Rules','approvals-and-rules.md','kit/notion/approvals-and-rules.md',1],['Launch Checklist','launch-checklist.md','kit/notion/launch-checklist.md',0],['SOP Wiki','sop-wiki.md','kit/notion/sop-wiki.md',1]]},
+    {id:'web',name:'Website',dir:'/website',items:[
+      ['Home','index.html','index.html',1],['About','about.html','',1],['Listings / Services','services.html','',0],['Blog','blog/','',0],['Contact form','contact.html','connect.html',1]]},
+    {id:'rules',name:'Rules',dir:'/rules',items:[
+      ['Auto-retry failed runs','retry.rule','',1],['Re-authenticate','reauth.rule','',1],['Pause failing flows','pause.rule','',1],['Send customer messages','messages.rule','',0],['Touch billing','billing.rule','',0],['Delete workflows','delete.rule','',0]]}
+  ];
+  var KEY='kammer-app-v1',S;
+  try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  if(!S||typeof S!=='object')S={};
+  DATA.forEach(function(f){f.items.forEach(function(it,i){var k=f.id+':'+i;if(!S[k])S[k]={n:it[0],o:'',on:!!it[3]}})});
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  var cur=0,editing=null;
+  var $=function(i){return document.getElementById(i)};
+  function svg(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function tabs(){
+    $('tabs').innerHTML=DATA.map(function(f,i){return '<button class="tab" role="tab" aria-selected="'+(i==cur)+'" data-i="'+i+'">'+svg(ICON[f.id])+f.name+'</button>'}).join('');
+  }
+  function list(){
+    var f=DATA[cur],on=0;
+    $('path').innerHTML='<b>kammer</b>'+f.dir;
+    var h='';f.items.forEach(function(it,i){var s=S[f.id+':'+i];if(s.on)on++;
+      h+='<div class="row'+(s.on?'':' off')+'"><div class="nm"><b>'+esc(s.n)+'</b><small>'+f.dir+'/'+esc(it[1])+'</small></div>'+
+      '<button class="ent" data-e="'+i+'" aria-label="Edit '+esc(s.n)+'">'+svg('<path d="M20 5v7a3 3 0 0 1-3 3H5"/><path d="m9 11-4 4 4 4"/>')+'</button>'+
+      '<button class="tg" role="switch" aria-checked="'+(!!s.on)+'" aria-label="'+esc(s.n)+' on/off" data-t="'+i+'"></button></div>'});
+    $('folder').innerHTML='<div class="count"><span>'+f.items.length+' files</span><span>'+on+' on</span></div>'+h;
+    var tot=0;DATA.forEach(function(g){g.items.forEach(function(x,i){if(S[g.id+':'+i].on)tot++})});
+    $('live').textContent=tot+' live';
+  }
+  function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('on')},1400)}
+  $('tabs').onclick=function(e){var b=e.target.closest('.tab');if(!b)return;cur=+b.dataset.i;tabs();list()};
+  $('folder').onclick=function(e){
+    var f=DATA[cur],t=e.target.closest('[data-t]'),en=e.target.closest('[data-e]');
+    if(t){var k=f.id+':'+t.dataset.t;S[k].on=!S[k].on;save();list();var nt=document.querySelector('[data-t="'+t.dataset.t+'"]');if(nt)nt.focus()}
+    else if(en){var i=+en.dataset.e,k2=f.id+':'+i,it=f.items[i];editing=k2;
+      $('sh').textContent=S[k2].n;$('sp').textContent=f.dir+'/'+it[1];$('en').value=S[k2].n;$('eo').value=S[k2].o;
+      var o=$('open');if(it[2]){o.style.display='';o.href=it[2]}else{o.style.display='none'}
+      $('sheet').classList.add('on');$('sheet').setAttribute('aria-hidden','false');$('en').focus()}
+  };
+  function close(){$('sheet').classList.remove('on');$('sheet').setAttribute('aria-hidden','true');editing=null}
+  $('cx').onclick=close;
+  $('sheet').onclick=function(e){if(e.target===this)close()};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&editing)close()});
+  $('sv').onclick=function(){if(!editing)return;S[editing].n=$('en').value.trim()||S[editing].n;S[editing].o=$('eo').value;save();close();list();toast('Saved')};
+  $('allOn').onclick=function(){DATA[cur].items.forEach(function(x,i){S[DATA[cur].id+':'+i].on=true});save();list();toast('All on')};
+  $('allOff').onclick=function(){DATA[cur].items.forEach(function(x,i){S[DATA[cur].id+':'+i].on=false});save();list();toast('All off')};
+  tabs();list();
+})();
+</script>
+</body></html>
