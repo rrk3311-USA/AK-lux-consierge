@@ -266,6 +266,82 @@
 .nodeb.auto .nid1{display:block;font:400 .56rem 'Saira Stencil One',Impact,sans-serif;letter-spacing:.12em;color:#4a4a2c;font-style:normal;margin-bottom:3px}
 .nodeb.auto b{color:var(--ink)}
 .nodeb.auto span{display:inline-flex;background:#1b2314;border-radius:4px;padding:2px 8px;margin-top:5px;color:var(--c)}
+
+/* ===== HUD pass: graphite panels, hairlines, telemetry, live color ===== */
+.nav3{grid-template-columns:repeat(6,1fr);padding:8px 4px 16px}
+.nav3 button{font-size:.6rem;padding:6px 0}
+.hdr .live{font:600 .66rem ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#7fe9ff}
+.hdr .live #live{color:#39ff88}
+.row.auto,.tile.auto,.nodeb.auto{--ink:#e6f1ff;color:var(--ink);position:relative;overflow:hidden;border:1px solid hsl(var(--h) 80% 60% / .38);border-left:3px solid hsl(var(--h) 95% 60%);border-radius:6px;
+  background:
+   linear-gradient(hsl(var(--h) 95% 62%),hsl(var(--h) 95% 62%)) 4px 4px/10px 1.5px no-repeat,linear-gradient(hsl(var(--h) 95% 62%),hsl(var(--h) 95% 62%)) 4px 4px/1.5px 10px no-repeat,
+   linear-gradient(hsl(var(--h) 95% 62%),hsl(var(--h) 95% 62%)) calc(100% - 4px) calc(100% - 4px)/10px 1.5px no-repeat,linear-gradient(hsl(var(--h) 95% 62%),hsl(var(--h) 95% 62%)) calc(100% - 4px) calc(100% - 4px)/1.5px 10px no-repeat,
+   radial-gradient(120% 90% at 0% 0%,hsl(var(--h) 90% 50% / .20),transparent 60%),
+   linear-gradient(180deg,#0f1c33,#09111f);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03),0 6px 14px -8px hsl(var(--h) 90% 50% / .55)}
+.row.auto.off,.tile.auto.off,.nodeb.auto.off{--h:218;filter:saturate(.45);background-color:#0a1220}
+.row.auto:after{display:block;content:"";position:absolute;top:0;bottom:0;left:-40%;width:35%;pointer-events:none;border:0;border-radius:0;background:linear-gradient(90deg,transparent,hsl(var(--h) 95% 70% / .16),transparent);transform:skewX(-18deg);animation:scan 5.5s linear infinite}
+.row.auto.off:after{display:none}
+.row.auto:nth-child(2n):after{animation-delay:-2.2s}
+@keyframes scan{0%{left:-40%}60%,100%{left:130%}}
+.row.auto .nm b.nn,.tile.auto b.nn,.nodeb.auto b{color:#fff;font:600 .95rem var(--disp);letter-spacing:-.01em}
+.row.auto .nm small{color:#8ea3c8}
+.nid,.nodeb.auto .nid1{font:600 .6rem ui-monospace,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;color:hsl(var(--h) 95% 68%)}
+.nid .rn{color:#9fb6dd}
+.row.auto.off .nid,.tile.auto.off .nid{color:#8fa0c4}
+.rn.flash,.hs.flash{animation:fl .5s}
+@keyframes fl{0%{color:#fff;text-shadow:0 0 8px #fff}100%{}}
+.row.auto .hb,.tile.auto .hb{background:rgba(2,8,20,.7);border:1px solid rgba(120,170,255,.16);border-radius:4px;box-shadow:none;padding:5px 8px}
+.row.auto .hbt,.tile.auto .hbt{background:rgba(255,255,255,.07);border-radius:2px;height:6px}
+.row.auto .hbt i,.tile.auto .hbt i{border-radius:2px}
+.row.auto .hs,.tile.auto .hs{background:transparent;padding:0;font:600 .64rem ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase}
+.tl{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.tl .hs{margin-top:0;flex:1;min-width:0}
+.spk{width:84px;height:22px;flex:none;display:block}
+.tile.auto .spk{width:100%;height:22px;margin-top:6px}
+.row.auto .ent{background:rgba(255,255,255,.05);border:1px solid hsl(var(--h) 80% 60% / .5);border-radius:6px;color:hsl(var(--h) 95% 68%);box-shadow:none}
+.row.auto .ent:hover{background:hsl(var(--h) 95% 60%);color:#04101f}
+.tg.mil{background:#050a14;border:1px solid #2c3d63;border-radius:5px;box-shadow:inset 0 2px 5px rgba(0,0,0,.7)}
+.tg.mil .kn{background:linear-gradient(180deg,#4a5a7e,#2a3550);border:1px solid #6a7ea8;box-shadow:0 1px 3px rgba(0,0,0,.6)}
+.tg.mil .kn:before{color:#c8d6f5;font:600 .52rem ui-monospace,Menlo,monospace;letter-spacing:.06em}
+.tg.mil[aria-checked=true]{background:#062417;border-color:#2fcf74;box-shadow:inset 0 0 14px rgba(57,255,136,.45),0 0 10px rgba(57,255,136,.25)}
+.tg.mil[aria-checked=true] .kn{background:linear-gradient(180deg,#8dffbd,#27c46b);border-color:#d6ffe6}
+.tg.mil[aria-checked=true] .kn:before{color:#032a14}
+.nodeb.auto{border-radius:6px;padding:10px 12px 10px 14px}
+.nodeb.auto span{background:rgba(2,8,20,.7);border-radius:3px;font-family:ui-monospace,Menlo,monospace}
+.wire{width:2px}
+/* radar */
+.radar{position:relative;margin:2px auto 12px;max-width:330px}
+.radar svg{display:block;width:100%;height:auto}
+.radar .sw{transform-origin:150px 150px;animation:sweep 6s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.rl{font:600 8px ui-monospace,Menlo,monospace;fill:#7fe9ff;opacity:.8}
+.bl{font:600 7.5px ui-monospace,Menlo,monospace;fill:#dff1ff;paint-order:stroke;stroke:#050b1a;stroke-width:2.5px}
+.blip{cursor:pointer;outline:none}
+.blip:focus-visible circle:nth-of-type(2),.blip:hover circle{stroke-width:2.5}
+.blip:focus-visible{outline:2px solid var(--y);outline-offset:2px}
+.blip .pg{animation:ping 1.6s ease-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.st{border:1px solid rgba(120,170,255,.25);border-top:2px solid #7fe9ff;background:#0b172b;border-radius:6px;padding:8px 10px}
+.st small{display:block;font:600 .56rem ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:#8ea3c8}
+.st b{font:700 1.3rem ui-monospace,Menlo,monospace;color:#7fe9ff}
+.st.g{border-top-color:#39ff88}.st.g b{color:#39ff88}.st.r{border-top-color:#ff6159}.st.r b{color:#ff6159}.st.y{border-top-color:#e8ff1a}.st.y b{color:#e8ff1a}
+.sq{display:grid;grid-template-columns:auto 1fr 74px auto auto;gap:9px;align-items:center;padding:9px 10px;margin-bottom:7px;border:1px solid hsl(var(--h) 80% 60% / .3);border-left:3px solid hsl(var(--h) 95% 60%);border-radius:6px;background:#0b172b;font-size:.78rem}
+.sq .dot{width:8px;height:8px;border-radius:50%;background:hsl(var(--h) 95% 62%);box-shadow:0 0 8px hsl(var(--h) 95% 62%);animation:pulse 2s infinite}
+.sq .gn{font:600 .8rem var(--disp);white-space:nowrap}
+.sq .gb{height:6px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.sq .gb i{display:block;height:100%;background:hsl(var(--h) 95% 62%)}
+.sq b{font:700 .8rem ui-monospace,Menlo,monospace;color:hsl(var(--h) 95% 70%)}
+.sq small{font:600 .62rem ui-monospace,Menlo,monospace;color:#8ea3c8}
+@media(prefers-reduced-motion:reduce){.row.auto:after,.radar .sw,.blip .pg,.sq .dot,.rn.flash,.hs.flash{animation:none}}
+
+.hdr b{white-space:nowrap;font-size:1rem}
+.hdr .live{text-align:right;line-height:1.35}
+.hdr .live #clk,.hdr .live #live{display:block}
+.tl{display:block}
+.tl .hs{display:block;margin-top:6px}
+.row.auto .spk{width:100%;height:22px;margin-top:6px}
 </style></head><body>
 <header class="top"><div class="wrap hd">
 <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Admiral Kammer</a>
@@ -277,12 +353,12 @@
 <div class="eyebrow">Bridge · preview</div>
 <h1>Your whole business, <em>one pocket</em>.</h1>
 <p class="lede">Toggles turn things on or off. Health bars show whether an automation is working or broken. The Admiral fixes problems on its own, and you just read the history.</p>
-<ul><li><b>Folder tabs</b> group everything: Design, Fleet, Outreach, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Health bar</b> on each automation: green is healthy, yellow is degraded, red is broken. Sort by health from the top.</li><li><b>Callout</b> at the top says how many need attention and that the Admiral is already on it. Tap it for the maintenance history.</li><li><b>Your fleet.</b> Each automation is a ship with a hull number, a home port and a run counter. Flip its guarded switch from IN PORT to UNDERWAY to put it to sea.</li><li><b>Enter icon</b> in the middle opens the editor.</li><li><b>Views</b> along the bottom: Files, Workflow Map, Operations Grid, Agent Control and the Intelligence Brief.</li></ul>
+<ul><li><b>Folder tabs</b> group everything: Design, Fleet, Outreach, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Health bar</b> on each automation: green is healthy, yellow is degraded, red is broken. Sort by health from the top.</li><li><b>Callout</b> at the top says how many need attention and that the Admiral is already on it. Tap it for the maintenance history.</li><li><b>Radar.</b> A live picture of the whole fleet: healthy ships hug the center, struggling ones drift outward, and each squadron has its own color.</li><li><b>Your fleet.</b> Each automation is a ship with a hull number, a home port and a run counter. Flip its guarded switch from IN PORT to UNDERWAY to put it to sea.</li><li><b>Enter icon</b> in the middle opens the editor.</li><li><b>Views</b> along the bottom: Files, Workflow Map, Operations Grid, Agent Control and the Intelligence Brief.</li></ul>
 <a class="btn g" href="connect.html">Back to setup</a>
 </div>
 
 <div class="phone"><div class="scr" id="scr"><div class="notch"></div>
-<div class="top2"><div class="hdr"><img src="assets/mark.svg" alt=""><b>Admiral Kammer</b><span class="live" id="live"></span></div></div>
+<div class="top2"><div class="hdr"><img src="assets/mark.svg" alt=""><b>Admiral Kammer</b><span class="live"><span id="clk"></span><span id="live"></span></span></div></div>
 <button class="att" id="att" type="button" aria-haspopup="dialog"></button>
 <div class="tabs" role="tablist" aria-label="Folders" id="tabs"></div>
 <div class="folder" role="tabpanel" id="folder"></div>
@@ -367,12 +443,16 @@
     $('att').innerHTML='<div class="l1">'+(s.att?'<span class="chip2">'+s.att+' need attention</span>Admiral is on it':'<span class="chip2 ok">Fleet battle ready</span>Nothing for you to do')+'<span class="go">History '+svg('<path d="m9 6 6 6-6 6"/>').replace('<svg','<svg width="14" height="14"')+'</span></div>'+
       '<div class="l2"><i>&#10003;</i>Last fix: '+esc(h[0])+' · '+esc(h[2])+' · checked by Sam, your captain</div>';
     $('att').setAttribute('aria-label',(s.att?s.att+' automations need attention, the Admiral is handling it. ':'All automations healthy. ')+'Open maintenance history');
-    $('live').textContent=s.n+' underway';
+    $('live').textContent=s.n+' UNDERWAY';
   }
   function tabs(){
     $('tabs').innerHTML=DATA.map(function(f,i){return '<button class="tab" role="tab" aria-selected="'+(i==cur)+'" data-i="'+i+'">'+svg(ICON[f.id])+f.name+'</button>'}).join('');
   }
   var REG=['OH-1','OH-2','US-E','US-W'];
+  var HUES={'Sales Task Force':190,'Ops Task Force':320,'Scout Squadron':265,'Outreach Squadron':32};
+  function hue(it){return HUES[it[4]]||150}
+  function spk(it,on){var seed=it[5],pts=[],v=it[5]-6;for(var k=0;k<14;k++){v+=((seed*(k+3))%11)-5+(k>9?(it[5]<70?-1.4:0.9):0);v=Math.max(8,Math.min(98,v));pts.push((k*8.6).toFixed(1)+','+(26-v*.24).toFixed(1))}
+    return '<svg class="spk" viewBox="0 0 112 28" aria-hidden="true"><polyline points="'+pts.join(' ')+'" fill="none" stroke="hsl(var(--h) 95% 62%)" stroke-width="1.6" stroke-linejoin="round" opacity="'+(on?1:.35)+'"/></svg>'}
   function nodeNum(f,i){return (f.id=='flows'?0:(f.id=='out'?6:12))+i+1}
   var HULL={'Lead to CRM':'FFG','Demo auto-reply':'PC','Lead enrichment':'T-AO','Invoice reminders':'CG','Support triage':'T-AH','Weekly report':'SSN','Market research':'SSN','Prospect search (Apollo)':'LHD','Enrichment (Clay)':'T-AO','Draft messages':'CG','Follow-up sequences':'DDG','Meeting booking':'YT'};
   function nodeTag(f,it,i){var n=nodeNum(f,i);return (HULL[it[0]]||'DD')+'-'+(n<10?'0':'')+n+' \u00b7 '+REG[(i+(f.id=='out'?2:0))%4]}
@@ -382,9 +462,9 @@
     var s=S[f.id+':'+i];
     if(f.health){
       var on=s.on,t=on?tone(it[5]):'hx',heal=on&&it[5]<70;
-      return '<div class="row auto '+t+(on?'':' off')+'"><div class="nm"><div class="nid"><span>'+nodeTag(f,it,i)+'</span><span class="rn">'+(on?'RUNS '+runsOf(it):'IN PORT')+'</span></div><b class="nn">'+esc(s.n)+'</b><small>'+f.dir+'/'+esc(it[1])+'</small>'+
+      return '<div class="row auto '+t+(on?'':' off')+'" style="--h:'+hue(it)+'"><div class="nm"><div class="nid"><span>'+nodeTag(f,it,i)+'</span><span class="rn"'+(on?' data-runs="'+runsOf(it)+'" data-pre="RUNS "':'')+'>'+(on?'RUNS '+runsOf(it):'IN PORT')+'</span></div><b class="nn">'+esc(s.n)+'</b><small>'+f.dir+'/'+esc(it[1])+'</small>'+
         '<div class="hb"><div class="hbt"><i style="width:'+it[5]+'%"></i></div><b>'+it[5]+'</b></div>'+
-        '<div class="hs'+(heal?' heal':'')+'">'+esc(on?it[6]:'In port')+'</div></div>'+
+        '<div class="tl"><div class="hs'+(heal?' heal':'')+'">'+esc(on?it[6]:'In port')+'</div>'+spk(it,on)+'</div></div>'+
         '<button class="ent" data-e="'+i+'" aria-label="Edit '+esc(s.n)+'">'+svg('<path d="M20 5v7a3 3 0 0 1-3 3H5"/><path d="m9 11-4 4 4 4"/>')+'</button>'+
         milToggle(on,s.n,'data-t="'+i+'"')+'</div>'
     }
@@ -412,8 +492,8 @@
   }
 
   /* ---------- views ---------- */
-  var view='files',agf='all';
-  var VIEWS=[['files','Files','<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'],['map','Chart','<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H12a3 3 0 0 1 3 3v0M8.5 18H12a3 3 0 0 0 3-3"/>'],['grid','Status','<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>'],['agents','Crew','<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9.5 16.5h5"/>'],['brief','Brief','<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>']];
+  var view=/tab=/.test(location.hash)?'files':'radar',agf='all';
+  var VIEWS=[['radar','Radar','<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 18 6"/>'],['files','Files','<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'],['map','Chart','<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H12a3 3 0 0 1 3 3v0M8.5 18H12a3 3 0 0 0 3-3"/>'],['grid','Status','<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>'],['agents','Crew','<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9.5 16.5h5"/>'],['brief','Brief','<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>']];
   var AG=[
     {id:'monitor',n:'Monitor',role:'Watches every run',t:128,ok:99,last:'1 min ago',use:62},
     {id:'repair',n:'Repair',role:'Fixes failed steps',t:7,ok:94,last:'4 min ago',use:38},
@@ -434,9 +514,9 @@
     var a=allHealth().sort(function(x,y){return x.it[5]-y.it[5]});
     var h=viewTitle('Fleet status','worst first')+'<div class="tiles">';
     a.forEach(function(x){var on=x.s.on,t=on?tone(x.it[5]):'hx';
-      h+='<div class="tile auto '+t+(on?'':' off')+'" role="button" tabindex="0" data-open="'+x.fi+':'+x.i+'" aria-label="Edit '+esc(x.s.n)+', health '+x.it[5]+'"><div class="nid"><span>'+nodeTag(x.f,x.it,x.i)+'</span></div><b class="nn">'+esc(x.s.n)+'</b>'+
-        '<div class="hb"><div class="hbt"><i style="width:'+x.it[5]+'%"></i></div><b>'+x.it[5]+'</b></div>'+
-        '<div class="trow"><div class="hs">'+esc(on?'Runs '+runsOf(x.it):'In port')+'</div>'+milToggle(on,x.s.n,'data-tg="'+x.fi+':'+x.i+'"',true)+'</div></div>'});
+      h+='<div class="tile auto '+t+(on?'':' off')+'" style="--h:'+hue(x.it)+'" role="button" tabindex="0" data-open="'+x.fi+':'+x.i+'" aria-label="Edit '+esc(x.s.n)+', health '+x.it[5]+'"><div class="nid"><span>'+nodeTag(x.f,x.it,x.i)+'</span></div><b class="nn">'+esc(x.s.n)+'</b>'+
+        '<div class="hb"><div class="hbt"><i style="width:'+x.it[5]+'%"></i></div><b>'+x.it[5]+'</b></div>'+spk(x.it,on)+
+        '<div class="trow"><div class="hs"'+(on?' data-runs="'+runsOf(x.it)+'" data-pre="Runs "':'')+'>'+esc(on?'Runs '+runsOf(x.it):'In port')+'</div>'+milToggle(on,x.s.n,'data-tg="'+x.fi+':'+x.i+'"',true)+'</div></div>'});
     $('folder').innerHTML=h+'</div>';
   }
   function renderMap(){
@@ -449,7 +529,7 @@
       var L=lanes[g],c=CAP[g]||['Trigger','Output'];
       h+='<div class="lane"><h4>'+esc(g)+'<em>0'+(gi+1)+'</em></h4><div class="nodeb cap"><b>'+esc(c[0])+'</b></div>'+wire(null,null).replace('class="wire ','class="wire hg ');
       L.forEach(function(x,k){var on=x.s.on,t=on?tone(x.it[5]):'hx';
-        h+='<button type="button" class="nodeb auto '+t+(on?'':' off')+'" data-open="'+x.fi+':'+x.i+'"><em class="nid1">'+nodeTag(x.f,x.it,x.i)+'</em><b>'+esc(x.s.n)+'</b><span>'+(on?x.it[5]:'In port')+'</span></button>'+(k<L.length-1?wire(x,L[k+1]):wire(x,null).replace('class="wire '+(on?tone(x.it[5]):'hx'),'class="wire '+(on?tone(x.it[5]):'hx')));
+        h+='<button type="button" class="nodeb auto '+t+(on?'':' off')+'" style="--h:'+hue(x.it)+'" data-open="'+x.fi+':'+x.i+'"><em class="nid1">'+nodeTag(x.f,x.it,x.i)+'</em><b>'+esc(x.s.n)+'</b><span>'+(on?x.it[5]:'In port')+'</span></button>'+(k<L.length-1?wire(x,L[k+1]):wire(x,null).replace('class="wire '+(on?tone(x.it[5]):'hx'),'class="wire '+(on?tone(x.it[5]):'hx')));
       });
       h+='<div class="nodeb cap"><b>'+esc(c[1])+'</b></div></div>'});
     $('folder').innerHTML=h+'</div>';
@@ -483,11 +563,39 @@
       '<div class="exc"><div><b>Invoice reminders</b><small>Merging a duplicate flow</small></div><span class="tag">Admiral on it</span></div>';
     $('folder').innerHTML=h;
   }
+
+  function renderRadar(){
+    var a=allHealth(),n=a.length,cx=150,cy=150,s=stats();
+    var down=a.filter(function(x){return x.s.on&&x.it[5]<70}).length,port=a.filter(function(x){return !x.s.on}).length,und=a.filter(function(x){return x.s.on}).length;
+    var h=viewTitle('Radar','live fleet picture')+'<div class="radar"><svg viewBox="0 0 300 300" role="img" aria-label="Fleet radar: '+und+' underway, '+down+' in dry dock, '+port+' in port"><defs><linearGradient id="sg" x1="150" y1="10" x2="60" y2="43" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#39ff88" stop-opacity=".55"/><stop offset="1" stop-color="#39ff88" stop-opacity="0"/></linearGradient><radialGradient id="bg2"><stop offset="0" stop-color="#0c2a52"/><stop offset="1" stop-color="#050b1a"/></radialGradient></defs><circle cx="150" cy="150" r="146" fill="url(#bg2)" stroke="rgba(120,200,255,.35)"/>';
+    [40,75,110,140].forEach(function(r){h+='<circle cx="150" cy="150" r="'+r+'" fill="none" stroke="rgba(120,200,255,.18)" stroke-dasharray="2 4"/>'});
+    h+='<path d="M150 4V296M4 150H296" stroke="rgba(120,200,255,.18)"/>';
+    for(var d=0;d<360;d+=15){var rad=d*Math.PI/180,l=d%45==0?9:5;h+='<line x1="'+(150+146*Math.sin(rad)).toFixed(1)+'" y1="'+(150-146*Math.cos(rad)).toFixed(1)+'" x2="'+(150+(146-l)*Math.sin(rad)).toFixed(1)+'" y2="'+(150-(146-l)*Math.cos(rad)).toFixed(1)+'" stroke="rgba(120,200,255,.5)"/>'}
+    h+='<g class="sw"><path d="M150 150L150 10A140 140 0 0 0 60 42.8Z" fill="url(#sg)"/><line x1="150" y1="150" x2="150" y2="8" stroke="#39ff88" stroke-opacity=".8"/></g>';
+    h+='<text x="150" y="26" class="rl" text-anchor="middle">N</text><text x="283" y="153" class="rl" text-anchor="middle">E</text><text x="150" y="285" class="rl" text-anchor="middle">S</text><text x="17" y="153" class="rl" text-anchor="middle">W</text>';
+    a.forEach(function(x,i){
+      var on=x.s.on,hv=hue(x.it),ang=(i/n)*Math.PI*2+0.5,r=on?(28+(100-x.it[5])*1.85):136,px=cx+r*Math.sin(ang),py=cy-r*Math.cos(ang),t=on?tone(x.it[5]):'hx',col=on?(x.it[5]<70?'#ff6159':x.it[5]<85?'#e8ff1a':'#39ff88'):'#7f8fb6';
+      h+='<g class="blip '+t+'" tabindex="0" role="button" aria-label="'+esc(x.s.n)+', health '+x.it[5]+(on?'':', in port')+'" data-open="'+x.fi+':'+x.i+'">'+
+        (on&&x.it[5]<70?'<circle class="pg" cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="6" fill="none" stroke="'+col+'"/>':'')+
+        '<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="9" fill="hsl('+hv+' 95% 60% / .22)" stroke="hsl('+hv+' 95% 62%)"/><circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="4" fill="'+col+'"/>'+
+        '<text x="'+(px+12).toFixed(1)+'" y="'+(py+3).toFixed(1)+'" class="bl">'+(HULL[x.it[0]]||'DD')+'-'+(nodeNum(x.f,x.i)<10?'0':'')+nodeNum(x.f,x.i)+'</text></g>'});
+    h+='<circle cx="150" cy="150" r="5" fill="#e8ff1a"/><circle cx="150" cy="150" r="11" fill="none" stroke="#e8ff1a" stroke-opacity=".6"/></svg></div>'+
+      '<div class="stats"><div class="st g"><small>Underway</small><b>'+und+'</b></div><div class="st"><small>In port</small><b>'+port+'</b></div><div class="st r"><small>Dry dock</small><b>'+down+'</b></div><div class="st y"><small>Avg health</small><b>'+s.avg+'</b></div></div>';
+    h+='<div class="vt" style="margin-top:14px">Squadrons<small>health by group</small></div>';
+    var gs={};a.forEach(function(x){var g=x.it[4];if(!g)return;(gs[g]=gs[g]||[]).push(x)});
+    Object.keys(gs).forEach(function(g){var L=gs[g],on=L.filter(function(x){return x.s.on}),av=on.length?Math.round(on.reduce(function(m,x){return m+x.it[5]},0)/on.length):0,hv=HUES[g]||150;
+      h+='<div class="sq" style="--h:'+hv+'"><i class="dot"></i><span class="gn">'+esc(g)+'</span><span class="gb"><i style="width:'+av+'%"></i></span><b>'+av+'</b><small>'+on.length+'/'+L.length+'</small></div>'});
+    $('folder').innerHTML=h;
+  }
+  function pad2(n){return n<10?'0'+n:''+n}
+  function clock(){var d=new Date();$('clk').textContent=pad2(d.getUTCHours())+':'+pad2(d.getUTCMinutes())+':'+pad2(d.getUTCSeconds())+'Z · '}
+  clock();setInterval(clock,1000);
+  setInterval(function(){var el=document.querySelectorAll('[data-runs]');if(!el.length)return;var e=el[Math.floor(Math.random()*el.length)],n=+e.dataset.runs+1;e.dataset.runs=n;e.textContent=e.dataset.pre+n;e.classList.remove('flash');void e.offsetWidth;e.classList.add('flash')},1600);
   function list(){
     $('tabs').style.display=view=='files'?'':'none';
     $('folder').classList.toggle('plain',view!='files');
     if(view=='files')listFiles();
-    else{({map:renderMap,grid:renderGrid,agents:renderAgents,brief:renderBrief})[view]();callout()}
+    else{({radar:renderRadar,map:renderMap,grid:renderGrid,agents:renderAgents,brief:renderBrief})[view]();callout()}
     nav();
   }
   function openEdit(f,i){
@@ -512,7 +620,7 @@
     else if(t){var k=f.id+':'+t.dataset.t;S[k].on=!S[k].on;save();var idx=t.dataset.t;list();var nt=document.querySelector('[data-t="'+idx+'"]');if(nt)nt.focus()}
     else if(en){openEdit(f,+en.dataset.e)}
   };
-  $('folder').onkeydown=function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('tile')){e.preventDefault();var p=e.target.dataset.open.split(':');openEdit(DATA[+p[0]],+p[1])}};
+  $('folder').onkeydown=function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList&&(e.target.classList.contains('tile')||e.target.classList.contains('blip'))){e.preventDefault();var p=e.target.dataset.open.split(':');openEdit(DATA[+p[0]],+p[1])}};
   $('nav3').onclick=function(e){var b=e.target.closest('[data-v]');if(!b)return;view=b.dataset.v;list();$('folder').scrollTop=0;var nb=document.querySelector('[data-v="'+view+'"]');if(nb)nb.focus()};
   function close(){$('sheet').classList.remove('on');$('sheet').setAttribute('aria-hidden','true');editing=null}
   $('cx').onclick=close;
