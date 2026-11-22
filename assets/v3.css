@@ -200,3 +200,15 @@ details.q summary:after{color:var(--g)}
 .tbl th{color:var(--g)}
 .tbl a{color:var(--g)}
 a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid var(--y);outline-offset:3px}
+
+/* ===== v3.2: pinstripe instead of carbon, darker navy ===== */
+:root{
+  --navy:#060d22;
+  --stripe-n:repeating-linear-gradient(90deg,rgba(150,180,255,.055) 0 1px,transparent 1px 6px);
+  --stripe-g:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,transparent 1px 5px);
+}
+.gloss{background-color:var(--navy);
+  background-image:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,0) 38%,rgba(0,0,0,.4)),var(--stripe-n);
+  background-size:100% 100%,auto;background-position:0 0,0 0}
+header.top,footer{background-color:var(--navy);background-image:var(--stripe-n);background-size:auto;background-position:0 0}
+main>section+section:before{background-color:#17191f;background-image:var(--stripe-g);background-size:auto;background-position:0 0}
