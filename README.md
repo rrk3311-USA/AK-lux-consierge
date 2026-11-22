@@ -1,6 +1,6 @@
-# Kammer v3
+# Agent Kammer v3
 
-Agentic website manager for real estate agents and any business, at about half the price of luxury agencies. Includes a launch kit: logo, leather stationery, Notion hubs and business tools.
+Agent Kammer is an AI butler that manages your AI automations (monitor, repair, optimize, approve, document, build), so teams manage less. B2B. Every plan includes a move-in kit: logo, leather stationery, Notion hubs, business tools and a butler-run website.
 
 Design: gloss black, neon yellow `#E8FF1A`, electric blue `#2B5BFF`, white.
 
