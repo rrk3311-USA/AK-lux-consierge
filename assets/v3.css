@@ -219,3 +219,6 @@ main>section+section:before{background-color:#17191f;background-image:var(--stri
   background-image:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,0) 38%,rgba(0,8,40,.35)),var(--stripe-n);
   background-size:100% 100%,auto;background-position:0 0,0 0}
 .chip,.btn.g,.eyebrow{background-color:#0a1d52}
+
+/* ===== v3.4: header plain navy ===== */
+header.top{background-image:none;background-color:var(--navy)}

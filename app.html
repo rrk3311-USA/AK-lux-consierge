@@ -71,11 +71,8 @@ body{min-height:100vh}
 
 :root{--g:#39ff88;--gd:rgba(57,255,136,.35)}
 /* alien: scanlines + faint hex grid over the screen */
-.scr:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:4;border-radius:inherit;
-  background:repeating-linear-gradient(180deg,rgba(57,255,136,.045) 0 1px,transparent 1px 4px);mix-blend-mode:screen}
-.folder{background:
-  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='98'><path d='M28 2 54 17v30L28 62 2 47V17zM28 62v34M2 47 0 48M54 47l2 1' fill='none' stroke='%2339ff88' stroke-opacity='.07'/></svg>"),
-  linear-gradient(180deg,#102a6b,#081a47)}
+.scr:after{display:none}
+.folder{background:linear-gradient(180deg,#102a6b,#081a47)}
 .path b{color:var(--g)}
 .hdr .live{color:var(--g)}.hdr .live:before{background:var(--g);box-shadow:0 0 10px var(--g);animation:pulse 1.8s infinite}
 @keyframes pulse{50%{opacity:.35}}
@@ -91,7 +88,7 @@ body{min-height:100vh}
 .tg[aria-checked=true]{box-shadow:0 0 16px -2px rgba(43,91,255,.9),0 0 0 1px var(--gd)}
 .row .nm small{color:#79ffb5}
 /* carbon-fiber + grey bracket bars */
-.cbn{background-color:#17191f;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,transparent 1px 5px)}
+.cbn{background:linear-gradient(180deg,#2a2d35,#1a1c22)}
 .bk{display:flex;align-items:center;gap:10px;height:30px;padding:0 12px;border:1px solid #3b3f48;color:#b7bcc9;font:600 .68rem ui-monospace,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -2px 0 rgba(0,0,0,.6)}
 .bk .gl{color:var(--g);text-shadow:0 0 8px var(--g);font-size:.95rem;letter-spacing:0}
 .bk em{margin-left:auto;color:var(--g);font-style:normal}
@@ -100,7 +97,7 @@ body{min-height:100vh}
 .grp{border-left:2px solid #3b3f48;border-right:2px solid #3b3f48;padding:10px 8px 1px;position:relative;background:linear-gradient(90deg,rgba(57,255,136,.05),transparent 14%)}
 .grp:before{content:"";position:absolute;left:-2px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--g),transparent 40%,transparent 60%,var(--g));opacity:.7}
 .bar3{background:linear-gradient(180deg,transparent,#06070a 40%)}
-.bar3:before{content:"";position:absolute;left:18px;right:18px;top:0;height:6px;border-radius:4px;border:1px solid #3b3f48}
+
 </style></head><body>
 <header class="top"><div class="wrap hd">
 <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
@@ -111,7 +108,7 @@ body{min-height:100vh}
 <div class="side">
 <div class="eyebrow">Butler app · preview</div>
 <h1>Your whole business, <em>one pocket</em>.</h1>
-<p class="lede">Every asset and workflow lives in a folder tab. Flip a toggle to turn it on or off. Tap the enter icon to edit it. Flows sit between pinstripe brackets, and a green LED shows what's alive.</p>
+<p class="lede">Every asset and workflow lives in a folder tab. Flip a toggle to turn it on or off. Tap the enter icon to edit it. Flows sit between grey brackets, and a green LED shows what's alive.</p>
 <ul><li><b>Folder tabs</b> group things: Design, Workflows, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Enter icon</b> in the middle opens the editor.</li><li>Changes save in this browser while we build the real backend.</li></ul>
 <a class="btn g" href="connect.html">Back to setup</a>
 </div>
