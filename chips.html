@@ -7,38 +7,36 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="assets/v3.css">
 <style>
-.bay{display:grid;gap:16px;padding-bottom:30px}
-.chip{display:grid;grid-template-columns:200px minmax(0,1fr);gap:0;border-radius:14px;border:1px solid hsl(var(--h) 70% 55% / .45);background:linear-gradient(180deg,#0a1426,#060c19);box-shadow:0 14px 30px -18px hsl(var(--h) 90% 50% / .6),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
-@media(max-width:620px){.chip{grid-template-columns:1fr}.sock{border-right:0;border-bottom:1px solid hsl(var(--h) 70% 55% / .3);padding:24px}.die{max-width:230px}.subs{grid-template-columns:minmax(0,1fr)}}
-.sock{position:relative;padding:18px;background:#05080f;border-right:1px solid hsl(var(--h) 70% 55% / .3);display:grid;place-items:center}
-.die{position:relative;width:100%;aspect-ratio:1;background:#02050c;border-radius:8px;border:2px solid hsl(var(--h) 60% 45%);box-shadow:0 0 18px hsl(var(--h) 95% 55% / .35)}
-.die canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:6px;image-rendering:pixelated;display:block}
+.bay{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;padding:6px 4px 22px;scrollbar-width:thin;scrollbar-color:#2fcf74 #07203a}
+.bay::-webkit-scrollbar{height:8px}.bay::-webkit-scrollbar-thumb{background:#2fcf74;border-radius:6px}.bay::-webkit-scrollbar-track{background:#07203a;border-radius:6px}
+.chip{flex:0 0 304px;scroll-snap-align:start;display:flex;flex-direction:column;border-radius:16px;border:1px solid hsl(var(--h) 70% 55% / .45);background:linear-gradient(180deg,#0a1426,#060c19);box-shadow:0 14px 30px -18px hsl(var(--h) 90% 50% / .6),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+.sock{position:relative;padding:22px 26px 20px;background:#05080f;border-bottom:1px solid hsl(var(--h) 70% 55% / .3)}
+.die{position:relative;width:100%;aspect-ratio:3/4;background:#02050c;border-radius:6px;border:2px solid hsl(var(--h) 60% 45%);box-shadow:0 0 18px hsl(var(--h) 95% 55% / .35)}
+.die canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:4px;image-rendering:pixelated;display:block}
 .pins{position:absolute;inset:-9px;pointer-events:none;
- background:
-  radial-gradient(circle,hsl(var(--h) 80% 60% / .85) 1.3px,transparent 1.8px) 0 0/9px 100% repeat-x,
-  radial-gradient(circle,hsl(var(--h) 80% 60% / .85) 1.3px,transparent 1.8px) 0 100%/9px 9px repeat-x;
- -webkit-mask:linear-gradient(#000 0 9px,transparent 9px calc(100% - 9px),#000 calc(100% - 9px));mask:linear-gradient(#000 0 9px,transparent 9px calc(100% - 9px),#000 calc(100% - 9px))}
-.pins2{position:absolute;inset:-9px;pointer-events:none;background:radial-gradient(circle,hsl(var(--h) 80% 60% / .85) 1.3px,transparent 1.8px) 0 0/9px 9px repeat-y;-webkit-mask:linear-gradient(90deg,#000 0 9px,transparent 9px calc(100% - 9px),#000 calc(100% - 9px));mask:linear-gradient(90deg,#000 0 9px,transparent 9px calc(100% - 9px),#000 calc(100% - 9px))}
-/* heat-spreader half circle cover */
-.cover{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:100%;aspect-ratio:2/1;border-radius:999px 999px 0 0;
-  background:linear-gradient(180deg,#26324a 0%,#121a2b 55%,#0a101c 100%);border:1.5px solid hsl(var(--h) 60% 62% / .75);border-bottom:0;
-  box-shadow:inset 0 2px 0 rgba(255,255,255,.22),inset 0 -10px 18px rgba(0,0,0,.45),0 -4px 18px rgba(0,0,0,.55);display:grid;place-items:end center;padding-bottom:10%;text-align:center}
-.cover:before{content:"";position:absolute;inset:7% 11% 0 11%;border-radius:999px 999px 0 0;border:1px dashed hsl(var(--h) 70% 70% / .35);border-bottom:0}
-.cover b{display:block;font:700 .56rem ui-monospace,Menlo,monospace;letter-spacing:.22em;color:hsl(var(--h) 95% 72%);text-transform:uppercase}
-.cover span{display:block;font:700 .95rem var(--disp);letter-spacing:-.02em;color:#fff;margin-top:2px}
-.cover small{display:block;font:600 .5rem ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#8fa0c4;margin-top:2px}
-
-.cb{padding:18px 20px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.cb .hd2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.cb h3{font:700 1.15rem var(--disp);letter-spacing:-.02em}
-.cb h3 em{font-style:normal;font:600 .62rem ui-monospace,Menlo,monospace;letter-spacing:.18em;color:hsl(var(--h) 95% 70%);margin-left:8px;vertical-align:middle;text-transform:uppercase}
-.cb .sum{font:600 .7rem ui-monospace,Menlo,monospace;letter-spacing:.06em;color:#8fa0c4}
+ background:radial-gradient(circle,hsl(var(--h) 80% 60% / .85) 1.3px,transparent 1.8px) 0 0/9px 9px repeat-x,radial-gradient(circle,hsl(var(--h) 80% 60% / .85) 1.3px,transparent 1.8px) 0 100%/9px 9px repeat-x}
+.pins2{position:absolute;inset:-9px;pointer-events:none;background:radial-gradient(circle,hsl(var(--h) 80% 60% / .85) 1.3px,transparent 1.8px) 0 0/9px 9px repeat-y,radial-gradient(circle,hsl(var(--h) 80% 60% / .85) 1.3px,transparent 1.8px) 100% 0/9px 9px repeat-y}
+/* arched door cover */
+.cover{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:84%;height:66%;
+  border-radius:999px 999px 0 0;background:linear-gradient(180deg,#2c3a56 0%,#141c2e 50%,#0a101c 100%);border:2px solid hsl(var(--h) 60% 62% / .8);border-bottom:0;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.25),inset 0 -14px 22px rgba(0,0,0,.5),0 -6px 20px rgba(0,0,0,.6);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:0 8px 14px}
+.cover:before{content:"";position:absolute;inset:8px 8px 0 8px;border-radius:999px 999px 0 0;border:1px solid hsl(var(--h) 70% 70% / .35);border-bottom:0}
+.cover:after{content:"";position:absolute;left:50%;top:34%;bottom:44%;width:1px;background:hsl(var(--h) 70% 70% / .3)}
+.cover .dot{width:10px;height:10px;border-radius:50%;background:hsl(var(--h) 95% 62%);box-shadow:0 0 12px hsl(var(--h) 95% 62%);margin-bottom:auto;margin-top:22%}
+.cover b{display:block;font:700 .56rem ui-monospace,Menlo,monospace;letter-spacing:.22em;color:hsl(var(--h) 95% 72%);text-transform:uppercase;position:relative}
+.cover span{display:block;font:700 1.12rem var(--disp);letter-spacing:-.02em;color:#fff;margin-top:3px;line-height:1.1;position:relative}
+.cover small{display:block;font:600 .52rem ui-monospace,Menlo,monospace;letter-spacing:.16em;color:#8fa0c4;margin-top:4px;position:relative}
+.cb{padding:18px 18px 18px;display:flex;flex-direction:column;gap:10px;min-width:0;flex:1}
+.cb .hd2{display:flex;flex-direction:column;gap:4px}
+.cb h3{font:700 1.1rem var(--disp);letter-spacing:-.02em}
+.cb h3 em{display:block;margin:3px 0 0}
+.cb .sum{font:600 .68rem ui-monospace,Menlo,monospace;letter-spacing:.06em;color:#8fa0c4}
 .cb .sum b{color:hsl(var(--h) 95% 70%)}
-.cb p.d{margin:0;color:#b6c4e2;font-size:.86rem;line-height:1.5}
-.subs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:8px;margin-top:2px}
+.cb p.d{margin:0;color:#b6c4e2;font-size:.84rem;line-height:1.5}
+.subs{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-top:auto}
 .sub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:9px 12px;border:1px solid hsl(var(--h) 60% 55% / .28);border-left:3px solid hsl(var(--h) 95% 60%);border-radius:6px;background:rgba(255,255,255,.03)}
 .sub.off{filter:saturate(.3);opacity:.8;border-left-color:#4a5878}
-.sub .nm{font:600 .86rem var(--disp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub .nm{font:600 .84rem var(--disp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sub .mt{grid-column:1/2;display:flex;align-items:center;gap:8px}
 .sub .bar{flex:1;height:5px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
 .sub .bar i{display:block;height:100%;background:var(--c)}
@@ -49,7 +47,10 @@
 .sw:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:3px;background:linear-gradient(180deg,#5a6b92,#2a3550);border:1px solid #6a7ea8;transition:transform .15s}
 .sw[aria-checked=true]{background:#062417;border-color:#2fcf74;box-shadow:inset 0 0 12px rgba(57,255,136,.45),0 0 8px rgba(57,255,136,.25)}
 .sw[aria-checked=true]:after{transform:translateX(22px);background:linear-gradient(180deg,#8dffbd,#27c46b);border-color:#d6ffe6}
-.sw:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.sw:focus-visible,.nv:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.nv{border:1px solid rgba(57,255,136,.5);background:#0a1d52;color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;font:700 1.1rem var(--disp)}
+.nv:hover{background:var(--g);color:#031a0d}
+.nvs{display:flex;gap:8px}
 .top3{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 20px}
 .tot{font:600 .9rem var(--disp);color:var(--bare)}
 .tot b{color:var(--y);font-family:ui-monospace,Menlo,monospace}
@@ -67,7 +68,7 @@
 <div class="page-hd"><div class="eyebrow">The chip bay</div>
 <h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Every category is a <em>chip</em>.</h1>
 <p class="lede" style="margin-top:1rem">Each chip is one automation category with its own die and its own color. The die flickers with live activity. The subcategories are the workflows inside, and every one has its own switch.</p></div>
-<div class="top3"><div class="tot" id="tot" aria-live="polite"></div><div class="leg"><span class="g"><i></i>Healthy</span><span class="y"><i></i>Degraded</span><span class="r"><i></i>Needs repair</span><span class="x"><i></i>Off</span></div></div>
+<div class="top3"><div class="tot" id="tot" aria-live="polite"></div><div class="nvs"><button class="nv" id="pv" type="button" aria-label="Scroll chips left">←</button><button class="nv" id="nx" type="button" aria-label="Scroll chips right">→</button></div><div class="leg"><span class="g"><i></i>Healthy</span><span class="y"><i></i>Degraded</span><span class="r"><i></i>Needs repair</span><span class="x"><i></i>Off</span></div></div>
 <div class="bay" id="bay"></div>
 <p class="note">Health scores and activity are sample data. The category codenames are working names.</p>
 </main>
@@ -99,16 +100,16 @@
   function isOn(c,i){var k=c.id+':'+i;return k in S?S[k]:(i!==3||c.id==='ops'?true:true)}
   function rng(seed){var s=seed>>>0;return function(){s=(s*1664525+1013904223)>>>0;return s/4294967296}}
   /* build the block layout once per chip */
-  function layout(c,n){
-    var R=rng(c.h*977+n),out=[];
+  function layout(c,cols,rows){
+    var R=rng(c.h*977+cols),out=[];
     (function split(x,y,w,h,d){
-      var stop=w<=2||(d>1&&R()<(.1+d*.1))||d>6;
+      var stop=w<=2||h<=2||(d>1&&R()<(.1+d*.1))||d>6;
       if(stop){out.push([x,y,w,h]);return}
       var hw=Math.floor(w/2),hh=Math.floor(h/2);
       if(c.st==='quad'||(c.st==='mixed'&&R()<.5)){split(x,y,hw,hh,d+1);split(x+hw,y,w-hw,hh,d+1);split(x,y+hh,hw,h-hh,d+1);split(x+hw,y+hh,w-hw,h-hh,d+1)}
       else if(c.st==='wide'||(c.st==='mixed')){var a=R()<.3?hh:hh;split(x,y,w,a,d+1);split(x,y+a,w,h-a,d+1);if(R()<.55){}}
       else{split(x,y,hw,h,d+1);split(x+hw,y,w-hw,h,d+1)}
-    })(0,0,n,n,0);
+    })(0,0,cols,rows,0);
     return out;
   }
   function paint(canvas,c,blocks,n,act){
@@ -121,11 +122,11 @@
   function mount(){
     var h='';
     CH.forEach(function(c){
-      h+='<article class="chip" style="--h:'+c.h+'" id="c-'+c.id+'"><div class="sock"><div class="die"><canvas width="128" height="128" aria-hidden="true"></canvas><span class="pins"></span><span class="pins2"></span><div class="cover"><div><b>Admiral Kammer</b><span>'+esc(c.name)+'</span><small>'+c.code+'</small></div></div></div></div><div class="cb"><div class="hd2"><h3>'+esc(c.name)+'<em>'+c.code+'</em></h3><span class="sum" id="s-'+c.id+'"></span></div><p class="d">'+esc(c.d)+'</p><div class="subs" id="u-'+c.id+'"></div></div></article>';
+      h+='<article class="chip" style="--h:'+c.h+'" id="c-'+c.id+'"><div class="sock"><div class="die"><canvas width="96" height="128" aria-hidden="true"></canvas><span class="pins"></span><span class="pins2"></span><div class="cover"><i class="dot"></i><b>Admiral Kammer</b><span>'+esc(c.name)+'</span><small>'+c.code+'</small></div></div></div><div class="cb"><div class="hd2"><h3>'+esc(c.name)+'<em>'+c.code+'</em></h3><span class="sum" id="s-'+c.id+'"></span></div><p class="d">'+esc(c.d)+'</p><div class="subs" id="u-'+c.id+'"></div></div></article>';
     });
     $('bay').innerHTML=h;
     CH.forEach(function(c){
-      var cv=document.querySelector('#c-'+c.id+' canvas'),n=32,bl=layout(c,n).map(function(b){return {x:b[0],y:b[1],w:b[2],h:b[3],col:c.pal[0]}});
+      var cv=document.querySelector('#c-'+c.id+' canvas'),n=24,bl=layout(c,24,32).map(function(b){return {x:b[0],y:b[1],w:b[2],h:b[3],col:c.pal[0]}});
       var R=rng(c.h*31);bl.forEach(function(b){b.col=c.pal[Math.floor(R()*c.pal.length)]});
       dies.push({c:c,cv:cv,bl:bl,n:n});paint(cv,c,bl,n);
       subs(c);
@@ -142,6 +143,7 @@
   function tot(){var on=0,all=0;CH.forEach(function(c){c.subs.forEach(function(s,i){all++;if(isOn(c,i))on++})});$('tot').innerHTML='<b>'+on+'</b> of '+all+' workflows on across '+CH.length+' chips'}
   $('bay').addEventListener('click',function(e){var b=e.target.closest('.sw');if(!b)return;var c=CH.filter(function(x){return x.id===b.dataset.c})[0],i=+b.dataset.i,k=c.id+':'+i;S[k]=!isOn(c,i);save();subs(c);var nb=document.querySelector('.sw[data-c="'+c.id+'"][data-i="'+i+'"]');if(nb)nb.focus()});
   mount();
+  $('pv').onclick=function(){$('bay').scrollBy({left:-330,behavior:'smooth'})};$('nx').onclick=function(){$('bay').scrollBy({left:330,behavior:'smooth'})};
   /* live flicker: re-roll a few blocks per tick, more for chips with more switches on */
   var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   if(!reduce)setInterval(function(){
