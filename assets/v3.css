@@ -212,3 +212,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid var(--
   background-size:100% 100%,auto;background-position:0 0,0 0}
 header.top,footer{background-color:var(--navy);background-image:var(--stripe-n);background-size:auto;background-position:0 0}
 main>section+section:before{background-color:#17191f;background-image:var(--stripe-g);background-size:auto;background-position:0 0}
+
+/* ===== v3.3: deep navy BLUE ===== */
+:root{--navy:#0a1d52;--stripe-n:repeating-linear-gradient(90deg,rgba(140,175,255,.07) 0 1px,transparent 1px 6px)}
+.gloss{background-color:var(--navy);
+  background-image:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,0) 38%,rgba(0,8,40,.35)),var(--stripe-n);
+  background-size:100% 100%,auto;background-position:0 0,0 0}
+.chip,.btn.g,.eyebrow{background-color:#0a1d52}

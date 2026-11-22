@@ -15,7 +15,7 @@ body{min-height:100vh}
 .side li b{color:var(--w)}
 /* phone */
 .phone{width:390px;height:780px;border-radius:52px;padding:12px;background:linear-gradient(145deg,#2a2e3b,#07080c 60%);box-shadow:0 0 0 2px #000,0 0 0 3px rgba(255,255,255,.14),0 50px 100px -30px rgba(43,91,255,.45),0 30px 60px -20px #000;position:relative}
-.scr{height:100%;border-radius:42px;overflow:hidden;background:var(--k);display:flex;flex-direction:column;position:relative;background-image:radial-gradient(400px 260px at 100% 0,rgba(43,91,255,.3),transparent 70%)}
+.scr{height:100%;border-radius:42px;overflow:hidden;background:#081a47;display:flex;flex-direction:column;position:relative;background-image:radial-gradient(400px 260px at 100% 0,rgba(57,255,136,.18),transparent 70%)}
 .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:104px;height:28px;border-radius:99px;background:#000;z-index:5}
 @media(max-width:900px){.phone{width:100%;height:100dvh;border-radius:0;padding:0;box-shadow:none;background:none}.scr{border-radius:0}.notch{display:none}}
 .top2{padding:46px 20px 10px}
@@ -37,7 +37,7 @@ body{min-height:100vh}
 .folder{flex:1;overflow:auto;margin:0 0 0;border-top:2px solid var(--y);background:linear-gradient(180deg,#141722,#07080c);padding:14px 14px 90px}
 .count{display:flex;justify-content:space-between;color:var(--mut);font-size:.78rem;padding:2px 6px 10px}
 /* rows */
-.row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:12px 12px 12px 14px;margin-bottom:9px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,#1b1f2c,#0b0d13);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:12px 12px 12px 14px;margin-bottom:9px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,#17387f,#0a1f55);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 .row.off{opacity:.55}
 .row .nm{min-width:0}
 .row .nm b{display:block;font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -51,12 +51,12 @@ body{min-height:100vh}
 .tg[aria-checked=true]:after{transform:translateX(22px);background:var(--y)}
 @media(prefers-reduced-motion:reduce){.tg,.tg:after,.sheet{transition:none}}
 /* bottom bar */
-.bar3{position:absolute;left:0;right:0;bottom:0;padding:12px 18px 22px;background:linear-gradient(180deg,transparent,#06070a 40%);display:flex;gap:10px}
+.bar3{position:absolute;left:0;right:0;bottom:0;padding:12px 18px 22px;background:linear-gradient(180deg,transparent,#081a47 40%);display:flex;gap:10px}
 .bar3 .btn{flex:1;justify-content:center;padding:13px 10px;font-size:.88rem}
 /* sheet */
 .sheet{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;justify-content:flex-end;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .2s}
 .sheet.on{opacity:1;pointer-events:auto}
-.sheet .pn{background:linear-gradient(180deg,#1b1f2c,#0b0d13);border-top:1px solid rgba(255,255,255,.18);border-radius:28px 28px 0 0;padding:20px 20px 28px;transform:translateY(30px);transition:transform .25s}
+.sheet .pn{background:linear-gradient(180deg,#17387f,#0a1f55);border-top:1px solid rgba(255,255,255,.18);border-radius:28px 28px 0 0;padding:20px 20px 28px;transform:translateY(30px);transition:transform .25s}
 .sheet.on .pn{transform:none}
 .grab{width:44px;height:5px;border-radius:9px;background:rgba(255,255,255,.2);margin:0 auto 16px}
 .pn h2{font-size:1.3rem;margin-bottom:4px}
@@ -75,7 +75,7 @@ body{min-height:100vh}
   background:repeating-linear-gradient(180deg,rgba(57,255,136,.045) 0 1px,transparent 1px 4px);mix-blend-mode:screen}
 .folder{background:
   url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='98'><path d='M28 2 54 17v30L28 62 2 47V17zM28 62v34M2 47 0 48M54 47l2 1' fill='none' stroke='%2339ff88' stroke-opacity='.07'/></svg>"),
-  linear-gradient(180deg,#141722,#07080c)}
+  linear-gradient(180deg,#102a6b,#081a47)}
 .path b{color:var(--g)}
 .hdr .live{color:var(--g)}.hdr .live:before{background:var(--g);box-shadow:0 0 10px var(--g);animation:pulse 1.8s infinite}
 @keyframes pulse{50%{opacity:.35}}
