@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Kammer | The Studio: See the Recipe</title>
+<meta name="description" content="Same base models, better results. Agent Kammer shows the full recipe behind every logo, card and page: research anchors, brief, direction, critique. Steer it with one tap.">
+<meta name="theme-color" content="#07686f">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo+Black&family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&family=Oswald:wght@500;600&family=Playfair+Display:wght@600;700&family=Sora:wght@500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/v3.css">
+<style>
+.studio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px;align-items:start;padding-bottom:90px}
+@media(max-width:960px){.studio{grid-template-columns:1fr}}
+.panel{padding:30px 34px 28px}
+.panel h2{font-size:1.15rem;font-family:var(--disp);letter-spacing:-.01em;margin-bottom:4px}
+.panel .sub{color:var(--mut);font-size:.88rem;margin-bottom:16px}
+.fld{display:grid;gap:6px;margin-bottom:14px}
+.fld label,.lbl{font:600 .72rem var(--disp);letter-spacing:.14em;text-transform:uppercase;color:#aebbe0}
+.fld input{padding:12px 16px;border-radius:14px;border:1px solid #2a55b5;background:#061440;color:#fff;font:500 1rem var(--body)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.fld input{width:100%;min-width:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opt span{display:block;padding:9px 16px;border-radius:99px;border:1px solid #2a55b5;background:#0e2a6a;font-weight:500;font-size:.9rem}
+.opt input:checked+span{background:var(--y);color:#080a00;border-color:var(--y);font-weight:600}
+.opt.st input:checked+span{background:var(--g);border-color:var(--g);color:#031a0d}
+.opt input:focus-visible+span{outline:3px solid var(--y);outline-offset:2px}
+.sugg{border:1px solid rgba(57,255,136,.45);background:#07204d;border-radius:14px;padding:12px 14px;font-size:.9rem;color:#dbe6ff;margin-bottom:6px}
+.sugg b{color:var(--g)}
+.sugg button{margin-left:8px;border:0;background:var(--g);color:#031a0d;font:700 .78rem var(--disp);padding:6px 12px;border-radius:99px;cursor:pointer}
+.sugg button:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+/* card preview */
+.stagewrap{display:grid;place-items:center;padding:8px 0 4px}
+.bc{width:min(100%,400px);aspect-ratio:3.5/2;border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 24px 40px -18px rgba(0,0,0,.8);transition:background .25s,color .25s}
+.bc .top3{display:flex;align-items:center;gap:12px}
+.bc .mk{width:44px;height:44px;display:grid;place-items:center;font-size:1.15rem;flex:none}
+.bc .co{font-size:1.2rem;line-height:1.1}
+.bc .ty{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;opacity:.8;margin-top:3px}
+.bc .ct{font-size:.72rem;line-height:1.6;opacity:.9}
+.chips3{display:flex;gap:6px;margin-top:12px;justify-content:center}
+.chips3 i{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.4)}
+/* recipe */
+.rec{counter-reset:r}
+details.step2{border:1px solid #2a55b5;border-radius:16px;background:#0e2a6a;margin-bottom:9px;counter-increment:r}
+details.step2 summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 16px;font:600 .95rem var(--disp)}
+details.step2 summary::-webkit-details-marker{display:none}
+details.step2 summary:before{content:counter(r);width:26px;height:26px;border-radius:8px;background:var(--y);color:#080a00;display:grid;place-items:center;font-weight:700;font-size:.8rem}
+details.step2 summary:after{content:"+";color:var(--g);font-size:1.3rem;line-height:1}
+details.step2[open] summary:after{content:"–"}
+details.step2 summary small{display:block;font:500 .76rem var(--body);color:#aebbe0;margin-top:2px}
+details.step2 pre{margin:0;padding:0 16px 16px;white-space:pre-wrap;font:500 .8rem/1.7 ui-monospace,Menlo,monospace;color:#d6e2ff}
+details.step2 summary:focus-visible{outline:3px solid var(--y);outline-offset:-3px;border-radius:16px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.acts .btn{padding:12px 20px;font-size:.9rem}
+.pill2{display:inline-block;background:var(--g);color:#031a0d;font:700 .66rem var(--disp);letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:99px;margin-left:8px;vertical-align:middle}
+.foot2{margin-top:14px;font-size:.8rem;color:#aebbe0}
+</style></head><body>
+<header class="top"><div class="wrap hd">
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a class="on" href="studio.html">Studio</a><a href="kit.html">Move-in kit</a><a href="connect.html">Connect</a><a href="app.html">Butler app</a><a class="cta-s" href="index.html#start">Get a butler</a></nav>
+</div></header>
+
+<main class="wrap">
+<div class="page-hd"><div class="eyebrow">The studio</div>
+<h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Same models. <em>Better taste.</em></h1>
+<p class="lede" style="margin-top:1rem">Ask any AI for a carpet cleaning logo and you get a coin flip. Kammer runs a proven recipe instead: research anchors, a real brief, a clear direction, and a critique. You can see every step and steer it.</p></div>
+
+<div class="studio">
+<section style="padding:0" aria-label="Brief and steering">
+<div class="gloss mod panel">
+<h2>1. Brief</h2><p class="sub">Tell Kammer the basics. Everything below updates as you type.</p>
+<div class="fld"><label for="biz">Business name</label><input id="biz" value="Buckeye Carpet Care" autocomplete="off"></div>
+<div class="two"><div class="fld"><label for="ind">What you do</label><input id="ind" value="Carpet cleaning" autocomplete="off"></div>
+<div class="fld"><label for="loc">Where</label><input id="loc" value="Ohio" autocomplete="off"></div></div>
+<span class="lbl" id="dl">Deliverable</span>
+<div class="opts" role="radiogroup" aria-labelledby="dl" id="dels"></div>
+<h2 style="margin-top:6px">2. Steer it</h2><p class="sub">Pick a direction, or take the suggestion.</p>
+<div class="sugg" id="sugg" aria-live="polite"></div>
+<div class="opts" role="radiogroup" aria-label="Style direction" id="styles"></div>
+</div>
+</section>
+
+<section style="padding:0" aria-label="Preview and recipe">
+<div class="gloss mod panel">
+<h2>Live preview<span class="pill2" id="stl"></span></h2>
+<div class="stagewrap"><div class="bc" id="bc" role="img" aria-label="Business card preview"></div></div>
+<div class="chips3" id="sw" aria-hidden="true"></div>
+</div>
+<div class="gloss mod panel" style="margin-top:22px">
+<h2>The recipe</h2><p class="sub">This is the whole process, in the open. Tap a step to see the exact instructions.</p>
+<div class="rec" id="rec"></div>
+<div class="acts"><button class="btn y" id="cp" type="button">Copy recipe</button><button class="btn g" id="dlb" type="button">Download .md</button></div>
+<p class="foot2">Preview is a styled mock-up. Generation runs inside the full product; the recipe above is what drives it.</p>
+</div>
+</section>
+</div>
+</main>
+<footer><div class="wrap row"><div>Agent Kammer · The studio</div><div><a href="index.html">Home</a><a href="kit.html">Move-in kit</a></div></div></footer>
+
+<script>
+(function(){
+  var DELS=['Logo','Business card','Letterhead','Website hero'];
+  var ST={
+    retro:{n:'Retro',pal:['#c8452d','#f2d9a0','#1f3a4d'],bg:'#f2d9a0',fg:'#1f3a4d',acc:'#c8452d',font:"'Alfa Slab One',serif",mk:'50%',type:'chunky slab serif with a script accent',shape:'badges, rounded rectangles, two-tone bands',avoid:'gradients, glossy effects, thin hairlines'},
+    minimal:{n:'Minimal',pal:['#111111','#ffffff','#2b5bff'],bg:'#ffffff',fg:'#111111',acc:'#2b5bff',font:"'Space Grotesk',sans-serif",mk:'8px',type:'neutral grotesk, tight tracking',shape:'monoline geometry, generous space',avoid:'ornament, more than two colors'},
+    luxury:{n:'Luxury',pal:['#0b0b0f','#c9a35b','#f4efe6'],bg:'#0b0b0f',fg:'#f4efe6',acc:'#c9a35b',font:"'Playfair Display',serif",mk:'0',type:'high-contrast serif, wide tracking on small caps',shape:'fine rules, monograms, restrained marks',avoid:'bright colors, playful shapes'},
+    bold:{n:'Bold',pal:['#e8ff1a','#080a00','#ffffff'],bg:'#e8ff1a',fg:'#080a00',acc:'#080a00',font:"'Archivo Black',sans-serif",mk:'14px',type:'heavy sans, large scale',shape:'solid blocks, strong contrast, big marks',avoid:'subtle tones, thin strokes'},
+    friendly:{n:'Friendly',pal:['#39b7a5','#ffd84d','#1d2b53'],bg:'#39b7a5',fg:'#10213d',acc:'#ffd84d',font:"'Fredoka',sans-serif",mk:'50%',type:'rounded sans, relaxed spacing',shape:'soft corners, simple mascot-like marks',avoid:'sharp angles, dark moody palettes'},
+    industrial:{n:'Industrial',pal:['#2f3a45','#ff8a00','#e9edf0'],bg:'#2f3a45',fg:'#e9edf0',acc:'#ff8a00',font:"'Oswald',sans-serif",mk:'4px',type:'condensed sans, uppercase',shape:'stencil cuts, hard edges, hazard-style accents',avoid:'script fonts, pastel colors'}
+  };
+  var ORDER=['retro','minimal','luxury','bold','friendly','industrial'];
+  var state={del:'Business card',st:'retro'};
+  var $=function(i){return document.getElementById(i)};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function v(id,d){return ($(id).value||'').trim()||d}
+  function build(){
+    $('dels').innerHTML=DELS.map(function(d,i){return '<label class="opt"><input type="radio" name="del" value="'+d+'"'+(d==state.del?' checked':'')+'><span>'+d+'</span></label>'}).join('');
+    $('styles').innerHTML=ORDER.map(function(k){return '<label class="opt st"><input type="radio" name="st" value="'+k+'"'+(k==state.st?' checked':'')+'><span>'+ST[k].n+'</span></label>'}).join('');
+  }
+  function suggestion(ind){
+    var t=ind.toLowerCase();
+    if(/clean|plumb|hvac|landscap|roof|paint|repair|handyman/.test(t))return {k:'retro',why:'Local home-service brands tend to win on warmth and trust. A retro, badge-style look reads established and friendly.'};
+    if(/real estate|realtor|broker|property|mortgage|law|wealth/.test(t))return {k:'luxury',why:'High-trust, high-ticket work usually looks best restrained and premium.'};
+    if(/gym|fitness|auto|tow|construct|build|weld/.test(t))return {k:'industrial',why:'Hands-on trades suit hard edges and strong, utilitarian type.'};
+    if(/cafe|coffee|bakery|pet|kid|salon|boutique/.test(t))return {k:'friendly',why:'Neighborhood retail feels best when it feels approachable.'};
+    return {k:'minimal',why:'When in doubt, a clean, confident mark ages best and prints anywhere.'};
+  }
+  function recipe(){
+    var biz=v('biz','Your Business'),ind=v('ind','your trade'),loc=v('loc','your area'),s=ST[state.st],d=state.del;
+    var sg=suggestion(ind);
+    return [
+      {t:'Research anchors',s:'Study award-winning work in your field first',p:
+'ROLE: Senior brand researcher.\nTASK: Assemble a reference set of 12 identity systems for "'+ind+'" and adjacent trades, drawn from award shortlists (for example D&AD, Communication Arts, Brand New, Red Dot).\nFOR EACH: extract palette, type pairing, how the mark is constructed, and spacing rhythm.\nOUTPUT: a one-page table plus 3 patterns that recur in the strongest work.\nRULE: Anchor every later decision to this set. No design starts from a blank page.'},
+      {t:'Brief distillation',s:'Turn a vague ask into a real design brief',p:
+'INPUT: "'+biz+'", '+ind+', '+loc+'. Deliverable: '+d+'.\nTASK: Rewrite as a design brief with: audience, 3 tone words, what must be legible at 16 px, one-color print requirement, and what local competitors in '+loc+' look like so we can differ.\nOUTPUT: a brief under 150 words. Ask at most 2 clarifying questions if something critical is missing.'},
+      {t:'Direction: '+s.n,s:'Your steering choice becomes concrete rules',p:
+'DIRECTION: '+s.n+'.\nTRANSLATE INTO RULES:\n- Palette: '+s.pal.join(', ')+'\n- Typography: '+s.type+'\n- Shape language: '+s.shape+'\n- Avoid: '+s.avoid+'\nRULE: Keep the anchors from step 1 as the quality bar, and this direction as the personality.'},
+      {t:'Generate candidates',s:'Several options, constrained by the rules',p:
+'TASK: Produce 6 candidate '+d.toLowerCase()+' concepts for "'+biz+'" following the brief and direction.\nCONSTRAINTS: must work in one color; must survive 16 px; no stock clip-art; name each concept in a few words and explain the idea in one sentence.\nOUTPUT: 6 concepts, each tied to at least one anchor from step 1.'},
+      {t:'Critique and cut',s:'A rubric decides, not taste on the day',p:
+'TASK: Score each concept 1 to 5 on: legibility at 16 px, distinctiveness from local '+ind.toLowerCase()+' competitors, print-readiness in one color, fit with the brief, and alignment with the anchor set.\nRULE: Cut the bottom 4. Rewrite the weakest rubric score of each survivor. Show the scores.\nOUTPUT: 2 finalists with scores and one-line rationale.'},
+      {t:'Finish and package',s:'From concept to a usable kit',p:
+'TASK: Take the chosen finalist and produce the full set: logo (color, one-color, reversed), business card front and back, letterhead, and a website hero.\nCHECK: contrast ratios pass, files are vector, fonts have licenses, export names are consistent.\nHAND-OFF: deliver the recipe and prompts with the files, so you can re-run or steer again anytime.'}
+    ];
+  }
+  function card(){
+    var biz=v('biz','Your Business'),ind=v('ind','Your trade'),loc=v('loc','Ohio'),s=ST[state.st];
+    var ini=biz.split(/\s+/).filter(Boolean).slice(0,2).map(function(w){return w[0].toUpperCase()}).join('')||'K';
+    var bc=$('bc');
+    bc.style.background=s.bg;bc.style.color=s.fg;bc.style.fontFamily="Inter,sans-serif";
+    bc.innerHTML='<div class="top3"><div class="mk" style="background:'+s.acc+';color:'+(s.acc.toLowerCase()=='#080a00'?s.bg:s.bg)+';border-radius:'+s.mk+';font-family:'+s.font+'">'+esc(ini)+'</div><div><div class="co" style="font-family:'+s.font+'">'+esc(biz)+'</div><div class="ty">'+esc(ind)+' · '+esc(loc)+'</div></div></div>'+
+      '<div class="ct">Alex Morgan, Owner<br>(555) 010-2030<br>hello@'+esc(biz.toLowerCase().replace(/[^a-z0-9]+/g,'')||'yourbiz')+'.com</div>';
+    bc.setAttribute('aria-label',s.n+' style business card for '+biz);
+    $('stl').textContent=s.n;
+    $('sw').innerHTML=s.pal.map(function(c){return '<i style="background:'+c+'"></i>'}).join('');
+  }
+  function paintRecipe(){
+    var r=recipe();
+    $('rec').innerHTML=r.map(function(x,i){return '<details class="step2"><summary><span><span>'+esc(x.t)+'</span><small>'+esc(x.s)+'</small></span></summary><pre>'+esc(x.p)+'</pre></details>'}).join('');
+  }
+  function paintSugg(){
+    var sg=suggestion(v('ind','')),s=ST[sg.k];
+    $('sugg').innerHTML=(sg.k==state.st?'<b>Good call.</b> ':'<b>Want to go '+s.n.toLowerCase()+'?</b> ')+esc(sg.why)+(sg.k==state.st?'':'<button type="button" id="take">Try '+s.n+'</button>');
+    var t=$('take');if(t)t.onclick=function(){state.st=sg.k;build();refresh()};
+  }
+  function refresh(){card();paintRecipe();paintSugg()}
+  function openState(){var o={};document.querySelectorAll('#rec details').forEach(function(d,i){o[i]=d.open});return o}
+  ['biz','ind','loc'].forEach(function(id){$(id).addEventListener('input',function(){var o=openState();refresh();document.querySelectorAll('#rec details').forEach(function(d,i){d.open=!!o[i]})})});
+  document.addEventListener('change',function(e){var t=e.target;if(t.name==='del'){state.del=t.value;refresh()}else if(t.name==='st'){state.st=t.value;refresh()}});
+  function md(){
+    var biz=v('biz','Your Business');
+    return '# Kammer recipe: '+biz+'\n\nDeliverable: '+state.del+' · Direction: '+ST[state.st].n+'\n\n'+recipe().map(function(x,i){return '## '+(i+1)+'. '+x.t+'\n'+x.s+'\n\n```\n'+x.p+'\n```\n'}).join('\n');
+  }
+  $('cp').onclick=function(){var b=this,t=md();
+    function ok(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy recipe'},1400)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb()})}else fb();
+    function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(ta)}};
+  $('dlb').onclick=function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([md()],{type:'text/markdown'}));a.download='kammer-recipe.md';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)};
+  build();refresh();
+})();
+</script>
+</body></html>

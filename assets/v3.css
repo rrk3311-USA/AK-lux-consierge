@@ -225,7 +225,7 @@ header.top{background-image:none;background-color:var(--navy)}
 
 /* ===== v3.5: module/node container (LCARS-style), no window chrome ===== */
 .console.mod{border-radius:22px;padding:0 0 22px;border-color:rgba(57,255,136,.28)}
-.gloss.console.mod:not(.step):not(.band):after{content:"";position:absolute;inset:9px;pointer-events:none;opacity:1;z-index:2;
+.gloss.mod:not(.step):not(.band):after{content:"";position:absolute;inset:9px;pointer-events:none;opacity:1;z-index:2;
   background:
    linear-gradient(var(--g),var(--g)) 0 0/26px 3px no-repeat,linear-gradient(var(--g),var(--g)) 0 0/3px 26px no-repeat,
    linear-gradient(var(--g),var(--g)) 100% 0/26px 3px no-repeat,linear-gradient(var(--g),var(--g)) 100% 0/3px 26px no-repeat,
