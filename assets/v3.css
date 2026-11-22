@@ -267,3 +267,6 @@ main>section+section:after{background:linear-gradient(90deg,#8dffc0 0,var(--g) 1
   -webkit-mask-image:radial-gradient(circle at 0 0,#000 0 20px,transparent 70px),radial-gradient(circle at 100% 0,#000 0 20px,transparent 70px),radial-gradient(circle at 0 100%,#000 0 20px,transparent 70px),radial-gradient(circle at 100% 100%,#000 0 20px,transparent 70px);
   mask-image:radial-gradient(circle at 0 0,#000 0 20px,transparent 70px),radial-gradient(circle at 100% 0,#000 0 20px,transparent 70px),radial-gradient(circle at 0 100%,#000 0 20px,transparent 70px),radial-gradient(circle at 100% 100%,#000 0 20px,transparent 70px);
   -webkit-mask-size:76px 76px;mask-size:76px 76px;-webkit-mask-position:0 0,100% 0,0 100%,100% 100%;mask-position:0 0,100% 0,0 100%,100% 100%}
+
+/* nav labels never wrap */
+nav.main a{white-space:nowrap}
