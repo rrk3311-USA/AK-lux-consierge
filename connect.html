@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Kammer | Connect Your Tools</title>
+<meta name="description" content="Set up your Agent Kammer butler: pick your tools, set approval rules, and get a custom rules file for your Notion hub.">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/v3.css">
+<style>
+.wiz{max-width:820px;margin:0 auto 96px}
+.dots{display:flex;gap:8px;margin-bottom:22px}
+.dots i{flex:1;height:5px;border-radius:9px;background:rgba(255,255,255,.1)}
+.dots i.on{background:linear-gradient(90deg,var(--b),var(--y));box-shadow:0 0 10px rgba(232,255,26,.5)}
+.pane{padding:34px;display:none}
+.pane.on{display:block}
+.pane h2{font-size:1.9rem;margin-bottom:8px}
+.pane>p{color:var(--mut);margin-bottom:22px}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opt span{display:block;padding:11px 18px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:500;font-size:.95rem}
+.opt input:checked+span{background:var(--y);color:#080a00;border-color:var(--y);font-weight:600}
+.opt input:focus-visible+span{outline:3px solid var(--bt);outline-offset:2px}
+.rule{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.rule:last-of-type{border-bottom:0}
+.rule b{display:block;font-weight:600}
+.rule small{color:var(--mut)}
+.seg{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;flex-shrink:0}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg span{display:block;padding:8px 14px;font-size:.85rem;font-weight:600;color:var(--mut)}
+.seg input:checked+span{background:var(--y);color:#080a00}
+.seg input:focus-visible+span{outline:3px solid var(--bt);outline-offset:-3px}
+.fld{display:grid;gap:6px;margin-bottom:16px}
+.fld label{font-weight:600;font-size:.9rem}
+.fld input{padding:13px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.4);color:#fff;font:500 1rem var(--body)}
+.nav2{display:flex;justify-content:space-between;margin-top:26px;gap:10px}
+pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:18px;overflow:auto;font:500 .82rem/1.7 ui-monospace,Menlo,monospace;color:#d6dbea;max-height:360px;white-space:pre-wrap}
+@media(max-width:560px){.rule{flex-direction:column;align-items:flex-start}}
+</style></head><body>
+<header class="top"><div class="wrap hd">
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a href="kit.html">Move-in kit</a><a class="on" href="connect.html">Connect</a><a class="cta-s" href="index.html#start">Get a butler</a></nav>
+</div></header>
+
+<main class="wrap">
+<div class="page-hd" style="text-align:center"><div class="eyebrow">Set up your butler</div><h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Three steps to <em>delegate</em></h1>
+<p class="lede" style="margin:1rem auto 0">Tell the butler what you run and what it may do alone. Read-only first, always.</p></div>
+
+<div class="wiz" style="margin-top:36px">
+<div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+
+<form id="f" class="gloss pane on" data-step="0" onsubmit="return false">
+<h2>1. What do you run?</h2><p>Pick every tool that holds workflows. We map these first, read-only.</p>
+<div class="opts" id="tools"></div>
+<div class="fld" style="margin-top:16px"><label for="other">Anything else?</label><input id="other" placeholder="e.g. Salesforce flows, custom scripts"></div>
+<div class="nav2"><span></span><button class="btn y" type="button" data-next>Next →</button></div>
+</form>
+
+<div class="gloss pane" data-step="1">
+<h2>2. What may the butler do alone?</h2><p>Choose <b>Auto</b> or <b>Ask</b> for each action. You can change these any time.</p>
+<div id="rules"></div>
+<div class="nav2"><button class="btn g" type="button" data-prev>← Back</button><button class="btn y" type="button" data-next>Next →</button></div>
+</div>
+
+<div class="gloss pane" data-step="2">
+<h2>3. Limits &amp; contact</h2><p>Where to escalate, and how much it can spend on your behalf.</p>
+<div class="fld"><label for="cap">Monthly spend cap ($)</label><input id="cap" type="number" min="0" value="100"></div>
+<div class="fld"><label for="esc">Escalate decisions to</label><input id="esc" placeholder="Name or Slack channel"></div>
+<div class="fld"><label for="qs">Quiet hours (start)</label><input id="qs" type="time" value="21:00"></div>
+<div class="fld"><label for="qe">Quiet hours (end)</label><input id="qe" type="time" value="07:00"></div>
+<div class="nav2"><button class="btn g" type="button" data-prev>← Back</button><button class="btn y" type="button" id="gen">Build my setup plan</button></div>
+</div>
+
+<div class="gloss pane" data-step="3">
+<h2>Your butler's setup plan</h2><p>Import this file into your Notion Command Center as <b>Approvals &amp; Rules</b>. Nothing was sent anywhere. It all stayed in your browser.</p>
+<pre class="out" id="out"></pre>
+<div class="nav2"><button class="btn g" type="button" data-prev>← Edit</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn y" type="button" id="dl">Download .md</button><a class="btn bl" href="index.html#start">Join early access</a></span></div>
+</div>
+</div>
+</main>
+
+<script>
+(function(){
+  var T=["Zapier","Make","n8n","HubSpot","Salesforce","Slack","Notion","Gmail","Stripe","Airtable","Google Sheets","Shopify"];
+  var R=[
+    ["retry","Retry failed runs (max 3)","Low risk","auto"],
+    ["reauth","Re-authenticate expired connections","Low risk","auto"],
+    ["pause","Pause a repeatedly failing workflow","Prevents bad data","auto"],
+    ["docs","Write and update runbooks","Documentation only","auto"],
+    ["merge","Merge or retire duplicate workflows","Changes live flows","ask"],
+    ["msg","Send messages to customers or prospects","Outbound","ask"],
+    ["money","Anything touching billing or refunds","Financial","ask"],
+    ["new","Connect a new app or widen access","Security","ask"],
+    ["del","Delete workflows or data","Irreversible","ask"]
+  ];
+  var tools=document.getElementById('tools'),rules=document.getElementById('rules');
+  T.forEach(function(t){tools.insertAdjacentHTML('beforeend','<label class="opt"><input type="checkbox" value="'+t+'"><span>'+t+'</span></label>')});
+  R.forEach(function(r){rules.insertAdjacentHTML('beforeend','<div class="rule"><div><b>'+r[1]+'</b><small>'+r[2]+'</small></div><div class="seg"><label><input type="radio" name="'+r[0]+'" value="auto"'+(r[3]=='auto'?' checked':'')+'><span>Auto</span></label><label><input type="radio" name="'+r[0]+'" value="ask"'+(r[3]=='ask'?' checked':'')+'><span>Ask</span></label></div></div>')});
+  var panes=[].slice.call(document.querySelectorAll('.pane')),dots=document.querySelectorAll('.dots i'),cur=0;
+  function go(n){cur=n;panes.forEach(function(p,i){p.classList.toggle('on',i==n)});dots.forEach(function(d,i){d.classList.toggle('on',i<=Math.min(n,2))});window.scrollTo({top:0,behavior:'smooth'})}
+  document.querySelectorAll('[data-next]').forEach(function(b){b.onclick=function(){go(cur+1)}});
+  document.querySelectorAll('[data-prev]').forEach(function(b){b.onclick=function(){go(Math.max(0,cur-1))}});
+  function esc(s){return String(s).replace(/[\r\n]+/g,' ').trim()}
+  var md='';
+  document.getElementById('gen').onclick=function(){
+    var sel=[].slice.call(document.querySelectorAll('#tools input:checked')).map(function(i){return i.value});
+    var o=esc(document.getElementById('other').value);if(o)sel.push(o);
+    var auto=[],ask=[];
+    R.forEach(function(r){var v=document.querySelector('input[name='+r[0]+']:checked').value;(v=='auto'?auto:ask).push('- '+r[1])});
+    var cap=document.getElementById('cap').value||'0',e=esc(document.getElementById('esc').value)||'(not set)';
+    md='# Approvals & Rules\n\n> What the butler may do on its own, and what always needs your yes.\n\n## Connected tools (read-only first)\n'+(sel.length?sel.map(function(s){return '- '+s}).join('\n'):'- (none selected)')+'\n\n## Always ask first\n'+(ask.join('\n')||'- (nothing)')+'\n\n## Allowed automatically\n'+(auto.join('\n')||'- (nothing)')+'\n\n## Limits\n- Spend cap per month: $'+cap+'\n- Quiet hours: '+document.getElementById('qs').value+' to '+document.getElementById('qe').value+'\n- Escalate to: '+e+'\n\n## Review\n- [ ] Revisit these rules monthly\n';
+    document.getElementById('out').textContent=md;go(3)
+  };
+  document.getElementById('dl').onclick=function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([md],{type:'text/markdown'}));a.download='approvals-and-rules.md';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}
+})();
+</script>
+</body></html>
