@@ -66,6 +66,38 @@ details.step2 summary:focus-visible{outline:3px solid var(--y);outline-offset:-3
 .guard div:before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:50%;background:var(--g);box-shadow:0 0 10px rgba(57,255,136,.6)}
 .guard b{color:#fff}
 .foot2{margin-top:12px;font-size:.78rem;color:#aebbe0}
+
+.dur{padding:30px 34px 28px;margin-top:22px}
+.dur h2{font:700 1.15rem var(--disp);letter-spacing:-.01em;margin-bottom:4px}
+.dur .sub{color:var(--mut);font-size:.88rem;margin-bottom:16px}
+.seg2{display:inline-flex;flex-wrap:wrap;gap:6px;background:#061440;border:1px solid #2a55b5;border-radius:99px;padding:4px;margin-bottom:16px}
+.seg2 label{position:relative}
+.seg2 input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg2 span{display:block;padding:9px 20px;border-radius:99px;font:600 .88rem var(--disp);color:#c3d2ff}
+.seg2 input:checked+span{background:var(--y);color:#080a00}
+.seg2 input:focus-visible+span{outline:3px solid var(--y);outline-offset:2px}
+.dgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+@media(max-width:860px){.dgrid{grid-template-columns:1fr}}
+.days{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}
+.days label{position:relative}
+.days input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.days span{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid #2a55b5;background:#0e2a6a;font:600 .82rem var(--disp)}
+.days input:checked+span{background:var(--g);color:#031a0d;border-color:var(--g)}
+.days input:focus-visible+span{outline:3px solid var(--y);outline-offset:2px}
+.hol{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.hol button{border:1px solid rgba(57,255,136,.45);background:#0a1d52;color:#fff;font:600 .8rem var(--disp);padding:8px 14px;border-radius:99px;cursor:pointer;text-align:left}
+.hol button small{display:block;font:500 .68rem var(--body);color:#aebbe0}
+.hol button[aria-pressed=true]{background:var(--y);color:#080a00;border-color:var(--y)}
+.hol button[aria-pressed=true] small{color:#3a4200}
+.hol button.next:before{content:"Next up";display:inline-block;font:700 .56rem var(--disp);letter-spacing:.1em;text-transform:uppercase;background:var(--g);color:#031a0d;border-radius:99px;padding:2px 7px;margin-right:6px}
+.hol button:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.sumbox{align-self:start;border:1px solid var(--y);border-radius:16px;background:#0e2a6a;padding:16px 18px}
+.sumbox b{display:block;font:700 1.05rem var(--disp);margin-bottom:6px}
+.sumbox p{color:#dbe6ff;font-size:.9rem;line-height:1.55;margin:0}
+.sumbox .big{font:700 1.7rem ui-monospace,Menlo,monospace;color:var(--y);display:block;margin:8px 0 2px}
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dates input,.dur select{width:100%;padding:12px 16px;border-radius:14px;border:1px solid #2a55b5;background:#061440;color:#fff;font:500 .95rem var(--body);color-scheme:dark}
+.pane[hidden]{display:none}
 </style></head><body>
 <header class="top"><div class="wrap hd">
 <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
@@ -125,6 +157,30 @@ details.step2 summary:focus-visible{outline:3px solid var(--y);outline-offset:-3
 </section>
 </div>
 
+
+<section style="padding:0" aria-label="Campaign duration">
+<div class="gloss mod dur">
+<h2>3. How long should it run?</h2><p class="sub">Set the length for ads and outreach. Pick a rhythm, or choose dates for a holiday or a launch.</p>
+<div class="dgrid">
+<div>
+<div class="seg2" role="radiogroup" aria-label="Duration type" id="dm">
+<label><input type="radio" name="dm" value="daily"><span>Daily</span></label>
+<label><input type="radio" name="dm" value="weekly" checked><span>Weekly</span></label>
+<label><input type="radio" name="dm" value="monthly"><span>Monthly</span></label>
+<label><input type="radio" name="dm" value="custom"><span>Custom</span></label>
+</div>
+<div class="pane" id="p-daily" hidden><span class="lbl">Runs</span><p class="sub" style="margin:6px 0 0">Every day until you pause it.</p></div>
+<div class="pane" id="p-weekly"><span class="lbl" id="wl">On these days</span><div class="days" role="group" aria-labelledby="wl" id="wd"></div></div>
+<div class="pane" id="p-monthly" hidden><div class="fld"><label for="dom">Day of the month</label><select id="dom"></select></div></div>
+<div class="pane" id="p-custom" hidden>
+<span class="lbl">Holidays and moments</span><div class="hol" id="hol" role="group" aria-label="Holiday presets"></div>
+<div class="dates"><div class="fld"><label for="ds">Start</label><input type="date" id="ds"></div><div class="fld"><label for="de">End</label><input type="date" id="de"></div></div>
+</div>
+</div>
+<div class="sumbox" aria-live="polite"><b id="st">Summary</b><p id="sd"></p><span class="big" id="sb"></span><p id="sn"></p></div>
+</div>
+</div>
+</section>
 <div class="grid2" style="margin-top:22px">
 <section style="padding:0" aria-label="The recipe">
 <div class="gloss mod panel">
@@ -196,6 +252,63 @@ details.step2 summary:focus-visible{outline:3px solid var(--y);outline-offset:-3
   $('mk').addEventListener('input',function(){var o=openState();feed();rec();[].forEach.call(document.querySelectorAll('#rec details'),function(d,i){d.open=!!o[i]})});
   document.addEventListener('change',function(e){if(e.target.name==='src'){st.src=e.target.value;srcNote();feed()}});
   srcNote();feed();rec();
+
+  /* ---- campaign duration ---- */
+  (function(){
+    var DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],DL=['S','M','T','W','T','F','S'],ST={mode:'weekly',days:{2:1,3:1,4:1},dom:1,start:'',end:'',hol:''};
+    function iso(d){var m=d.getMonth()+1,dd=d.getDate();return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(dd<10?'0':'')+dd}
+    function pd(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2])}
+    function nth(y,m,dow,n){var d=new Date(y,m,1),c=0;while(true){if(d.getDay()===dow){c++;if(c===n)return d}d=new Date(y,m,d.getDate()+1)}}
+    function lastDow(y,m,dow){var d=new Date(y,m+1,0);while(d.getDay()!==dow)d=new Date(y,m,d.getDate()-1);return d}
+    function add(d,n){return new Date(d.getFullYear(),d.getMonth(),d.getDate()+n)}
+    function holidays(y){
+      var tg=nth(y,10,4,4),md=lastDow(y,4,1),lb=nth(y,8,1,1);
+      return [
+        {k:'val',n:"Valentine's Day",a:new Date(y,1,12),b:new Date(y,1,14)},
+        {k:'mem',n:'Memorial Day weekend',a:add(md,-3),b:md},
+        {k:'jul',n:'Fourth of July',a:new Date(y,6,2),b:new Date(y,6,5)},
+        {k:'lab',n:'Labor Day weekend',a:add(lb,-3),b:lb},
+        {k:'tg',n:'Thanksgiving to Cyber Monday',a:tg,b:add(tg,4)},
+        {k:'xm',n:'Christmas week',a:new Date(y,11,20),b:new Date(y,11,26)},
+        {k:'ny',n:"New Year's",a:new Date(y,11,30),b:new Date(y+1,0,2)}
+      ];
+    }
+    var today=new Date();today=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    var all=holidays(today.getFullYear()).concat(holidays(today.getFullYear()+1)).filter(function(h){return h.b>=today}).sort(function(x,y){return x.a-y.a}).slice(0,5);
+    var $=function(i){return document.getElementById(i)};
+    function fmt(d){return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}
+    function cap(){var v=parseInt($('cap').value,10);return isNaN(v)?25:v}
+    function build(){
+      $('wd').innerHTML=DN.map(function(n,i){return '<label><input type="checkbox" value="'+i+'"'+(ST.days[i]?' checked':'')+'><span aria-label="'+n+'">'+DL[i]+'</span></label>'}).join('');
+      var o='';for(var d=1;d<=28;d++)o+='<option value="'+d+'"'+(d===ST.dom?' selected':'')+'>'+d+'</option>';$('dom').innerHTML=o;
+      $('hol').innerHTML=all.map(function(h,i){return '<button type="button" class="'+(i===0?'next':'')+'" data-k="'+h.k+h.a.getFullYear()+'" aria-pressed="'+(ST.hol===h.k+h.a.getFullYear())+'">'+h.n+'<small>'+fmt(h.a)+' to '+fmt(h.b)+'</small></button>'}).join('');
+      if(!ST.start){ST.start=iso(all[0].a);ST.end=iso(all[0].b);ST.hol=all[0].k+all[0].a.getFullYear()}
+      $('ds').value=ST.start;$('de').value=ST.end;
+    }
+    function show(){['daily','weekly','monthly','custom'].forEach(function(m){$('p-'+m).hidden=(m!==ST.mode)})}
+    function sum(){
+      var c=cap(),t='',d='',b='',n='';
+      if(ST.mode==='daily'){t='Every day';d='Up to '+c+' messages a day, every day, until you pause it.';b=c+' / day';n='Ends when you say so.'}
+      else if(ST.mode==='weekly'){var ds=Object.keys(ST.days).filter(function(k){return ST.days[k]}).map(Number).sort();
+        if(!ds.length){t='Pick at least one day';d='Choose the days of the week it should run.';b='0 / week';n=''}
+        else{t='Every week on '+ds.map(function(i){return DN[i]}).join(', ');d='Up to '+c+' messages on each of those days.';b=(c*ds.length)+' / week';n='Ends when you say so.'}}
+      else if(ST.mode==='monthly'){t='Monthly on day '+ST.dom;d='One run each month, up to '+c+' messages.';b=c+' / month';n='Ends when you say so.'}
+      else{var a=pd(ST.start),e=pd(ST.end);
+        if(!ST.start||!ST.end||e<a){t='Check your dates';d='The end date needs to be on or after the start date.';b='';n=''}
+        else{var days=Math.round((e-a)/86400000)+1;t=fmt(a)+' to '+fmt(e);d='Runs for '+days+' day'+(days>1?'s':'')+', up to '+c+' messages a day.';b=(c*days)+' total';n='Stops by itself after '+fmt(e)+'.'}}
+      $('st').textContent=t;$('sd').textContent=d;$('sb').textContent=b;$('sn').textContent=n;
+    }
+    build();show();sum();
+    document.addEventListener('change',function(e){var t=e.target;
+      if(t.name==='dm'){ST.mode=t.value;show();sum()}
+      else if(t.closest&&t.closest('#wd')){ST.days[t.value]=t.checked?1:0;sum()}
+      else if(t.id==='dom'){ST.dom=+t.value;sum()}
+      else if(t.id==='ds'||t.id==='de'){ST.start=$('ds').value;ST.end=$('de').value;ST.hol='';[].forEach.call($('hol').children,function(b){b.setAttribute('aria-pressed','false')});sum()}
+      else if(t.id==='cap'){sum()}});
+    $('hol').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+      var h=all.filter(function(x){return x.k+x.a.getFullYear()===b.dataset.k})[0];ST.hol=b.dataset.k;ST.start=iso(h.a);ST.end=iso(h.b);
+      [].forEach.call($('hol').children,function(x){x.setAttribute('aria-pressed',x===b)});$('ds').value=ST.start;$('de').value=ST.end;sum()});
+  })();
 })();
 </script>
 </body></html>

@@ -38,7 +38,7 @@
 <main class="wrap">
 <div class="page-hd"><div class="eyebrow">Agent library</div>
 <h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Ready-made agents. <em>Real estate first.</em></h1>
-<p class="lede" style="margin-top:1rem">Each agent has one clear job, a plain-English outcome, and a list of the tools it works with. Add the ones you want. Anything that contacts someone else waits for your approval.</p></div>
+<p class="lede" style="margin-top:1rem">Each agent has one clear job, a plain-English outcome, and a list of the tools it works with. Add the ones you want. Anything that contacts someone else waits for your approval. Every agent here is managed for you by the butler and your operator, so there is nothing to build or maintain.</p></div>
 
 <div class="bar4"><div class="filters" role="radiogroup" aria-label="Filter by team" id="fl"></div><div class="cnt" id="cnt" aria-live="polite"></div></div>
 <div class="lib" id="lib"></div>
@@ -48,8 +48,12 @@
 
 <script>
 (function(){
-  var TEAMS=['All','Lead gen','Follow-up','Content','Reputation','Ops'];
+  var TEAMS=['All','CRM build outs','Lead gen','Follow-up','Content','Reputation','Ops'];
   var A=[
+    {n:'Attio Workspace Builder',t:'CRM build outs',o:'Sets up your Attio objects, lists, fields and views for your business, then keeps them tidy as you grow.',w:['Attio'],ap:1},
+    {n:'Attio Lead Sync',t:'CRM build outs',o:'Adds every new lead from your site and inbox to Attio with its source and the signal that brought it in.',w:['Attio','Gmail','Apollo'],ap:0},
+    {n:'Attio Pipeline Health',t:'CRM build outs',o:'Flags stale deals and missing fields in Attio, and fixes the safe ones for you.',w:['Attio','Slack'],ap:0},
+    {n:'Attio Call Notes Filer',t:'CRM build outs',o:'Files call summaries and next steps onto the right Attio records so nothing lives in someone\u2019s head.',w:['Attio','Notion'],ap:0},
     {n:'Listing Lead Qualifier',t:'Lead gen',o:'Scores each new inquiry on timeline, budget and financing, then drafts the reply for you to approve.',w:['Gmail','HubSpot','Google Sheets'],ap:1},
     {n:'Expired Listing Prospector',t:'Lead gen',o:'Finds owners and agents with expired listings in your market, ranks them, and drafts a first message.',w:['Apollo','Clay','Gmail'],ap:1},
     {n:'Call Notes to CRM',t:'Ops',o:'Turns a call transcript into clean notes, next steps and a qualification summary, filed in your CRM.',w:['HubSpot','Notion','Slack'],ap:0},
