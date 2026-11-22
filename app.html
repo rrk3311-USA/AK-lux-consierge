@@ -68,6 +68,43 @@ body{min-height:100vh}
 .pn .acts .btn{flex:1;justify-content:center;padding:13px 8px;font-size:.88rem}
 .toast{position:absolute;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--y);color:#080a00;font:600 .82rem var(--disp);padding:10px 16px;border-radius:99px;opacity:0;transition:.25s;z-index:7;pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+
+:root{--g:#39ff88;--gd:rgba(57,255,136,.35)}
+/* alien: scanlines + faint hex grid over the screen */
+.scr:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:4;border-radius:inherit;
+  background:repeating-linear-gradient(180deg,rgba(57,255,136,.045) 0 1px,transparent 1px 4px);mix-blend-mode:screen}
+.folder{background:
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='98'><path d='M28 2 54 17v30L28 62 2 47V17zM28 62v34M2 47 0 48M54 47l2 1' fill='none' stroke='%2339ff88' stroke-opacity='.07'/></svg>"),
+  linear-gradient(180deg,#141722,#07080c)}
+.path b{color:var(--g)}
+.hdr .live{color:var(--g)}.hdr .live:before{background:var(--g);box-shadow:0 0 10px var(--g);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+/* row: alien corner ticks + status LED */
+.row{position:relative}
+.row:before,.row:after{content:"";position:absolute;width:10px;height:10px;border:2px solid var(--g);opacity:.85;pointer-events:none}
+.row:before{left:-1px;top:-1px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
+.row:after{right:-1px;bottom:-1px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+.row.off:before,.row.off:after{border-color:#3a3f4d}
+.led{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;background:#3a3f4d;vertical-align:middle}
+.row:not(.off) .led{background:var(--g);box-shadow:0 0 8px var(--g);animation:pulse 2.2s infinite}
+.ent:hover{background:var(--g);color:#031a0d}
+.tg[aria-checked=true]{box-shadow:0 0 16px -2px rgba(43,91,255,.9),0 0 0 1px var(--gd)}
+.row .nm small{color:#79ffb5}
+/* carbon-fiber + grey bracket bars */
+.cbn{background-color:#131313;background-image:
+  linear-gradient(27deg,#0e0e0e 5px,transparent 5px),linear-gradient(207deg,#0e0e0e 5px,transparent 5px),
+  linear-gradient(27deg,#232323 5px,transparent 5px),linear-gradient(207deg,#232323 5px,transparent 5px),
+  linear-gradient(90deg,#181818 10px,transparent 10px),linear-gradient(#1c1c1c 25%,#171717 25%,#171717 50%,transparent 50%,transparent 75%,#262626 75%);
+  background-size:20px 20px;background-position:0 5px,10px 0,0 10px,10px 5px,0 0,0 0}
+.bk{display:flex;align-items:center;gap:10px;height:30px;padding:0 12px;border:1px solid #3b3f48;color:#b7bcc9;font:600 .68rem ui-monospace,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -2px 0 rgba(0,0,0,.6)}
+.bk .gl{color:var(--g);text-shadow:0 0 8px var(--g);font-size:.95rem;letter-spacing:0}
+.bk em{margin-left:auto;color:var(--g);font-style:normal}
+.bk.o{border-radius:12px 12px 0 0}
+.bk.c{border-radius:0 0 12px 12px;margin-bottom:14px}
+.grp{border-left:2px solid #3b3f48;border-right:2px solid #3b3f48;padding:10px 8px 1px;position:relative;background:linear-gradient(90deg,rgba(57,255,136,.05),transparent 14%)}
+.grp:before{content:"";position:absolute;left:-2px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--g),transparent 40%,transparent 60%,var(--g));opacity:.7}
+.bar3{background:linear-gradient(180deg,transparent,#06070a 40%)}
+.bar3:before{content:"";position:absolute;left:18px;right:18px;top:0;height:6px;border-radius:4px;border:1px solid #3b3f48}
 </style></head><body>
 <header class="top"><div class="wrap hd">
 <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
@@ -78,7 +115,7 @@ body{min-height:100vh}
 <div class="side">
 <div class="eyebrow">Butler app · preview</div>
 <h1>Your whole business, <em>one pocket</em>.</h1>
-<p class="lede">Every asset and workflow lives in a folder tab. Flip a toggle to turn it on or off. Tap the enter icon to edit it.</p>
+<p class="lede">Every asset and workflow lives in a folder tab. Flip a toggle to turn it on or off. Tap the enter icon to edit it. Flows sit between carbon-fiber brackets, and a green LED shows what's alive.</p>
 <ul><li><b>Folder tabs</b> group things: Design, Workflows, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Enter icon</b> in the middle opens the editor.</li><li>Changes save in this browser while we build the real backend.</li></ul>
 <a class="btn g" href="connect.html">Back to setup</a>
 </div>
@@ -111,13 +148,13 @@ body{min-height:100vh}
     {id:'design',name:'Design',dir:'/design',items:[
       ['Logo & mark','logo.svg','assets/logo.svg',1],['Color system','colors.json','kit.html#logo',1],['Leather letterhead','letterhead.pdf','stationery.html',1],['Business card','card.pdf','stationery.html',1],['Envelope','envelope.pdf','stationery.html',0],['Email signature','signature.html','',0]]},
     {id:'flows',name:'Workflows',dir:'/workflows',items:[
-      ['Lead to CRM','lead-to-crm.flow','',1],['Invoice reminders','invoice-reminders.flow','',1],['Demo auto-reply','demo-reply.flow','',0],['Support triage','support-triage.flow','',1]]},
+      ['Lead to CRM','lead-to-crm.flow','',1,'Sales flow'],['Demo auto-reply','demo-reply.flow','',0,'Sales flow'],['Invoice reminders','invoice-reminders.flow','',1,'Ops flow'],['Support triage','support-triage.flow','',1,'Ops flow']]},
     {id:'notion',name:'Notion',dir:'/notion',items:[
       ['Command Center','command-center.md','kit/notion/command-center.md',1],['Automation Registry','automation-registry.csv','kit/notion/automation-registry.csv',1],['Run Log','run-log.csv','kit/notion/run-log.csv',1],['Approvals & Rules','approvals-and-rules.md','kit/notion/approvals-and-rules.md',1],['Launch Checklist','launch-checklist.md','kit/notion/launch-checklist.md',0],['SOP Wiki','sop-wiki.md','kit/notion/sop-wiki.md',1]]},
     {id:'web',name:'Website',dir:'/website',items:[
       ['Home','index.html','index.html',1],['About','about.html','',1],['Listings / Services','services.html','',0],['Blog','blog/','',0],['Contact form','contact.html','connect.html',1]]},
     {id:'rules',name:'Rules',dir:'/rules',items:[
-      ['Auto-retry failed runs','retry.rule','',1],['Re-authenticate','reauth.rule','',1],['Pause failing flows','pause.rule','',1],['Send customer messages','messages.rule','',0],['Touch billing','billing.rule','',0],['Delete workflows','delete.rule','',0]]}
+      ['Auto-retry failed runs','retry.rule','',1,'Butler acts alone'],['Re-authenticate','reauth.rule','',1,'Butler acts alone'],['Pause failing flows','pause.rule','',1,'Butler acts alone'],['Send customer messages','messages.rule','',0,'Needs your yes'],['Touch billing','billing.rule','',0,'Needs your yes'],['Delete workflows','delete.rule','',0,'Needs your yes']]}
   ];
   var KEY='kammer-app-v1',S;
   try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
@@ -134,10 +171,16 @@ body{min-height:100vh}
   function list(){
     var f=DATA[cur],on=0;
     $('path').innerHTML='<b>kammer</b>'+f.dir;
-    var h='';f.items.forEach(function(it,i){var s=S[f.id+':'+i];if(s.on)on++;
-      h+='<div class="row'+(s.on?'':' off')+'"><div class="nm"><b>'+esc(s.n)+'</b><small>'+f.dir+'/'+esc(it[1])+'</small></div>'+
+    var h='',open=null,n=0,gi=0;
+    function closeG(){if(open===null)return;h+='</div><div class="bk c cbn"><span class="gl">&#9699;</span>end '+esc(open)+'<em>'+n+' steps</em></div>';open=null}
+    f.items.forEach(function(it,i){var s=S[f.id+':'+i];if(s.on)on++;
+      var g=it[4]||null;
+      if(g!==open){closeG();if(g){open=g;n=0;gi++;h+='<div class="bk o cbn"><span class="gl">&#9695;</span>'+esc(g)+'<em>0'+gi+'</em></div><div class="grp">'}}
+      if(g)n++;
+      h+='<div class="row'+(s.on?'':' off')+'"><div class="nm"><b><i class="led"></i>'+esc(s.n)+'</b><small>'+f.dir+'/'+esc(it[1])+'</small></div>'+
       '<button class="ent" data-e="'+i+'" aria-label="Edit '+esc(s.n)+'">'+svg('<path d="M20 5v7a3 3 0 0 1-3 3H5"/><path d="m9 11-4 4 4 4"/>')+'</button>'+
       '<button class="tg" role="switch" aria-checked="'+(!!s.on)+'" aria-label="'+esc(s.n)+' on/off" data-t="'+i+'"></button></div>'});
+    closeG();
     $('folder').innerHTML='<div class="count"><span>'+f.items.length+' files</span><span>'+on+' on</span></div>'+h;
     var tot=0;DATA.forEach(function(g){g.items.forEach(function(x,i){if(S[g.id+':'+i].on)tot++})});
     $('live').textContent=tot+' live';
