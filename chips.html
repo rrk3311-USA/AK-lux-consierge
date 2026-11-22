@@ -58,6 +58,46 @@
 .leg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--c)}
 .note{color:var(--bare);font-size:.84rem;margin:14px 0 90px}
 @media(prefers-reduced-motion:reduce){.sw:after{transition:none}}
+
+.themes{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.themes label{position:relative}
+.themes input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.themes span{display:block;padding:9px 18px;border-radius:99px;border:1px solid rgba(57,255,136,.45);background:#0a1d52;font:600 .86rem var(--disp)}
+.themes input:checked+span{background:var(--y);color:#080a00;border-color:var(--y)}
+.themes input:focus-visible+span{outline:3px solid var(--y);outline-offset:2px}
+.snow-m{display:none}
+/* INVERSE: light panels, dark text, negative die */
+[data-theme=inverse] .chip{background:linear-gradient(180deg,#f4f8ff,#dfe8f7);border-color:hsl(var(--h) 60% 40% / .6)}
+[data-theme=inverse] .sock{background:#e9f0fb;border-bottom-color:hsl(var(--h) 50% 40% / .35)}
+[data-theme=inverse] .die{background:#fff;box-shadow:0 0 14px hsl(var(--h) 80% 45% / .25)}
+[data-theme=inverse] .die canvas{filter:invert(1) hue-rotate(180deg) saturate(1.1)}
+[data-theme=inverse] .cover{background:linear-gradient(180deg,#ffffff,#e4ecf8 55%,#cfdaee);border-color:hsl(var(--h) 55% 35% / .8);box-shadow:inset 0 2px 0 #fff,inset 0 -12px 18px rgba(0,0,0,.08),0 -6px 18px rgba(0,0,0,.25)}
+[data-theme=inverse] .cover b{color:hsl(var(--h) 70% 32%)}[data-theme=inverse] .cover span{color:#0a1630}[data-theme=inverse] .cover small{color:#4a5a7a}
+[data-theme=inverse] .cb h3{color:#0a1630}[data-theme=inverse] .cb h3 em{color:hsl(var(--h) 75% 30%);text-shadow:none}[data-theme=inverse] .cb p.d{color:#33466a}[data-theme=inverse] .cb .sum{color:#4a5a7a}[data-theme=inverse] .cb .sum b{color:hsl(var(--h) 70% 32%)}
+[data-theme=inverse] .sub{background:#fff;border-color:hsl(var(--h) 50% 40% / .3)}[data-theme=inverse] .sub .nm{color:#0a1630}[data-theme=inverse] .sub .bar{background:rgba(10,22,48,.12)}
+[data-theme=inverse] .g{--c:#0a9a4c}[data-theme=inverse] .y{--c:#a68b00}[data-theme=inverse] .r{--c:#d12a22}[data-theme=inverse] .x{--c:#5a6a8c}
+[data-theme=inverse] .pins,[data-theme=inverse] .pins2{filter:brightness(.6)}
+/* SNOW: ice palette, falling flakes, pixel snowman on the door */
+[data-theme=snow] .chip{--h:200!important;background:linear-gradient(180deg,#0e2a4a,#081a30)}
+[data-theme=snow] .die{background:#0a2540}
+[data-theme=snow] .sock:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:
+  radial-gradient(2px 2px at 20% 10%,#fff,transparent),radial-gradient(2px 2px at 60% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 80% 60%,#fff,transparent),radial-gradient(2px 2px at 35% 70%,#fff,transparent),radial-gradient(1.5px 1.5px at 90% 15%,#fff,transparent),radial-gradient(2px 2px at 10% 85%,#fff,transparent);
+  background-size:100% 120px;animation:fall 9s linear infinite}
+@keyframes fall{from{background-position:0 -120px}to{background-position:0 120px}}
+[data-theme=snow] .cover{background:linear-gradient(180deg,#e9f6ff,#bcdcf3 55%,#8fbbe0);border-color:#fff}
+[data-theme=snow] .cover b{color:#1f6aa5}[data-theme=snow] .cover span{color:#0b2a48}[data-theme=snow] .cover small{color:#2f5f8a}
+[data-theme=snow] .cover .dot{display:none}
+[data-theme=snow] .snow-m{display:block;width:34px;height:42px;margin:18% 0 auto;position:relative;image-rendering:pixelated}
+/* TUNGSTEN: gunmetal, brushed grey with a warm filament glow */
+[data-theme=tungsten] .chip{--h:36!important;background:linear-gradient(180deg,#1c1e23,#111317);border-color:rgba(255,179,71,.4)}
+[data-theme=tungsten] .sock{background:#0c0d10}
+[data-theme=tungsten] .die{background:#0a0b0d;box-shadow:0 0 22px rgba(255,179,71,.28)}
+[data-theme=tungsten] .cover{background:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1px,transparent 1px 3px),linear-gradient(180deg,#8d929c 0%,#555a64 45%,#2c2f36 100%);border-color:#c3c7ce;box-shadow:inset 0 2px 0 rgba(255,255,255,.5),inset 0 -14px 22px rgba(0,0,0,.5),0 -6px 20px rgba(0,0,0,.6)}
+[data-theme=tungsten] .cover b{color:#ffd9a0}[data-theme=tungsten] .cover span{color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.6)}[data-theme=tungsten] .cover small{color:#e1e4ea}
+[data-theme=tungsten] .cover .dot{background:#ffb347;box-shadow:0 0 16px #ffb347,0 0 30px rgba(255,179,71,.5);animation:glow 3.2s ease-in-out infinite}
+@keyframes glow{50%{opacity:.55}}
+[data-theme=tungsten] .sub .bar i{filter:saturate(.9)}
+@media(prefers-reduced-motion:reduce){[data-theme=snow] .sock:before,[data-theme=tungsten] .cover .dot{animation:none}}
 </style></head><body>
 <header class="top"><div class="wrap hd">
 <a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Admiral Kammer</a>
@@ -69,7 +109,8 @@
 <h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Every category is a <em>chip</em>.</h1>
 <p class="lede" style="margin-top:1rem">Each chip is one automation category with its own die and its own color. The die flickers with live activity. The subcategories are the workflows inside, and every one has its own switch.</p></div>
 <div class="top3"><div class="tot" id="tot" aria-live="polite"></div><div class="nvs"><button class="nv" id="pv" type="button" aria-label="Scroll chips left">←</button><button class="nv" id="nx" type="button" aria-label="Scroll chips right">→</button></div><div class="leg"><span class="g"><i></i>Healthy</span><span class="y"><i></i>Degraded</span><span class="r"><i></i>Needs repair</span><span class="x"><i></i>Off</span></div></div>
-<div class="bay" id="bay"></div>
+<div class="themes" role="radiogroup" aria-label="Chip theme" id="th"></div>
+<div class="bay" id="bay" data-theme="tech"></div>
 <p class="note">Health scores and activity are sample data. The category codenames are working names.</p>
 </main>
 <footer><div class="wrap row"><div>Admiral Kammer · Chip bay</div><div><a href="index.html">Home</a><a href="fleet.html">Fleet</a><a href="app.html">Bridge</a></div></div></footer>
@@ -122,13 +163,13 @@
   function mount(){
     var h='';
     CH.forEach(function(c){
-      h+='<article class="chip" style="--h:'+c.h+'" id="c-'+c.id+'"><div class="sock"><div class="die"><canvas width="96" height="128" aria-hidden="true"></canvas><span class="pins"></span><span class="pins2"></span><div class="cover"><i class="dot"></i><b>Admiral Kammer</b><span>'+esc(c.name)+'</span><small>'+c.code+'</small></div></div></div><div class="cb"><div class="hd2"><h3>'+esc(c.name)+'<em>'+c.code+'</em></h3><span class="sum" id="s-'+c.id+'"></span></div><p class="d">'+esc(c.d)+'</p><div class="subs" id="u-'+c.id+'"></div></div></article>';
+      h+='<article class="chip" style="--h:'+c.h+'" id="c-'+c.id+'"><div class="sock"><div class="die"><canvas width="96" height="128" aria-hidden="true"></canvas><span class="pins"></span><span class="pins2"></span><div class="cover"><i class="dot"></i><svg class="snow-m" viewBox="0 0 16 20" shape-rendering="crispEdges" aria-hidden="true"><rect x="5" y="1" width="6" height="1" fill="#222"/><rect x="6" y="0" width="4" height="2" fill="#222"/><rect x="5" y="3" width="6" height="5" fill="#fff"/><rect x="4" y="4" width="8" height="3" fill="#fff"/><rect x="6" y="4" width="1" height="1" fill="#222"/><rect x="9" y="4" width="1" height="1" fill="#222"/><rect x="7" y="5" width="3" height="1" fill="#ff8a00"/><rect x="3" y="9" width="10" height="5" fill="#fff"/><rect x="2" y="10" width="12" height="3" fill="#fff"/><rect x="5" y="9" width="6" height="1" fill="#e8ff1a"/><rect x="7" y="11" width="1" height="1" fill="#222"/><rect x="7" y="13" width="1" height="1" fill="#222"/><rect x="2" y="15" width="12" height="4" fill="#fff"/><rect x="3" y="14" width="10" height="1" fill="#fff"/><rect x="1" y="9" width="2" height="1" fill="#6b4a1e"/><rect x="13" y="9" width="2" height="1" fill="#6b4a1e"/></svg><b>Admiral Kammer</b><span>'+esc(c.name)+'</span><small>'+c.code+'</small></div></div></div><div class="cb"><div class="hd2"><h3>'+esc(c.name)+'<em>'+c.code+'</em></h3><span class="sum" id="s-'+c.id+'"></span></div><p class="d">'+esc(c.d)+'</p><div class="subs" id="u-'+c.id+'"></div></div></article>';
     });
     $('bay').innerHTML=h;
     CH.forEach(function(c){
       var cv=document.querySelector('#c-'+c.id+' canvas'),n=24,bl=layout(c,24,32).map(function(b){return {x:b[0],y:b[1],w:b[2],h:b[3],col:c.pal[0]}});
       var R=rng(c.h*31);bl.forEach(function(b){b.col=c.pal[Math.floor(R()*c.pal.length)]});
-      dies.push({c:c,cv:cv,bl:bl,n:n});paint(cv,c,bl,n);
+      dies.push({c:c,cv:cv,bl:bl,n:n,pal:c.pal});paint(cv,c,bl,n);
       subs(c);
     });
   }
@@ -143,13 +184,21 @@
   function tot(){var on=0,all=0;CH.forEach(function(c){c.subs.forEach(function(s,i){all++;if(isOn(c,i))on++})});$('tot').innerHTML='<b>'+on+'</b> of '+all+' workflows on across '+CH.length+' chips'}
   $('bay').addEventListener('click',function(e){var b=e.target.closest('.sw');if(!b)return;var c=CH.filter(function(x){return x.id===b.dataset.c})[0],i=+b.dataset.i,k=c.id+':'+i;S[k]=!isOn(c,i);save();subs(c);var nb=document.querySelector('.sw[data-c="'+c.id+'"][data-i="'+i+'"]');if(nb)nb.focus()});
   mount();
+  var TH=[['tech','Tech arch'],['inverse','Inverse'],['snow','Snow'],['tungsten','Tungsten']];
+  var TP={snow:['#ffffff','#dff3ff','#a9d8f5','#6fb4e0','#2a5f8f','#0d2f52'],tungsten:['#2a2d33','#454a54','#6d737f','#9aa0ab','#c3c7ce','#ffb347','#ffd9a0','#15171b']};
+  var theme='tech';
+  $('th').innerHTML=TH.map(function(t){return '<label><input type="radio" name="th" value="'+t[0]+'"'+(t[0]===theme?' checked':'')+'><span>'+t[1]+'</span></label>'}).join('');
+  function setTheme(t){theme=t;$('bay').setAttribute('data-theme',t);
+    dies.forEach(function(d){d.pal=TP[t]||d.c.pal;var R=rng(d.c.h*31);d.bl.forEach(function(b){b.col=d.pal[Math.floor(R()*d.pal.length)]});paint(d.cv,d.c,d.bl,d.n)})}
+  document.addEventListener('change',function(e){if(e.target.name==='th')setTheme(e.target.value)});
+  var hm=location.hash.match(/theme=(\w+)/);if(hm&&TH.some(function(t){return t[0]===hm[1]})){setTheme(hm[1]);var ri=document.querySelector('input[name=th][value='+hm[1]+']');if(ri)ri.checked=true}
   $('pv').onclick=function(){$('bay').scrollBy({left:-330,behavior:'smooth'})};$('nx').onclick=function(){$('bay').scrollBy({left:330,behavior:'smooth'})};
   /* live flicker: re-roll a few blocks per tick, more for chips with more switches on */
   var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   if(!reduce)setInterval(function(){
     dies.forEach(function(d){
       var onN=d.c.subs.filter(function(s,i){return isOn(d.c,i)}).length,k=Math.round(onN*3);
-      for(var q=0;q<k;q++){var b=d.bl[Math.floor(Math.random()*d.bl.length)];b.col=d.c.pal[Math.floor(Math.random()*d.c.pal.length)]}
+      for(var q=0;q<k;q++){var b=d.bl[Math.floor(Math.random()*d.bl.length)];b.col=d.pal[Math.floor(Math.random()*d.pal.length)]}
       paint(d.cv,d.c,d.bl,d.n)});
   },360);
 })();
