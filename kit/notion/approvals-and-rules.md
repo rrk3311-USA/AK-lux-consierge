@@ -1,6 +1,6 @@
 # Approvals & Standing Rules
 
-> What the butler may do on its own, and what always needs your yes.
+> What the Admiral may do on its own, and what always needs your yes.
 
 ## Always ask first
 - Sending messages to customers or prospects
@@ -11,7 +11,7 @@
 - Deleting workflows or data
 - Connecting a new app or widening access
 
-## Your operator
+## Your captain
 - Name / contact: ___
 - May approve routine items on my behalf: yes / no
 - Reviews every outbound message before it is sent: yes

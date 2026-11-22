@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admiral Kammer | Build Your Fleet</title>
+<meta name="description" content="Every workflow is a ship. Pick the class for the job: a destroyer for mass texting, a submarine for market research, a hospital ship for triage and repair. Add them to your fleet in one tap.">
+<meta name="theme-color" content="#07686f">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira+Stencil+One&family=Sora:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/v3.css">
+<style>
+.roster{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 20px}
+.rcount{font:600 .95rem var(--disp);color:var(--bare)}
+.rcount b{color:var(--y);font-family:ui-monospace,Menlo,monospace}
+.classes{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.cls{padding:0;display:flex;flex-direction:column}
+.sea{background:linear-gradient(180deg,#0b2a6e,#06173f);padding:18px 18px 8px;border-bottom:1px solid rgba(57,255,136,.25);border-radius:22px 22px 0 0}
+.sea svg{display:block;width:100%;height:96px}
+.cb{padding:20px 24px 24px;display:flex;flex-direction:column;gap:9px;flex:1}
+.cb .tp{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.hull{font:400 .72rem 'Saira Stencil One',Impact,sans-serif;letter-spacing:.14em;background:#dccb9d;color:#232b1a;border-radius:5px;padding:3px 9px}
+.ap{font:700 .6rem var(--disp);letter-spacing:.1em;text-transform:uppercase;background:var(--y);color:#080a00;border-radius:99px;padding:3px 9px}
+.cb h3{font-size:1.1rem}
+.cb .real{font-size:.82rem;color:#aebbe0;font-style:italic;line-height:1.45}
+.cb .tm{font:700 1.15rem var(--disp);letter-spacing:-.02em;color:var(--y);margin-top:4px}
+.cb p{font-size:.92rem;color:#dbe6ff;line-height:1.55;margin:0}
+.ex{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.ex span{font-size:.74rem;border:1px solid #2a55b5;background:#0e2a6a;border-radius:99px;padding:4px 10px}
+.add{margin-top:10px;border:0;cursor:pointer;border-radius:99px;padding:11px 18px;font:600 .9rem var(--disp);background:var(--y);color:#080a00}
+.add[aria-pressed=true]{background:var(--g);color:#031a0d}
+.add:focus-visible,.roe label:focus-within span{outline:3px solid var(--y);outline-offset:3px}
+.sec-t{font:700 1.5rem var(--disp);letter-spacing:-.02em;margin:50px 0 18px}
+.form3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.fm{padding:26px 26px 24px}
+.fm h3{font-size:1.1rem;margin-bottom:6px}
+.fm p{color:var(--mut);font-size:.92rem;line-height:1.55}
+.fm small{display:block;margin-top:10px;font:600 .66rem var(--disp);letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.group{padding:26px 28px 24px}
+.gr{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:18px 0}
+.gr div{background:#0a1d52;border:1px solid #2a55b5;border-radius:14px;padding:8px 6px 10px;text-align:center}
+.gr svg{width:100%;height:46px;display:block}
+.gr b{display:block;font:600 .72rem var(--disp);margin-top:2px}
+.gr small{font:400 .6rem 'Saira Stencil One',Impact,sans-serif;letter-spacing:.12em;color:#dccb9d}
+.roe{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.roe label{position:relative;display:block}
+.roe input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.roe span{display:block;border:1px solid #2a55b5;background:#0e2a6a;border-radius:16px;padding:16px 18px;height:100%}
+.roe b{display:block;font:700 1rem var(--disp);margin-bottom:4px}
+.roe i{display:block;font-style:normal;font-size:.84rem;color:#c8d6ff;line-height:1.5}
+.roe input:checked+span{border-color:var(--y);background:#123478;box-shadow:0 0 0 1px var(--y)}
+.roe input:checked+span b{color:var(--y)}
+.roenote{margin-top:14px;font-size:.92rem;color:#dbe6ff}
+.tbl2{width:100%;border-collapse:collapse;font-size:.92rem}
+.tbl2 th,.tbl2 td{text-align:left;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.1);vertical-align:top}
+.tbl2 th{font:600 .7rem var(--disp);letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.tbl2 td:first-child{font-weight:600;color:#fff;white-space:nowrap}
+.tbl2 td{color:#dbe6ff}
+</style></head><body>
+<header class="top"><div class="wrap hd">
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Admiral Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a class="on" href="fleet.html">Fleet</a><a href="agents.html">Agents</a><a href="hustle.html">Hustler</a><a href="kit.html">Move-in kit</a><a href="app.html">Bridge</a><a class="cta-s" href="index.html#start">Take command</a></nav>
+</div></header>
+
+<main class="wrap">
+<div class="page-hd"><div class="eyebrow">The fleet</div>
+<h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Every workflow is a <em>ship</em>.</h1>
+<p class="lede" style="margin-top:1rem">Real fleets are built from classes of ship, each made for one job. Your automations are too. Pick the class for the job, add it to your fleet, and the Admiral keeps it battle ready.</p></div>
+
+<div class="roster"><div class="rcount" id="rc" aria-live="polite"></div><a class="btn g" href="app.html">Open the Bridge</a></div>
+<div class="classes" id="cl"></div>
+
+<h2 class="sec-t">Formations</h2>
+<div class="form3">
+<div class="gloss fm"><h3>Task force</h3><p>A group of ships working toward one goal. Your Sales Task Force might be a frigate that catches leads, an oiler that enriches them and a cruiser that follows up.</p><small>Group of workflows</small></div>
+<div class="gloss fm"><h3>Carrier group</h3><p>A carrier with its escorts. The carrier launches a campaign, and every other ship plays its part, then they stand down together.</p><small>One campaign, many ships</small></div>
+<div class="gloss fm"><h3>Convoy</h3><p>Ships moving together under escort. A follow up sequence with an approval gate and a stop list so nothing sails into trouble.</p><small>Safe, ordered sequence</small></div>
+</div>
+
+<h2 class="sec-t">Example: the holiday carrier group</h2>
+<div class="gloss mod group">
+<p style="color:var(--bare);max-width:70ch">For a seasonal push such as Thanksgiving to Cyber Monday, one carrier launches the campaign and five escorts carry it out. Set its dates with the duration selector on the Hustler page.</p>
+<div class="gr" id="gr" role="list"></div>
+<button class="add" id="addg" type="button" style="max-width:340px">Add the whole group to my fleet</button>
+</div>
+
+<h2 class="sec-t">Rules of engagement</h2>
+<div class="gloss mod group">
+<p style="color:var(--bare);max-width:70ch">Every ship sails under rules of engagement. They decide how much it may do on its own, borrowing the language of naval weapons control. New fleets start on Hold.</p>
+<div class="roe" role="radiogroup" aria-label="Rules of engagement">
+<label><input type="radio" name="roe" value="hold" checked><span><b>Hold</b><i>Every message and every risky action waits for your captain's yes.</i></span></label>
+<label><input type="radio" name="roe" value="tight"><span><b>Tight</b><i>Your captain approves the audience and the message once, then the ship sends within those limits.</i></span></label>
+<label><input type="radio" name="roe" value="free"><span><b>Free</b><i>Autopilot inside your caps, quiet hours and stop list. Your captain reviews a sample afterward.</i></span></label>
+</div>
+<p class="roenote" id="rn" aria-live="polite"></p>
+</div>
+
+<h2 class="sec-t">Ship's glossary</h2>
+<div class="gloss mod" style="padding:8px 8px 10px;overflow-x:auto"><table class="tbl2">
+<thead><tr><th>Naval term</th><th>In Admiral Kammer</th></tr></thead><tbody>
+<tr><td>Admiral</td><td>The AI that commands the fleet and keeps every ship battle ready.</td></tr>
+<tr><td>Captain</td><td>Your human operator. Reviews the Admiral's work and handles exceptions.</td></tr>
+<tr><td>Fleet</td><td>All of your workflows together.</td></tr>
+<tr><td>Hull number</td><td>A workflow's ID, like DDG-12.</td></tr>
+<tr><td>Underway</td><td>The workflow is running.</td></tr>
+<tr><td>In port</td><td>The workflow is paused.</td></tr>
+<tr><td>Dry dock</td><td>The workflow is being repaired.</td></tr>
+<tr><td>Battle ready</td><td>The workflow is healthy.</td></tr>
+<tr><td>Deck log</td><td>The history of completed work and fixes.</td></tr>
+<tr><td>Rules of engagement</td><td>The approval rules for what a ship may do alone.</td></tr>
+</tbody></table></div>
+<p class="note" style="color:var(--bare);font-size:.84rem;margin:14px 0 90px">Naval terms are borrowed as a metaphor to make the product easier to picture. The ship classes and templates are our plan, and connections are added as each one ships.</p>
+</main>
+<footer><div class="wrap row"><div>Admiral Kammer · The fleet</div><div><a href="index.html">Home</a><a href="agents.html">Agents</a><a href="app.html">Bridge</a></div></div></footer>
+
+<script>
+(function(){
+  var W='<rect x="0" y="44" width="160" height="2" fill="#39ff88" opacity=".5"/><rect x="14" y="49" width="132" height="2" fill="#2b5bff" opacity=".55"/>';
+  var T='#dccb9d',H='#a89560',D='#232b1a';
+  var S={
+   cv:'<path d="M12 35h138l-10 9H24z" fill="'+H+'"/><rect x="10" y="30" width="146" height="5" fill="'+T+'"/><rect x="100" y="18" width="16" height="12" fill="'+T+'"/><rect x="106" y="10" width="3" height="8" fill="'+T+'"/><rect x="102" y="14" width="11" height="4" fill="'+T+'"/><rect x="26" y="27" width="9" height="3" fill="#fff"/><rect x="44" y="27" width="9" height="3" fill="#fff"/><rect x="62" y="27" width="9" height="3" fill="#fff"/>',
+   dd:'<path d="M8 34h124l20-6v8l-12 8H20z" fill="'+H+'"/><rect x="70" y="24" width="22" height="10" fill="'+T+'"/><rect x="80" y="12" width="2" height="12" fill="'+T+'"/><rect x="58" y="26" width="8" height="8" fill="'+T+'"/><rect x="96" y="27" width="8" height="7" fill="'+T+'"/><rect x="116" y="28" width="14" height="6" fill="'+T+'"/><rect x="130" y="30" width="14" height="2" fill="'+T+'"/>',
+   cg:'<path d="M6 34h126l22-6v8l-12 8H18z" fill="'+H+'"/><rect x="52" y="20" width="44" height="14" fill="'+T+'"/><rect x="62" y="12" width="2" height="8" fill="'+T+'"/><rect x="82" y="8" width="2" height="12" fill="'+T+'"/><rect x="112" y="27" width="12" height="7" fill="'+T+'"/><rect x="124" y="29" width="12" height="2" fill="'+T+'"/><rect x="24" y="27" width="12" height="7" fill="'+T+'"/>',
+   ff:'<path d="M10 36h112l20-5v7l-12 7H22z" fill="'+H+'"/><rect x="14" y="31" width="30" height="5" fill="'+T+'"/><rect x="40" y="26" width="14" height="10" fill="'+T+'"/><rect x="62" y="26" width="20" height="10" fill="'+T+'"/><rect x="71" y="14" width="2" height="12" fill="'+T+'"/><rect x="88" y="28" width="8" height="8" fill="'+T+'"/><rect x="108" y="30" width="10" height="6" fill="'+T+'"/>',
+   pc:'<path d="M44 38h66l14-5v6l-10 6H50z" fill="'+H+'"/><rect x="68" y="28" width="22" height="10" fill="'+T+'"/><rect x="78" y="18" width="2" height="10" fill="'+T+'"/><rect x="108" y="32" width="9" height="4" fill="'+T+'"/>',
+   ss:'<rect x="14" y="30" width="132" height="12" rx="6" fill="'+H+'"/><path d="M16 34l-8-6v12z" fill="'+H+'"/><rect x="70" y="18" width="14" height="14" rx="2" fill="'+T+'"/><rect x="76" y="9" width="2" height="9" fill="'+T+'"/>',
+   mc:'<path d="M24 38h100l14-4v6l-10 6H32z" fill="'+H+'"/><rect x="76" y="26" width="24" height="12" fill="'+T+'"/><rect x="44" y="20" width="3" height="18" fill="'+T+'"/><rect x="44" y="20" width="22" height="3" fill="'+T+'"/>',
+   ao:'<path d="M6 36h140l10-4v6l-10 6H14z" fill="'+H+'"/><rect x="40" y="22" width="3" height="14" fill="'+T+'"/><rect x="92" y="22" width="3" height="14" fill="'+T+'"/><rect x="40" y="22" width="55" height="2" fill="'+T+'"/><rect x="120" y="22" width="18" height="14" fill="'+T+'"/><rect x="128" y="14" width="3" height="8" fill="'+T+'"/>',
+   ah:'<path d="M8 36h140l10-4v6l-10 6H16z" fill="#c9d4ea"/><rect x="38" y="14" width="76" height="22" fill="#fff"/><rect x="73" y="17" width="5" height="14" fill="#e8ff1a"/><rect x="69" y="22" width="13" height="5" fill="#e8ff1a"/><rect x="108" y="22" width="22" height="14" fill="#fff"/>',
+   lh:'<path d="M14 35h130l-8 9H26z" fill="'+H+'"/><rect x="14" y="30" width="130" height="5" fill="'+T+'"/><rect x="104" y="18" width="14" height="12" fill="'+T+'"/><rect x="108" y="10" width="2" height="8" fill="'+T+'"/><rect x="30" y="27" width="10" height="3" fill="#fff"/><rect x="48" y="27" width="10" height="3" fill="#fff"/>',
+   yt:'<path d="M56 38h44l8-4v6l-6 5H60z" fill="'+H+'"/><rect x="70" y="28" width="14" height="10" fill="'+T+'"/><rect x="92" y="22" width="6" height="16" fill="'+T+'"/><rect x="40" y="38" width="16" height="3" fill="'+T+'"/>'
+  };
+  function sil(k,cls){return '<svg viewBox="0 0 160 56" role="img" aria-label="'+k+' silhouette" shape-rendering="crispEdges">'+S[k]+W+'</svg>'}
+  var C=[
+   {k:'cv',n:'Aircraft carrier',h:'CVN',real:'In the Navy: the flagship, carrying an air wing that launches many aircraft at once.',t:'Campaign Launcher',d:'Launches a whole campaign in one go. Spins up the other ships for a holiday push, a new listing or a product drop.',ex:['Holiday push','New listing launch'],ap:1},
+   {k:'dd',n:'Destroyer',h:'DDG',real:'In the Navy: a fast, heavily armed, multi mission escort.',t:'Mass Texting',d:'High volume text messages to contacts who have opted in. Needs recorded consent, quiet hours and a stop list, so it always starts on Hold.',ex:['Open house reminders','Flash sale text'],ap:1},
+   {k:'cg',n:'Cruiser',h:'CG',real:'In the Navy: a long range ship with powerful sensors that often leads a group.',t:'Targeted Email Sequences',d:'Precise, personalized email to a chosen list, with follow ups spaced out and a stop list honored.',ex:['Expired listing sequence','Past client check ins'],ap:1},
+   {k:'ff',n:'Frigate',h:'FFG',real:'In the Navy: an escort and patrol ship that guards the approaches.',t:'Lead Intake Watch',d:'Watches your site forms and inbox, and brings every new lead safely into your CRM.',ex:['Website lead to Attio','Inbox to CRM'],ap:0},
+   {k:'pc',n:'Patrol boat',h:'PC',real:'In the Navy: a small, quick boat for coastal patrol.',t:'Instant Auto Reply',d:'Answers new inquiries within seconds, then hands off to a person.',ex:['Demo request reply','After hours reply'],ap:1},
+   {k:'ss',n:'Submarine',h:'SSN',real:'In the Navy: a stealthy ship that gathers intelligence unseen.',t:'Market Research and Competitor Watch',d:'Quietly tracks your market and your competitors, then surfaces only what matters.',ex:['Neighborhood report','Competitor listing watch'],ap:0},
+   {k:'mc',n:'Mine countermeasures',h:'MCM',real:'In the Navy: finds and clears hazards from the shipping lanes.',t:'Data Cleanup',d:'Removes duplicates, fixes missing fields and clears stale records before they cause trouble.',ex:['CRM dedupe','Stale deal sweep'],ap:0},
+   {k:'ao',n:'Fleet oiler',h:'T-AO',real:'In the Navy: refuels and resupplies other ships at sea.',t:'Enrichment and Credit Supply',d:'Keeps the fleet supplied with fresh contact data, inside your monthly credit cap.',ex:['Apollo and Clay enrichment','Credit budget guard'],ap:0},
+   {k:'ah',n:'Hospital ship',h:'T-AH',real:'In the Navy: a floating hospital that treats the wounded.',t:'Triage and Repair',d:'Triages support requests and repairs broken workflows, then reports back in the deck log.',ex:['Support triage','Broken flow repair'],ap:0},
+   {k:'lh',n:'Amphibious assault ship',h:'LHD',real:'In the Navy: puts forces ashore on a new coast.',t:'New Market Landing',d:'Opens a new niche or city. Researches it, finds prospects and starts the first outreach.',ex:['New city launch','New niche pilot'],ap:1},
+   {k:'yt',n:'Harbor tug',h:'YT',real:'In the Navy: a small, strong boat that helps big ships dock.',t:'Integrations and Sync',d:'Moves data between your tools so everything docks where it should.',ex:['Attio sync','Calendar booking'],ap:0}
+  ];
+  var GROUP=['cv','dd','cg','ao','ah'];
+  var ROE={hold:'On Hold, nothing leaves the harbor without your captain approving it. Best for new ships and anything that contacts people.',tight:'On Tight, your captain signs off once on the audience and the message, and the ship stays inside those limits.',free:'On Free, ships run on their own inside your caps, quiet hours and stop list. Texting never goes Free without recorded consent.'};
+  var KEY='kammer-fleet-v1',F={};
+  try{F=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){F={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(F))}catch(e){}}
+  var $=function(i){return document.getElementById(i)};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function render(){
+    var n=C.filter(function(c){return F[c.k]}).length;
+    $('rc').innerHTML='Your fleet: <b>'+n+'</b> of '+C.length+' ship classes commissioned';
+    $('cl').innerHTML=C.map(function(c){var on=!!F[c.k];
+      return '<article class="gloss cls"><div class="sea">'+sil(c.k)+'</div><div class="cb"><div class="tp"><span class="hull">'+c.h+'</span>'+(c.ap?'<span class="ap">Asks first</span>':'')+'</div><h3>'+esc(c.n)+'</h3><div class="real">'+esc(c.real)+'</div><div class="tm">'+esc(c.t)+'</div><p>'+esc(c.d)+'</p><div class="ex">'+c.ex.map(function(e){return '<span>'+esc(e)+'</span>'}).join('')+'</div><button class="add" type="button" aria-pressed="'+on+'" data-k="'+c.k+'">'+(on?'In my fleet ✓':'Add to my fleet')+'</button></div></article>'}).join('');
+    var allIn=GROUP.every(function(k){return F[k]});
+    $('addg').textContent=allIn?'Whole group in my fleet ✓':'Add the whole group to my fleet';
+  }
+  function group(){
+    var nm={cv:'Campaign Launcher',dd:'Mass Texting',cg:'Email Sequences',ao:'Enrichment',ah:'Triage and Repair'};
+    $('gr').innerHTML=GROUP.map(function(k){var c=C.filter(function(x){return x.k===k})[0];return '<div role="listitem"><svg viewBox="0 0 160 56" aria-hidden="true" shape-rendering="crispEdges">'+S[k]+W+'</svg><b>'+nm[k]+'</b><small>'+c.h+'</small></div>'}).join('');
+  }
+  $('cl').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var k=b.dataset.k;F[k]=!F[k];if(!F[k])delete F[k];save();render();var nb=document.querySelector('.add[data-k="'+k+'"]');if(nb)nb.focus()});
+  $('addg').addEventListener('click',function(){var allIn=GROUP.every(function(k){return F[k]});GROUP.forEach(function(k){if(allIn)delete F[k];else F[k]=true});save();render()});
+  document.addEventListener('change',function(e){if(e.target.name==='roe')$('rn').textContent=ROE[e.target.value]});
+  $('rn').textContent=ROE.hold;
+  group();render();
+})();
+</script>
+</body></html>

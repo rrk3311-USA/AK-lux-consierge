@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agent Kammer | Connect Your Tools</title>
-<meta name="description" content="Set up your Agent Kammer butler: pick your tools, set approval rules, and get a custom rules file for your Notion hub.">
+<title>Admiral Kammer | Connect Your Tools</title>
+<meta name="description" content="Set up your fleet with Admiral Kammer: pick your tools, set approval rules, and get a custom rules file for your Notion hub.">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="assets/v3.css">
@@ -38,13 +38,13 @@ pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:
 @media(max-width:560px){.rule{flex-direction:column;align-items:flex-start}}
 </style></head><body>
 <header class="top"><div class="wrap hd">
-<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
-<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a href="kit.html">Move-in kit</a><a class="on" href="connect.html">Connect</a><a class="cta-s" href="index.html#start">Get a butler</a></nav>
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Admiral Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a href="kit.html">Move-in kit</a><a class="on" href="connect.html">Connect</a><a class="cta-s" href="index.html#start">Take command</a></nav>
 </div></header>
 
 <main class="wrap">
-<div class="page-hd" style="text-align:center"><div class="eyebrow">Set up your butler</div><h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Three steps to <em>delegate</em></h1>
-<p class="lede" style="margin:1rem auto 0">Tell the butler what you run and what it may do alone. Read-only first, always.</p></div>
+<div class="page-hd" style="text-align:center"><div class="eyebrow">Set up your Admiral</div><h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Three steps to <em>delegate</em></h1>
+<p class="lede" style="margin:1rem auto 0">Tell the Admiral what you run and what it may do alone. Read-only first, always.</p></div>
 
 <div class="wiz" style="margin-top:36px">
 <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
@@ -57,13 +57,13 @@ pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:
 </form>
 
 <div class="gloss pane" data-step="1">
-<h2>2. What may the butler do alone?</h2><p>Choose <b>Auto</b> or <b>Ask</b> for each action. You can change these any time.</p>
+<h2>2. What may the Admiral do alone?</h2><p>Choose <b>Auto</b> or <b>Ask</b> for each action. You can change these any time.</p>
 <div id="rules"></div>
 <div class="nav2"><button class="btn g" type="button" data-prev>← Back</button><button class="btn y" type="button" data-next>Next →</button></div>
 </div>
 
 <div class="gloss pane" data-step="2">
-<h2>3. Limits &amp; contact</h2><p>Where to escalate, and how much it can spend on your behalf. Your human operator will review this with you before anything goes live.</p>
+<h2>3. Limits &amp; contact</h2><p>Where to escalate, and how much it can spend on your behalf. Your human captain will review this with you before anything goes live.</p>
 <div class="fld"><label for="cap">Monthly spend cap ($)</label><input id="cap" type="number" min="0" value="100"></div>
 <div class="fld"><label for="esc">Escalate decisions to</label><input id="esc" placeholder="Name or Slack channel"></div>
 <div class="fld"><label for="qs">Quiet hours (start)</label><input id="qs" type="time" value="21:00"></div>
@@ -72,7 +72,7 @@ pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:
 </div>
 
 <div class="gloss pane" data-step="3">
-<h2>Your butler's setup plan</h2><p>Import this file into your Notion Command Center as <b>Approvals &amp; Rules</b>. Nothing was sent anywhere. It all stayed in your browser.</p>
+<h2>Your Admiral's setup plan</h2><p>Import this file into your Notion Command Center as <b>Approvals &amp; Rules</b>. Nothing was sent anywhere. It all stayed in your browser.</p>
 <pre class="out" id="out"></pre>
 <div class="nav2"><button class="btn g" type="button" data-prev>← Edit</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn y" type="button" id="dl">Download .md</button><a class="btn bl" href="index.html#start">Join early access</a></span></div>
 </div>
@@ -93,7 +93,7 @@ pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:
     ["new","Connect a new app or widen access","Security","ask"],
     ["reach","Send outreach to new prospects","Outbound, legal exposure","ask"],
     ["enrich","Spend credits on prospect enrichment","Costs money","ask"],
-    ["op","Let my operator approve routine items for me","Human in the loop","ask"],
+    ["op","Let my captain approve routine items for me","Human in the loop","ask"],
     ["del","Delete workflows or data","Irreversible","ask"]
   ];
   var tools=document.getElementById('tools'),rules=document.getElementById('rules');
@@ -111,7 +111,7 @@ pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:
     var auto=[],ask=[];
     R.forEach(function(r){var v=document.querySelector('input[name='+r[0]+']:checked').value;(v=='auto'?auto:ask).push('- '+r[1])});
     var cap=document.getElementById('cap').value||'0',e=esc(document.getElementById('esc').value)||'(not set)';
-    md='# Approvals & Rules\n\n> What the butler may do on its own, and what always needs your yes.\n\n## Connected tools (read-only first)\n'+(sel.length?sel.map(function(s){return '- '+s}).join('\n'):'- (none selected)')+'\n\n## Always ask first\n'+(ask.join('\n')||'- (nothing)')+'\n\n## Allowed automatically\n'+(auto.join('\n')||'- (nothing)')+'\n\n## Limits\n- Spend cap per month: $'+cap+'\n- Quiet hours: '+document.getElementById('qs').value+' to '+document.getElementById('qe').value+'\n- Escalate to: '+e+'\n\n## Review\n- [ ] Revisit these rules monthly\n';
+    md='# Approvals & Rules\n\n> What the Admiral may do on its own, and what always needs your yes.\n\n## Connected tools (read-only first)\n'+(sel.length?sel.map(function(s){return '- '+s}).join('\n'):'- (none selected)')+'\n\n## Always ask first\n'+(ask.join('\n')||'- (nothing)')+'\n\n## Allowed automatically\n'+(auto.join('\n')||'- (nothing)')+'\n\n## Limits\n- Spend cap per month: $'+cap+'\n- Quiet hours: '+document.getElementById('qs').value+' to '+document.getElementById('qe').value+'\n- Escalate to: '+e+'\n\n## Review\n- [ ] Revisit these rules monthly\n';
     document.getElementById('out').textContent=md;go(3)
   };
   document.getElementById('dl').onclick=function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([md],{type:'text/markdown'}));a.download='approvals-and-rules.md';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}

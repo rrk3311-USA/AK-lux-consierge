@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Agent Kammer | Butler App</title>
-<meta name="description" content="Phone-style control panel for your Agent Kammer butler: folder tabs, on/off toggles, automation health bars and a history of completed maintenance.">
+<title>Admiral Kammer | Bridge</title>
+<meta name="description" content="Phone-style control panel for your Admiral Kammer fleet: folder tabs, on/off toggles, automation health bars and a history of completed maintenance.">
 <meta name="theme-color" content="#07686f">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira+Stencil+One&family=Sora:wght@500;600;700&display=swap">
@@ -242,17 +242,18 @@
 .row.auto .ent{background:#2f3a24;border:2px solid #171c10;border-radius:8px;color:#e8d9a6;box-shadow:0 2px 0 #0f140b}
 .row.auto .ent:hover{background:var(--g);color:#031a0d}
 /* guarded military switch */
-.tg.mil{width:84px;height:40px;border-radius:7px;background:#1b2314;border:2px solid #0f140b;box-shadow:inset 0 3px 6px rgba(0,0,0,.75),0 1px 0 rgba(255,255,255,.35);position:relative;overflow:hidden;transition:none;flex:none}
+.tg.mil{width:112px;height:40px;border-radius:7px;background:#1b2314;border:2px solid #0f140b;box-shadow:inset 0 3px 6px rgba(0,0,0,.75),0 1px 0 rgba(255,255,255,.35);position:relative;overflow:hidden;transition:none;flex:none}
 .tg.mil:after{display:none}
-.tg.mil .kn{position:absolute;top:3px;left:3px;width:40px;height:30px;border-radius:5px;background:linear-gradient(180deg,#e4e6da,#8d927f);border:1px solid rgba(255,255,255,.45);box-shadow:0 2px 3px rgba(0,0,0,.6),inset 0 1px 0 #fff;transition:transform .15s;display:grid;place-items:center}
-.tg.mil .kn:before{content:"SAFE";font:400 .6rem 'Saira Stencil One',Impact,sans-serif;letter-spacing:.1em;color:#3a3f2c}
+.tg.mil .kn{position:absolute;top:3px;left:3px;width:62px;height:30px;border-radius:5px;background:linear-gradient(180deg,#e4e6da,#8d927f);border:1px solid rgba(255,255,255,.45);box-shadow:0 2px 3px rgba(0,0,0,.6),inset 0 1px 0 #fff;transition:transform .15s;display:grid;place-items:center}
+.tg.mil .kn:before{content:"IN PORT";font:400 .56rem 'Saira Stencil One',Impact,sans-serif;letter-spacing:.04em;color:#3a3f2c;white-space:nowrap}
 .tg.mil[aria-checked=true]{background:#0f3a22;box-shadow:inset 0 3px 6px rgba(0,0,0,.6),inset 0 0 14px rgba(57,255,136,.55),0 1px 0 rgba(255,255,255,.35)}
-.tg.mil[aria-checked=true] .kn{transform:translateX(37px);background:linear-gradient(180deg,#9dffc6,#2fcf74);border-color:#d8ffe8}
-.tg.mil[aria-checked=true] .kn:before{content:"ARM";color:#06361b}
-.tg.mil.sm{width:66px;height:32px}
-.tg.mil.sm .kn{top:2px;left:2px;width:32px;height:24px}
-.tg.mil.sm .kn:before{font-size:.5rem}
-.tg.mil.sm[aria-checked=true] .kn{transform:translateX(30px)}
+.tg.mil[aria-checked=true] .kn{transform:translateX(40px);background:linear-gradient(180deg,#9dffc6,#2fcf74);border-color:#d8ffe8}
+.tg.mil[aria-checked=true] .kn:before{content:"UNDERWAY";color:#06361b}
+.tg.mil.sm{width:80px;height:32px}
+.tg.mil.sm .kn{top:2px;left:2px;width:40px;height:24px}
+.tg.mil.sm .kn:before{font-size:.5rem;content:"PORT"}
+.tg.mil.sm[aria-checked=true] .kn:before{content:"GO"}
+.tg.mil.sm[aria-checked=true] .kn{transform:translateX(34px)}
 @media(prefers-reduced-motion:reduce){.tg.mil .kn{transition:none}}
 /* grid tiles */
 .tile.auto{padding:16px 14px 14px 18px}
@@ -267,21 +268,21 @@
 .nodeb.auto span{display:inline-flex;background:#1b2314;border-radius:4px;padding:2px 8px;margin-top:5px;color:var(--c)}
 </style></head><body>
 <header class="top"><div class="wrap hd">
-<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
-<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a href="kit.html">Move-in kit</a><a href="connect.html">Connect</a><a class="on" href="app.html">Butler app</a><a class="cta-s" href="index.html#start">Get a butler</a></nav>
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Admiral Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a href="kit.html">Move-in kit</a><a href="connect.html">Connect</a><a href="fleet.html">Fleet</a><a class="on" href="app.html">Bridge</a><a class="cta-s" href="index.html#start">Take command</a></nav>
 </div></header>
 
 <main class="wrap stage">
 <div class="side">
-<div class="eyebrow">Butler app · preview</div>
+<div class="eyebrow">Bridge · preview</div>
 <h1>Your whole business, <em>one pocket</em>.</h1>
-<p class="lede">Toggles turn things on or off. Health bars show whether an automation is working or broken. The butler fixes problems on its own, and you just read the history.</p>
-<ul><li><b>Folder tabs</b> group everything: Design, Workflows, Outreach, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Health bar</b> on each automation: green is healthy, yellow is degraded, red is broken. Sort by health from the top.</li><li><b>Callout</b> at the top says how many need attention and that the butler is already on it. Tap it for the maintenance history.</li><li><b>Cloud nodes.</b> Each automation is a rugged node with a region and a run counter. Flip its guarded switch from SAFE to ARM to activate its runs.</li><li><b>Enter icon</b> in the middle opens the editor.</li><li><b>Views</b> along the bottom: Files, Workflow Map, Operations Grid, Agent Control and the Intelligence Brief.</li></ul>
+<p class="lede">Toggles turn things on or off. Health bars show whether an automation is working or broken. The Admiral fixes problems on its own, and you just read the history.</p>
+<ul><li><b>Folder tabs</b> group everything: Design, Fleet, Outreach, Notion, Website, Rules.</li><li><b>Toggle</b> on the right turns a file live or paused.</li><li><b>Health bar</b> on each automation: green is healthy, yellow is degraded, red is broken. Sort by health from the top.</li><li><b>Callout</b> at the top says how many need attention and that the Admiral is already on it. Tap it for the maintenance history.</li><li><b>Your fleet.</b> Each automation is a ship with a hull number, a home port and a run counter. Flip its guarded switch from IN PORT to UNDERWAY to put it to sea.</li><li><b>Enter icon</b> in the middle opens the editor.</li><li><b>Views</b> along the bottom: Files, Workflow Map, Operations Grid, Agent Control and the Intelligence Brief.</li></ul>
 <a class="btn g" href="connect.html">Back to setup</a>
 </div>
 
 <div class="phone"><div class="scr" id="scr"><div class="notch"></div>
-<div class="top2"><div class="hdr"><img src="assets/mark.svg" alt=""><b>Kammer</b><span class="live" id="live"></span></div></div>
+<div class="top2"><div class="hdr"><img src="assets/mark.svg" alt=""><b>Admiral Kammer</b><span class="live" id="live"></span></div></div>
 <button class="att" id="att" type="button" aria-haspopup="dialog"></button>
 <div class="tabs" role="tablist" aria-label="Folders" id="tabs"></div>
 <div class="folder" role="tabpanel" id="folder"></div>
@@ -290,7 +291,7 @@
 
 <div class="sheet" id="sheet" aria-hidden="true"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="sh">
 <div class="grab"></div><h2 id="sh"></h2><div class="pp" id="sp"></div>
-<label for="en">Name</label><input id="en"><label for="eo">Notes for the butler</label><textarea id="eo"></textarea>
+<label for="en">Name</label><input id="en"><label for="eo">Notes for the Admiral</label><textarea id="eo"></textarea>
 <div class="acts"><a class="btn g" id="open" href="#" target="_blank" rel="noopener">Open file</a><button class="btn g" id="cx" type="button">Cancel</button><button class="btn y" id="sv" type="button">Save</button></div>
 </div></div>
 
@@ -316,26 +317,26 @@
   var DATA=[
     {id:'design',name:'Design',dir:'/design',items:[
       ['Logo & mark','logo.svg','assets/logo.svg',1],['Color system','colors.json','kit.html#logo',1],['Leather letterhead','letterhead.pdf','stationery.html',1],['Business card','card.pdf','stationery.html',1],['Envelope','envelope.pdf','stationery.html',0],['Email signature','signature.html','',0]]},
-    {id:'flows',name:'Workflows',dir:'/workflows',health:true,items:[
-      ['Lead to CRM','lead-to-crm.flow','',1,'Sales flow',92,'Fixed 4m ago · re-authed'],
-      ['Demo auto-reply','demo-reply.flow','',0,'Sales flow',100,'Paused'],
-      ['Lead enrichment','lead-enrich.flow','',1,'Sales flow',64,'Butler fixing · retrying API'],
-      ['Invoice reminders','invoice-reminders.flow','',1,'Ops flow',58,'Butler fixing · merging duplicate'],
-      ['Support triage','support-triage.flow','',1,'Ops flow',97,'Healthy'],
-      ['Weekly report','weekly-report.flow','',1,'Ops flow',88,'Healthy · fixed 6h ago']]},
+    {id:'flows',name:'Fleet',dir:'/fleet',health:true,items:[
+      ['Lead to CRM','lead-to-crm.flow','',1,'Sales Task Force',92,'Fixed 4m ago · re-authed'],
+      ['Demo auto-reply','demo-reply.flow','',0,'Sales Task Force',100,'In port'],
+      ['Lead enrichment','lead-enrich.flow','',1,'Sales Task Force',64,'In dry dock · retrying API'],
+      ['Invoice reminders','invoice-reminders.flow','',1,'Ops Task Force',58,'In dry dock · merging duplicate'],
+      ['Support triage','support-triage.flow','',1,'Ops Task Force',97,'Battle ready'],
+      ['Weekly report','weekly-report.flow','',1,'Ops Task Force',88,'Battle ready · fixed 6h ago']]},
     {id:'out',name:'Outreach',dir:'/outreach',health:true,items:[
-      ['Market research','research.brief','hustle.html',1,'Find',94,'Healthy · refreshed 2d ago'],
-      ['Prospect search (Apollo)','search.apollo','hustle.html',1,'Find',88,'Healthy'],
-      ['Enrichment (Clay)','enrich.clay','hustle.html',1,'Find',71,'Credits at 42% of cap'],
-      ['Draft messages','drafts.msg','hustle.html',1,'Reach',96,'Healthy · 3 waiting for you'],
-      ['Follow-up sequences','followups.seq','',0,'Reach',100,'Paused'],
-      ['Meeting booking','book.cal','',1,'Reach',63,'Butler fixing · calendar re-auth']]},
+      ['Market research','research.brief','hustle.html',1,'Scout Squadron',94,'Battle ready · refreshed 2d ago'],
+      ['Prospect search (Apollo)','search.apollo','hustle.html',1,'Scout Squadron',88,'Battle ready'],
+      ['Enrichment (Clay)','enrich.clay','hustle.html',1,'Scout Squadron',71,'Credits at 42% of cap'],
+      ['Draft messages','drafts.msg','hustle.html',1,'Outreach Squadron',96,'Battle ready · 3 waiting for you'],
+      ['Follow-up sequences','followups.seq','',0,'Outreach Squadron',100,'In port'],
+      ['Meeting booking','book.cal','',1,'Outreach Squadron',63,'In dry dock · calendar re-auth']]},
     {id:'notion',name:'Notion',dir:'/notion',items:[
       ['Command Center','command-center.md','kit/notion/command-center.md',1],['Automation Registry','automation-registry.csv','kit/notion/automation-registry.csv',1],['Run Log','run-log.csv','kit/notion/run-log.csv',1],['Approvals & Rules','approvals-and-rules.md','kit/notion/approvals-and-rules.md',1],['Launch Checklist','launch-checklist.md','kit/notion/launch-checklist.md',0],['SOP Wiki','sop-wiki.md','kit/notion/sop-wiki.md',1]]},
     {id:'web',name:'Website',dir:'/website',items:[
       ['Home','index.html','index.html',1],['About','about.html','',1],['Listings / Services','services.html','',0],['Blog','blog/','',0],['Contact form','contact.html','connect.html',1]]},
     {id:'rules',name:'Rules',dir:'/rules',items:[
-      ['Auto-retry failed runs','retry.rule','',1,'Butler acts alone'],['Re-authenticate','reauth.rule','',1,'Butler acts alone'],['Pause failing flows','pause.rule','',1,'Butler acts alone'],['Send customer messages','messages.rule','',0,'Needs your yes'],['Touch billing','billing.rule','',0,'Needs your yes'],['Delete workflows','delete.rule','',0,'Needs your yes']]}
+      ['Auto-retry failed runs','retry.rule','',1,'Admiral acts alone'],['Re-authenticate','reauth.rule','',1,'Admiral acts alone'],['Pause failing flows','pause.rule','',1,'Admiral acts alone'],['Send customer messages','messages.rule','',0,'Needs your yes'],['Touch billing','billing.rule','',0,'Needs your yes'],['Delete workflows','delete.rule','',0,'Needs your yes']]}
   ];
   var HISTORY=[
     ['Prospect search','Added 14 new expired-listing prospects, skipped 3 on the suppression list','2h ago',1],
@@ -363,26 +364,27 @@
   }
   function callout(){
     var s=stats(),h=HISTORY[0];
-    $('att').innerHTML='<div class="l1">'+(s.att?'<span class="chip2">'+s.att+' need attention</span>Butler is on it':'<span class="chip2 ok">All healthy</span>Nothing for you to do')+'<span class="go">History '+svg('<path d="m9 6 6 6-6 6"/>').replace('<svg','<svg width="14" height="14"')+'</span></div>'+
-      '<div class="l2"><i>&#10003;</i>Last fix: '+esc(h[0])+' · '+esc(h[2])+' · checked by Sam, your operator</div>';
-    $('att').setAttribute('aria-label',(s.att?s.att+' automations need attention, the butler is handling it. ':'All automations healthy. ')+'Open maintenance history');
-    $('live').textContent=s.n+' running';
+    $('att').innerHTML='<div class="l1">'+(s.att?'<span class="chip2">'+s.att+' need attention</span>Admiral is on it':'<span class="chip2 ok">Fleet battle ready</span>Nothing for you to do')+'<span class="go">History '+svg('<path d="m9 6 6 6-6 6"/>').replace('<svg','<svg width="14" height="14"')+'</span></div>'+
+      '<div class="l2"><i>&#10003;</i>Last fix: '+esc(h[0])+' · '+esc(h[2])+' · checked by Sam, your captain</div>';
+    $('att').setAttribute('aria-label',(s.att?s.att+' automations need attention, the Admiral is handling it. ':'All automations healthy. ')+'Open maintenance history');
+    $('live').textContent=s.n+' underway';
   }
   function tabs(){
     $('tabs').innerHTML=DATA.map(function(f,i){return '<button class="tab" role="tab" aria-selected="'+(i==cur)+'" data-i="'+i+'">'+svg(ICON[f.id])+f.name+'</button>'}).join('');
   }
   var REG=['OH-1','OH-2','US-E','US-W'];
   function nodeNum(f,i){return (f.id=='flows'?0:(f.id=='out'?6:12))+i+1}
-  function nodeTag(f,it,i){var n=nodeNum(f,i);return 'NODE '+(n<10?'0':'')+n+' \u00b7 '+REG[(i+(f.id=='out'?2:0))%4]}
+  var HULL={'Lead to CRM':'FFG','Demo auto-reply':'PC','Lead enrichment':'T-AO','Invoice reminders':'CG','Support triage':'T-AH','Weekly report':'SSN','Market research':'SSN','Prospect search (Apollo)':'LHD','Enrichment (Clay)':'T-AO','Draft messages':'CG','Follow-up sequences':'DDG','Meeting booking':'YT'};
+  function nodeTag(f,it,i){var n=nodeNum(f,i);return (HULL[it[0]]||'DD')+'-'+(n<10?'0':'')+n+' \u00b7 '+REG[(i+(f.id=='out'?2:0))%4]}
   function runsOf(it){return ((it[5]*7)%190)+14}
   function milToggle(on,label,attr,sm){return '<button class="tg mil'+(sm?' sm':'')+'" role="switch" aria-checked="'+(!!on)+'" aria-label="'+esc(label)+' arm or safe" '+attr+'><i class="kn"></i></button>'}
   function rowHTML(f,it,i){
     var s=S[f.id+':'+i];
     if(f.health){
       var on=s.on,t=on?tone(it[5]):'hx',heal=on&&it[5]<70;
-      return '<div class="row auto '+t+(on?'':' off')+'"><div class="nm"><div class="nid"><span>'+nodeTag(f,it,i)+'</span><span class="rn">'+(on?'RUNS '+runsOf(it):'STANDBY')+'</span></div><b class="nn">'+esc(s.n)+'</b><small>'+f.dir+'/'+esc(it[1])+'</small>'+
+      return '<div class="row auto '+t+(on?'':' off')+'"><div class="nm"><div class="nid"><span>'+nodeTag(f,it,i)+'</span><span class="rn">'+(on?'RUNS '+runsOf(it):'IN PORT')+'</span></div><b class="nn">'+esc(s.n)+'</b><small>'+f.dir+'/'+esc(it[1])+'</small>'+
         '<div class="hb"><div class="hbt"><i style="width:'+it[5]+'%"></i></div><b>'+it[5]+'</b></div>'+
-        '<div class="hs'+(heal?' heal':'')+'">'+esc(on?it[6]:'Paused')+'</div></div>'+
+        '<div class="hs'+(heal?' heal':'')+'">'+esc(on?it[6]:'In port')+'</div></div>'+
         '<button class="ent" data-e="'+i+'" aria-label="Edit '+esc(s.n)+'">'+svg('<path d="M20 5v7a3 3 0 0 1-3 3H5"/><path d="m9 11-4 4 4 4"/>')+'</button>'+
         milToggle(on,s.n,'data-t="'+i+'"')+'</div>'
     }
@@ -400,7 +402,7 @@
     if(f.health&&mode=='az')order.sort(function(a,b){return S[f.id+':'+a].n.localeCompare(S[f.id+':'+b].n)});
     var grouped=!f.health||mode=='flow';
     var open=null,n=0,gi=0;
-    function closeG(){if(open===null)return;h+='</div><div class="bk c"><span class="gl">&#9699;</span>end '+esc(open)+'<em>'+n+' steps</em></div>';open=null}
+    function closeG(){if(open===null)return;h+='</div><div class="bk c"><span class="gl">&#9699;</span>end '+esc(open)+'<em>'+n+' ships</em></div>';open=null}
     order.forEach(function(i){var it=f.items[i],g=grouped?(it[4]||null):null;
       if(g!==open){closeG();if(g){open=g;n=0;gi++;h+='<div class="bk o"><span class="gl">&#9695;</span>'+esc(g)+'<em>0'+gi+'</em></div><div class="grp">'}}
       if(g)n++;h+=rowHTML(f,it,i)});
@@ -411,7 +413,7 @@
 
   /* ---------- views ---------- */
   var view='files',agf='all';
-  var VIEWS=[['files','Files','<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'],['map','Map','<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H12a3 3 0 0 1 3 3v0M8.5 18H12a3 3 0 0 0 3-3"/>'],['grid','Grid','<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>'],['agents','Agents','<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9.5 16.5h5"/>'],['brief','Brief','<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>']];
+  var VIEWS=[['files','Files','<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'],['map','Chart','<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H12a3 3 0 0 1 3 3v0M8.5 18H12a3 3 0 0 0 3-3"/>'],['grid','Status','<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>'],['agents','Crew','<rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9.5 16.5h5"/>'],['brief','Brief','<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>']];
   var AG=[
     {id:'monitor',n:'Monitor',role:'Watches every run',t:128,ok:99,last:'1 min ago',use:62},
     {id:'repair',n:'Repair',role:'Fixes failed steps',t:7,ok:94,last:'4 min ago',use:38},
@@ -430,31 +432,31 @@
   function viewTitle(t,sm){return '<div class="vt">'+t+'<small>'+sm+'</small></div>'}
   function renderGrid(){
     var a=allHealth().sort(function(x,y){return x.it[5]-y.it[5]});
-    var h=viewTitle('Operations grid','cloud nodes, worst first')+'<div class="tiles">';
+    var h=viewTitle('Fleet status','worst first')+'<div class="tiles">';
     a.forEach(function(x){var on=x.s.on,t=on?tone(x.it[5]):'hx';
       h+='<div class="tile auto '+t+(on?'':' off')+'" role="button" tabindex="0" data-open="'+x.fi+':'+x.i+'" aria-label="Edit '+esc(x.s.n)+', health '+x.it[5]+'"><div class="nid"><span>'+nodeTag(x.f,x.it,x.i)+'</span></div><b class="nn">'+esc(x.s.n)+'</b>'+
         '<div class="hb"><div class="hbt"><i style="width:'+x.it[5]+'%"></i></div><b>'+x.it[5]+'</b></div>'+
-        '<div class="trow"><div class="hs">'+esc(on?'Runs '+runsOf(x.it):'Standby')+'</div>'+milToggle(on,x.s.n,'data-tg="'+x.fi+':'+x.i+'"',true)+'</div></div>'});
+        '<div class="trow"><div class="hs">'+esc(on?'Runs '+runsOf(x.it):'In port')+'</div>'+milToggle(on,x.s.n,'data-tg="'+x.fi+':'+x.i+'"',true)+'</div></div>'});
     $('folder').innerHTML=h+'</div>';
   }
   function renderMap(){
-    var CAP={'Sales flow':['Form submitted','CRM updated'],'Ops flow':['Invoice overdue','Reminder sent'],'Find':['Daily schedule','Prospects ranked'],'Reach':['Draft approved','Meeting booked']};
+    var CAP={'Sales Task Force':['Form submitted','CRM updated'],'Ops Task Force':['Invoice overdue','Reminder sent'],'Scout Squadron':['Daily schedule','Prospects ranked'],'Outreach Squadron':['Draft approved','Meeting booked']};
     var lanes={},order=[];
     allHealth().forEach(function(x){var g=x.it[4];if(!g)return;if(!lanes[g]){lanes[g]=[];order.push(g)}lanes[g].push(x)});
-    var h=viewTitle('Workflow map','tap a node to edit')+'<div class="legend"><span class="hg"><i></i>Healthy</span><span class="hy"><i></i>Degraded</span><span class="hr"><i></i>Broken</span><span class="hx"><i></i>Paused</span></div><div class="lanes">';
+    var h=viewTitle('Chart room','tap a ship to edit')+'<div class="legend"><span class="hg"><i></i>Battle ready</span><span class="hy"><i></i>Degraded</span><span class="hr"><i></i>Damaged</span><span class="hx"><i></i>In port</span></div><div class="lanes">';
     function wire(a,b){var t=(a&&a.s.on&&b&&b.s.on)?tone(Math.min(a.it[5],b.it[5])):'hx';return '<div class="wire '+t+'" aria-hidden="true"></div>'}
     order.forEach(function(g,gi){
       var L=lanes[g],c=CAP[g]||['Trigger','Output'];
       h+='<div class="lane"><h4>'+esc(g)+'<em>0'+(gi+1)+'</em></h4><div class="nodeb cap"><b>'+esc(c[0])+'</b></div>'+wire(null,null).replace('class="wire ','class="wire hg ');
       L.forEach(function(x,k){var on=x.s.on,t=on?tone(x.it[5]):'hx';
-        h+='<button type="button" class="nodeb auto '+t+(on?'':' off')+'" data-open="'+x.fi+':'+x.i+'"><em class="nid1">'+nodeTag(x.f,x.it,x.i)+'</em><b>'+esc(x.s.n)+'</b><span>'+(on?x.it[5]:'Paused')+'</span></button>'+(k<L.length-1?wire(x,L[k+1]):wire(x,null).replace('class="wire '+(on?tone(x.it[5]):'hx'),'class="wire '+(on?tone(x.it[5]):'hx')));
+        h+='<button type="button" class="nodeb auto '+t+(on?'':' off')+'" data-open="'+x.fi+':'+x.i+'"><em class="nid1">'+nodeTag(x.f,x.it,x.i)+'</em><b>'+esc(x.s.n)+'</b><span>'+(on?x.it[5]:'In port')+'</span></button>'+(k<L.length-1?wire(x,L[k+1]):wire(x,null).replace('class="wire '+(on?tone(x.it[5]):'hx'),'class="wire '+(on?tone(x.it[5]):'hx')));
       });
       h+='<div class="nodeb cap"><b>'+esc(c[1])+'</b></div></div>'});
     $('folder').innerHTML=h+'</div>';
   }
   function renderAgents(){
     var act=AG.filter(function(a){return agf=='all'||(agf=='active'?ag(a.id).on:!ag(a.id).on)});
-    var h=viewTitle('Agent control','sample activity')+'<div class="op"><div class="top4"><div class="av" aria-hidden="true">SM</div><div class="nm2"><b>Sam M. <span class="hum">Human</span></b><small>Your operator (sample) · premium client care background</small></div><span class="online">Online</span></div><p>Reviews the butler\u2019s work, handles exceptions and approves anything risky with you.</p><div class="kv"><div><small>Reviewed today</small><b>9</b></div><div><small>Avg reply</small><b>12m</b></div><div><small>Your accounts</small><b>1</b></div></div><button class="btn y" type="button" data-ask="1">Ask Sam</button></div>'+'<div class="chips4" role="group" aria-label="Filter agents">'+[['all','All'],['active','Active'],['idle','Idle']].map(function(c){return '<button type="button" data-f="'+c[0]+'" aria-pressed="'+(agf==c[0])+'">'+c[1]+'</button>'}).join('')+'</div>';
+    var h=viewTitle('Crew','sample activity')+'<div class="op"><div class="top4"><div class="av" aria-hidden="true">SM</div><div class="nm2"><b>Sam M. <span class="hum">Human</span></b><small>Your captain (sample) · premium client care background</small></div><span class="online">Online</span></div><p>Reviews the Admiral\u2019s work, handles exceptions and approves anything risky with you.</p><div class="kv"><div><small>Reviewed today</small><b>9</b></div><div><small>Avg reply</small><b>12m</b></div><div><small>Your accounts</small><b>1</b></div></div><button class="btn y" type="button" data-ask="1">Ask Sam</button></div>'+'<div class="chips4" role="group" aria-label="Filter agents">'+[['all','All'],['active','Active'],['idle','Idle']].map(function(c){return '<button type="button" data-f="'+c[0]+'" aria-pressed="'+(agf==c[0])+'">'+c[1]+'</button>'}).join('')+'</div>';
     act.forEach(function(a){var on=ag(a.id).on;
       h+='<div class="ag'+(on?'':' idle')+'"><div class="top4"><div class="av" aria-hidden="true">'+a.n[0]+'</div><div class="nm2"><b>'+a.n+'</b><small>'+esc(a.role)+'</small></div><span class="st2">'+(on?'Active':'Idle')+'</span><button class="tg" role="switch" aria-checked="'+on+'" aria-label="'+a.n+' agent on/off" data-ag="'+a.id+'"></button></div>'+
         '<div class="kv"><div><small>Tasks today</small><b>'+(on?a.t:0)+'</b></div><div><small>Success</small><b>'+a.ok+'%</b></div><div><small>Last active</small><b style="font-size:.74rem">'+(on?a.last:'Paused')+'</b></div></div>'+
@@ -474,11 +476,11 @@
     var h=viewTitle('Intelligence brief','this week · sample')+
       '<div class="kpis"><div class="g"><small>Avg health</small><b>'+s.avg+'</b></div><div class="'+(appr?'g':'y')+'"><small>Needs you</small><b>'+(appr?0:1)+'</b></div><div><small>Saved</small><b>$41</b></div></div>'+
       '<div class="chart"><h3>Health trend<small>7 days</small></h3><svg viewBox="0 0 300 92" role="img" aria-label="Health trend, rising to '+s.avg+'"><polygon points="'+area+'" fill="rgba(57,255,136,.16)"/><polyline points="'+line+'" fill="none" stroke="#39ff88" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'+pts.map(function(p,i){return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+(i==6?4.5:2.5)+'" fill="'+(i==6?'#e8ff1a':'#39ff88')+'"/>'}).join('')+'</svg></div>'+
-      '<div class="chart"><h3>Fixes per day<small>butler</small></h3><svg viewBox="0 0 300 100" role="img" aria-label="Fixes per day, 3 to 7">'+bars+'</svg></div>'+
+      '<div class="chart"><h3>Fixes per day<small>Admiral</small></h3><svg viewBox="0 0 300 100" role="img" aria-label="Fixes per day, 3 to 7">'+bars+'</svg></div>'+
       '<div class="vt">Exceptions<small>'+(appr?'nothing needs you':'1 needs you')+'</small></div>'+
-      '<div class="exc'+(appr?'':' you')+'"><div><b>Send renewal offers to 12 accounts</b><small>Drafted by the butler, checked by Sam. Outbound, so it waits for your yes</small></div>'+(appr?'<span class="tag">Approved</span>':'<button class="btn y" type="button" data-ex="0">Approve</button>')+'</div>'+
-      '<div class="exc"><div><b>Meeting booking</b><small>Calendar re-auth in progress</small></div><span class="tag">Butler on it</span></div>'+
-      '<div class="exc"><div><b>Invoice reminders</b><small>Merging a duplicate flow</small></div><span class="tag">Butler on it</span></div>';
+      '<div class="exc'+(appr?'':' you')+'"><div><b>Send renewal offers to 12 accounts</b><small>Drafted by the Admiral, checked by Sam. Outbound, so it waits for your yes</small></div>'+(appr?'<span class="tag">Approved</span>':'<button class="btn y" type="button" data-ex="0">Approve</button>')+'</div>'+
+      '<div class="exc"><div><b>Meeting booking</b><small>Calendar re-auth in progress</small></div><span class="tag">Admiral on it</span></div>'+
+      '<div class="exc"><div><b>Invoice reminders</b><small>Merging a duplicate flow</small></div><span class="tag">Admiral on it</span></div>';
     $('folder').innerHTML=h;
   }
   function list(){
@@ -517,7 +519,7 @@
   $('sheet').onclick=function(e){if(e.target===this)close()};
   function hopen(){
     $('hist').innerHTML=HISTORY.map(function(r){return '<li><span class="ck" aria-hidden="true">&#10003;</span><div><b>'+esc(r[0])+'</b><span>'+esc(r[1])+(r[3]?' <i class="hc">Checked by Sam</i>':'')+'</span></div><time>'+esc(r[2])+'</time></li>'}).join('');
-    $('hsub').textContent=HISTORY.length+' fixes completed by the butler this week. Nothing needs you.';
+    $('hsub').textContent=HISTORY.length+' fixes completed by the Admiral this week. Nothing needs you.';
     $('hsheet').classList.add('on');$('hsheet').setAttribute('aria-hidden','false');$('hx').focus()}
   function hclose(){$('hsheet').classList.remove('on');$('hsheet').setAttribute('aria-hidden','true');$('att').focus()}
   $('att').onclick=hopen;$('hx').onclick=hclose;

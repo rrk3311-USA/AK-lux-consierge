@@ -1,6 +1,6 @@
-Workflow,Tool,Owner,Status,Trigger,Monthly Cost,Last Run,Risk,Butler Notes
+Workflow,Tool,Owner,Status,Trigger,Monthly Cost,Last Run,Risk,Admiral Notes
 Lead to CRM,Zapier,Sales Ops,Healthy,Website form,12,2026-11-22,Medium,Sample row. Delete and add yours
 Invoice reminders,Make,Finance,Needs review,Overdue invoice,8,2026-11-21,High,Duplicate of "Invoice nudge"
-Demo request auto-reply,n8n,Marketing,Draft,New demo request,0,,Low,Drafted by butler. Awaiting approval
+Demo request auto-reply,n8n,Marketing,Draft,New demo request,0,,Low,Drafted by Admiral. Awaiting approval
 Prospect search,Apollo,Growth,Healthy,Daily,0,2026-11-22,Medium,Searches are cheap; enrichment spends credits
 Enrichment,Clay,Growth,Healthy,New prospect,0,2026-11-22,Medium,Webhook table; stop on first result

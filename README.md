@@ -1,6 +1,6 @@
-# Agent Kammer v3
+# Admiral Kammer v3
 
-Agent Kammer is an AI butler that manages your AI automations (monitor, repair, optimize, approve, document, build), so teams manage less. B2B. Every plan includes a move-in kit: logo, leather stationery, Notion hubs, business tools and a butler-run website.
+Admiral Kammer is fleet command for your AI automations: it watches, repairs, optimizes and reports on every workflow (monitor, repair, optimize, approve, document, build), so teams manage less. B2B. Every plan includes a move-in kit: logo, leather stationery, Notion hubs, business tools and an Admiral-run website.
 
 Design: gloss black, neon yellow `#E8FF1A`, electric blue `#2B5BFF`, white.
 

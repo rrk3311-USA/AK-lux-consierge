@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agent Kammer | Agent Library</title>
-<meta name="description" content="Ready-made agents for real estate, each with a clear outcome and the tools it works with. Add them to your butler in one tap.">
+<title>Admiral Kammer | Agent Library</title>
+<meta name="description" content="Ready-made agents for real estate, each with a clear outcome and the tools it works with. Add them to your Admiral in one tap.">
 <meta name="theme-color" content="#07686f">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap">
@@ -31,20 +31,20 @@
 .cnt b{color:var(--y)}
 </style></head><body>
 <header class="top"><div class="wrap hd">
-<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Agent Kammer</a>
-<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a class="on" href="agents.html">Agents</a><a href="hustle.html">Hustler</a><a href="studio.html">Studio</a><a href="kit.html">Move-in kit</a><a href="app.html">Butler app</a><a class="cta-s" href="index.html#start">Get a butler</a></nav>
+<a class="brand" href="index.html"><img src="assets/mark.svg" alt="" width="34" height="34">Admiral Kammer</a>
+<nav class="main" aria-label="Primary"><a href="index.html#how">How it works</a><a class="on" href="agents.html">Agents</a><a href="hustle.html">Hustler</a><a href="studio.html">Studio</a><a href="kit.html">Move-in kit</a><a href="fleet.html">Fleet</a><a href="app.html">Bridge</a><a class="cta-s" href="index.html#start">Take command</a></nav>
 </div></header>
 
 <main class="wrap">
 <div class="page-hd"><div class="eyebrow">Agent library</div>
 <h1 style="font-size:clamp(2.2rem,5vw,3.8rem)">Ready-made agents. <em>Real estate first.</em></h1>
-<p class="lede" style="margin-top:1rem">Each agent has one clear job, a plain-English outcome, and a list of the tools it works with. Add the ones you want. Anything that contacts someone else waits for your approval. Every agent here is managed for you by the butler and your operator, so there is nothing to build or maintain.</p></div>
+<p class="lede" style="margin-top:1rem">Each agent has one clear job, a plain-English outcome, and a list of the tools it works with. Add the ones you want. Anything that contacts someone else waits for your approval. Every agent here is managed for you by the Admiral and your captain, so there is nothing to build or maintain.</p></div>
 
 <div class="bar4"><div class="filters" role="radiogroup" aria-label="Filter by team" id="fl"></div><div class="cnt" id="cnt" aria-live="polite"></div></div>
 <div class="lib" id="lib"></div>
 <p class="note" style="color:var(--bare);font-size:.84rem;margin-bottom:90px">These are starter agents we're building first. Names, outcomes and tool lists are the plan, and connections to each tool are added as they ship.</p>
 </main>
-<footer><div class="wrap row"><div>Agent Kammer · Agent library</div><div><a href="index.html">Home</a><a href="hustle.html">Hustler</a><a href="app.html">Butler app</a></div></div></footer>
+<footer><div class="wrap row"><div>Admiral Kammer · Agent library</div><div><a href="index.html">Home</a><a href="hustle.html">Hustler</a><a href="app.html">Bridge</a></div></div></footer>
 
 <script>
 (function(){
@@ -65,7 +65,7 @@
     {n:'Competitor Watch',t:'Reputation',o:'Tracks nearby agents’ new listings and website changes each week and flags what matters.',w:['Slack','Notion'],ap:0},
     {n:'Pipeline Cleanup',t:'Ops',o:'Removes duplicates, fills missing fields and flags deals that have gone quiet.',w:['HubSpot','Google Sheets'],ap:0},
     {n:'Meeting Booker',t:'Follow-up',o:'Proposes times, confirms the slot, and sends you a one-page prep brief before the meeting.',w:['Google Calendar','Gmail'],ap:1},
-    {n:'Weekly Butler Report',t:'Ops',o:'Summarizes what changed, what was fixed and what needs you, in plain English every Monday.',w:['Slack','Notion'],ap:0}
+    {n:'Weekly Admiral Report',t:'Ops',o:'Summarizes what changed, what was fixed and what needs you, in plain English every Monday.',w:['Slack','Notion'],ap:0}
   ];
   var KEY='kammer-agents-v1',S={};
   try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
@@ -77,7 +77,7 @@
     var list=A.filter(function(a){return team=='All'||a.t==team}),n=A.filter(function(a){return S[a.n]}).length;
     $('cnt').innerHTML='<b>'+n+'</b> added · '+list.length+' shown';
     $('lib').innerHTML=list.map(function(a){var on=!!S[a.n];
-      return '<article class="gloss ag2"><div class="tp"><small>'+esc(a.t)+'</small>'+(a.ap?'<span class="ap">Asks first</span>':'')+'</div><h3>'+esc(a.n)+'</h3><p>'+esc(a.o)+'</p><div class="wk"><em>Works with</em>'+a.w.map(function(w){return '<span>'+esc(w)+'</span>'}).join('')+'</div><button class="add" type="button" aria-pressed="'+on+'" data-n="'+esc(a.n)+'">'+(on?'Added ✓':'Add to my butler')+'</button></article>'}).join('');
+      return '<article class="gloss ag2"><div class="tp"><small>'+esc(a.t)+'</small>'+(a.ap?'<span class="ap">Asks first</span>':'')+'</div><h3>'+esc(a.n)+'</h3><p>'+esc(a.o)+'</p><div class="wk"><em>Works with</em>'+a.w.map(function(w){return '<span>'+esc(w)+'</span>'}).join('')+'</div><button class="add" type="button" aria-pressed="'+on+'" data-n="'+esc(a.n)+'">'+(on?'Added ✓':'Add to my fleet')+'</button></article>'}).join('');
   }
   document.addEventListener('change',function(e){if(e.target.name==='tm'){team=e.target.value;render()}});
   $('lib').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var n=b.dataset.n;S[n]=!S[n];if(!S[n])delete S[n];save();render();var nb=document.querySelector('.add[data-n="'+n.replace(/"/g,'\\"')+'"]');if(nb)nb.focus()});

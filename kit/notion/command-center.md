@@ -1,10 +1,10 @@
 # Command Center
 
-> Home base for your butler. Pin this page, then link the hubs below.
+> Home base for your Admiral. Pin this page, then link the hubs below.
 
 ## Hubs
 - Automation Registry (import `automation-registry.csv`): every workflow, owner, cost and risk
-- Run Log (import `run-log.csv`): what the butler did, and who approved it
+- Run Log (import `run-log.csv`): what the Admiral did, and who approved it
 - Approvals & Rules (import `approvals-and-rules.md`)
 - Launch Checklist (import `launch-checklist.md`)
 - SOP Wiki (import `sop-wiki.md`)
@@ -15,7 +15,7 @@
 - [ ] Goal 3: Collect ___ new reviews
 
 ## Weekly rhythm
-- **Monday:** Read the butler's briefing, answer pending approvals
+- **Monday:** Read the Admiral's briefing, answer pending approvals
 - **Tuesday:** Review Registry items marked Needs review
 - **Wednesday:** Check Run Log for anything unusual
 - **Thursday:** Approve new workflow drafts

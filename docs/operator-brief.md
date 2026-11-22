@@ -1,7 +1,7 @@
-# Agent Kammer: Operator hiring brief
+# Admiral Kammer: Captain hiring brief
 
 ## Role in one line
-A customer-focused professional who supervises the AI butler for a set of accounts: reviews its work, handles exceptions, and keeps each customer's own clients feeling looked after.
+A customer-focused professional who supervises the AI admiral for a set of accounts: reviews its work, handles exceptions, and keeps each customer's own clients feeling looked after.
 
 ## Ideal background
 - Loyalty and customer lifetime value: built or optimized loyalty programs, retention and repeat-purchase plays
@@ -11,7 +11,7 @@ A customer-focused professional who supervises the AI butler for a set of accoun
 
 ## What they do
 1. **Onboarding consult.** One short call per new account. Learn clients, tone and rules; build the first setup together.
-2. **Review.** Approve, edit or reject AI-drafted outreach and unusual fixes. Add a short note when rejecting so the butler improves.
+2. **Review.** Approve, edit or reject AI-drafted outreach and unusual fixes. Add a short note when rejecting so the Admiral improves.
 3. **Exceptions.** Take anything risky, sensitive or unclear. Bring the customer a recommendation, not a question.
 4. **Client-retention plays.** Past Client Reactivator, anniversary check-ins, Review Requester (see the Agent Library).
 5. **Monthly check-in.** What was done, what it produced, what to try next.
@@ -41,12 +41,12 @@ Review five AI-drafted client messages (two good, two flawed, one risky). For ea
 - How do you explain something technical so it feels simple?
 
 ## First 30, 60, 90 days
-- **30:** shadow onboarding consults; review drafts with a senior operator; learn the approval rules
+- **30:** shadow onboarding consults; review drafts with a senior captain; learn the approval rules
 - **60:** own onboarding for new accounts; run weekly review queue alone
-- **90:** own a small book of accounts; propose one improvement to the butler's recipes
+- **90:** own a small book of accounts; propose one improvement to the Admiral's recipes
 
 ## Open decisions (not yet set)
-- Accounts per operator and target response time
+- Accounts per captain and target response time
 - Pay, hours and contractor versus employee
 - What is reviewed on every message versus sampled
 - Data access: who sees customer data, logging, and a data-processing agreement

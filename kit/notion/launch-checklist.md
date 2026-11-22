@@ -9,7 +9,7 @@
 ## Week 2: Go live
 - [ ] Review and approve the site draft
 - [ ] Add your photos, bio and testimonials
-- [ ] Review the Automation Registry the butler built
+- [ ] Review the Automation Registry the Admiral built
 - [ ] Publish the site
 
 ## Week 3: Delegate
@@ -20,6 +20,6 @@
 
 ## Week 4: Momentum
 - [ ] Review first monthly cost report
-- [ ] Ask the butler to draft one new workflow
+- [ ] Ask the Admiral to draft one new workflow
 - [ ] Raise the autonomy level where trusted
 - [ ] Share the SOP Wiki with your team
