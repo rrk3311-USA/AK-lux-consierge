@@ -159,6 +159,20 @@
 .act .ck{width:20px;height:20px;border-radius:50%;background:var(--g);color:#031a0d;display:grid;place-items:center;font-weight:700;font-size:.7rem}
 .act time{color:#9db4ee;font-size:.7rem;white-space:nowrap}
 .act b{font-weight:600}
+.op{border:1px solid var(--y);background:var(--s2);border-radius:18px;padding:14px;margin-bottom:12px}
+.op p{font-size:.8rem;color:#c8d6ff;margin:10px 0 0}
+.op .top4{display:flex;align-items:center;gap:10px}
+.op .av{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font:700 1rem var(--disp);flex:none}
+.op .nm2{min-width:0;flex:1}
+.op .nm2 b{display:block;font:600 .95rem var(--disp)}
+.op .nm2 small{color:#aebbe0;font-size:.74rem}
+.op .av{background:var(--b);color:#fff}
+.op .btn{width:100%;justify-content:center;padding:11px;font-size:.86rem}
+.op .kv{margin:12px 0 12px}
+.hum{font:700 .58rem var(--disp);letter-spacing:.1em;text-transform:uppercase;background:var(--y);color:#080a00;border-radius:99px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+.online{font:700 .64rem var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--g)}
+.online:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g);margin-right:6px;box-shadow:0 0 8px var(--g)}
+.hc{font-style:normal;font:700 .62rem var(--disp);letter-spacing:.06em;text-transform:uppercase;color:#031a0d;background:var(--g);border-radius:99px;padding:2px 7px;margin-left:4px;white-space:nowrap}
 /* brief */
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 .kpis div{background:var(--s2);border:1px solid var(--s3);border-radius:16px;padding:10px 12px}
@@ -271,10 +285,10 @@
       ['Auto-retry failed runs','retry.rule','',1,'Butler acts alone'],['Re-authenticate','reauth.rule','',1,'Butler acts alone'],['Pause failing flows','pause.rule','',1,'Butler acts alone'],['Send customer messages','messages.rule','',0,'Needs your yes'],['Touch billing','billing.rule','',0,'Needs your yes'],['Delete workflows','delete.rule','',0,'Needs your yes']]}
   ];
   var HISTORY=[
-    ['Prospect search','Added 14 new expired-listing prospects, skipped 3 on the suppression list','2h ago'],
-    ['Lead to CRM','Re-authenticated expired token, replayed 6 leads','4m ago'],
+    ['Prospect search','Added 14 new expired-listing prospects, skipped 3 on the suppression list','2h ago',1],
+    ['Lead to CRM','Re-authenticated expired token, replayed 6 leads','4m ago',1],
     ['Support triage','Retried 2 failed runs, both succeeded','1h ago'],
-    ['Weekly report','Fixed broken Sheets column mapping','6h ago'],
+    ['Weekly report','Fixed broken Sheets column mapping','6h ago',1],
     ['Invoice reminders','Paused during API outage, resumed','Yesterday'],
     ['Lead to CRM','Rotated webhook URL after Slack change','Yesterday'],
     ['Support triage','Cleared a stuck queue of 14 tickets','2 days ago']
@@ -297,7 +311,7 @@
   function callout(){
     var s=stats(),h=HISTORY[0];
     $('att').innerHTML='<div class="l1">'+(s.att?'<span class="chip2">'+s.att+' need attention</span>Butler is on it':'<span class="chip2 ok">All healthy</span>Nothing for you to do')+'<span class="go">History '+svg('<path d="m9 6 6 6-6 6"/>').replace('<svg','<svg width="14" height="14"')+'</span></div>'+
-      '<div class="l2"><i>&#10003;</i>Last fix: '+esc(h[0])+' · '+esc(h[2])+' &nbsp;·&nbsp; avg health '+s.avg+'</div>';
+      '<div class="l2"><i>&#10003;</i>Last fix: '+esc(h[0])+' · '+esc(h[2])+' · checked by Sam, your operator</div>';
     $('att').setAttribute('aria-label',(s.att?s.att+' automations need attention, the butler is handling it. ':'All automations healthy. ')+'Open maintenance history');
     $('live').textContent=s.n+' running';
   }
@@ -377,13 +391,13 @@
   }
   function renderAgents(){
     var act=AG.filter(function(a){return agf=='all'||(agf=='active'?ag(a.id).on:!ag(a.id).on)});
-    var h=viewTitle('Agent control','sample activity')+'<div class="chips4" role="group" aria-label="Filter agents">'+[['all','All'],['active','Active'],['idle','Idle']].map(function(c){return '<button type="button" data-f="'+c[0]+'" aria-pressed="'+(agf==c[0])+'">'+c[1]+'</button>'}).join('')+'</div>';
+    var h=viewTitle('Agent control','sample activity')+'<div class="op"><div class="top4"><div class="av" aria-hidden="true">SM</div><div class="nm2"><b>Sam M. <span class="hum">Human</span></b><small>Your operator (sample)</small></div><span class="online">Online</span></div><p>Reviews the butler\u2019s work, handles exceptions and approves anything risky with you.</p><div class="kv"><div><small>Reviewed today</small><b>9</b></div><div><small>Avg reply</small><b>12m</b></div><div><small>Your accounts</small><b>1</b></div></div><button class="btn y" type="button" data-ask="1">Ask Sam</button></div>'+'<div class="chips4" role="group" aria-label="Filter agents">'+[['all','All'],['active','Active'],['idle','Idle']].map(function(c){return '<button type="button" data-f="'+c[0]+'" aria-pressed="'+(agf==c[0])+'">'+c[1]+'</button>'}).join('')+'</div>';
     act.forEach(function(a){var on=ag(a.id).on;
       h+='<div class="ag'+(on?'':' idle')+'"><div class="top4"><div class="av" aria-hidden="true">'+a.n[0]+'</div><div class="nm2"><b>'+a.n+'</b><small>'+esc(a.role)+'</small></div><span class="st2">'+(on?'Active':'Idle')+'</span><button class="tg" role="switch" aria-checked="'+on+'" aria-label="'+a.n+' agent on/off" data-ag="'+a.id+'"></button></div>'+
         '<div class="kv"><div><small>Tasks today</small><b>'+(on?a.t:0)+'</b></div><div><small>Success</small><b>'+a.ok+'%</b></div><div><small>Last active</small><b style="font-size:.74rem">'+(on?a.last:'Paused')+'</b></div></div>'+
         '<div class="us"><span>Usage</span><div class="hbt"><i style="width:'+(on?a.use:0)+'%"></i></div><span>'+(on?a.use:0)+'%</span></div></div>'});
     if(!act.length)h+='<div style="padding:22px;text-align:center;color:#aebbe0;border:1px dashed #2a55b5;border-radius:16px">No agents here.</div>';
-    h+='<div class="vt" style="margin-top:14px">Recent activity<small>latest first</small></div><ul class="act">'+HISTORY.slice(0,4).map(function(r){return '<li><span class="ck" aria-hidden="true">&#10003;</span><div><b>'+esc(r[0])+'</b><br>'+esc(r[1])+'</div><time>'+esc(r[2])+'</time></li>'}).join('')+'</ul>';
+    h+='<div class="vt" style="margin-top:14px">Recent activity<small>latest first</small></div><ul class="act">'+HISTORY.slice(0,4).map(function(r){return '<li><span class="ck" aria-hidden="true">&#10003;</span><div><b>'+esc(r[0])+'</b><br>'+esc(r[1])+(r[3]?' <i class="hc">Checked by Sam</i>':'')+'</div><time>'+esc(r[2])+'</time></li>'}).join('')+'</ul>';
     $('folder').innerHTML=h;
   }
   function renderBrief(){
@@ -399,7 +413,7 @@
       '<div class="chart"><h3>Health trend<small>7 days</small></h3><svg viewBox="0 0 300 92" role="img" aria-label="Health trend, rising to '+s.avg+'"><polygon points="'+area+'" fill="rgba(57,255,136,.16)"/><polyline points="'+line+'" fill="none" stroke="#39ff88" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'+pts.map(function(p,i){return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+(i==6?4.5:2.5)+'" fill="'+(i==6?'#e8ff1a':'#39ff88')+'"/>'}).join('')+'</svg></div>'+
       '<div class="chart"><h3>Fixes per day<small>butler</small></h3><svg viewBox="0 0 300 100" role="img" aria-label="Fixes per day, 3 to 7">'+bars+'</svg></div>'+
       '<div class="vt">Exceptions<small>'+(appr?'nothing needs you':'1 needs you')+'</small></div>'+
-      '<div class="exc'+(appr?'':' you')+'"><div><b>Send renewal offers to 12 accounts</b><small>Outbound, so it waits for your yes</small></div>'+(appr?'<span class="tag">Approved</span>':'<button class="btn y" type="button" data-ex="0">Approve</button>')+'</div>'+
+      '<div class="exc'+(appr?'':' you')+'"><div><b>Send renewal offers to 12 accounts</b><small>Drafted by the butler, checked by Sam. Outbound, so it waits for your yes</small></div>'+(appr?'<span class="tag">Approved</span>':'<button class="btn y" type="button" data-ex="0">Approve</button>')+'</div>'+
       '<div class="exc"><div><b>Meeting booking</b><small>Calendar re-auth in progress</small></div><span class="tag">Butler on it</span></div>'+
       '<div class="exc"><div><b>Invoice reminders</b><small>Merging a duplicate flow</small></div><span class="tag">Butler on it</span></div>';
     $('folder').innerHTML=h;
@@ -426,6 +440,7 @@
     if(ga){var A=ag(ga.dataset.ag);A.on=!A.on;save();list();return}
     if(fl){agf=fl.dataset.f;list();return}
     if(ex){S['ex:0']={n:'ex',o:'',on:true};save();list();toast('Approved');return}
+    if(e.target.closest('[data-ask]')){toast('Message sent to Sam (demo)');return}
     if(op){var p=op.dataset.open.split(':');openEdit(DATA[+p[0]],+p[1]);return}
     var f=DATA[cur],m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),en=e.target.closest('[data-e]');
     if(m){mode=m.dataset.m;list();var nb=document.querySelector('[data-m="'+mode+'"]');if(nb)nb.focus()}
@@ -438,7 +453,7 @@
   $('cx').onclick=close;
   $('sheet').onclick=function(e){if(e.target===this)close()};
   function hopen(){
-    $('hist').innerHTML=HISTORY.map(function(r){return '<li><span class="ck" aria-hidden="true">&#10003;</span><div><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></div><time>'+esc(r[2])+'</time></li>'}).join('');
+    $('hist').innerHTML=HISTORY.map(function(r){return '<li><span class="ck" aria-hidden="true">&#10003;</span><div><b>'+esc(r[0])+'</b><span>'+esc(r[1])+(r[3]?' <i class="hc">Checked by Sam</i>':'')+'</span></div><time>'+esc(r[2])+'</time></li>'}).join('');
     $('hsub').textContent=HISTORY.length+' fixes completed by the butler this week. Nothing needs you.';
     $('hsheet').classList.add('on');$('hsheet').setAttribute('aria-hidden','false');$('hx').focus()}
   function hclose(){$('hsheet').classList.remove('on');$('hsheet').setAttribute('aria-hidden','true');$('att').focus()}

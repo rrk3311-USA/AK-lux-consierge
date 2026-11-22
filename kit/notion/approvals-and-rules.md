@@ -11,6 +11,12 @@
 - Deleting workflows or data
 - Connecting a new app or widening access
 
+## Your operator
+- Name / contact: ___
+- May approve routine items on my behalf: yes / no
+- Reviews every outbound message before it is sent: yes
+- Check-in cadence: ___
+
 ## Allowed automatically
 - Retrying failed runs (max 3 attempts)
 - Re-authenticating expired connections

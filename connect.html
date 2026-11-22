@@ -63,7 +63,7 @@ pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:
 </div>
 
 <div class="gloss pane" data-step="2">
-<h2>3. Limits &amp; contact</h2><p>Where to escalate, and how much it can spend on your behalf.</p>
+<h2>3. Limits &amp; contact</h2><p>Where to escalate, and how much it can spend on your behalf. Your human operator will review this with you before anything goes live.</p>
 <div class="fld"><label for="cap">Monthly spend cap ($)</label><input id="cap" type="number" min="0" value="100"></div>
 <div class="fld"><label for="esc">Escalate decisions to</label><input id="esc" placeholder="Name or Slack channel"></div>
 <div class="fld"><label for="qs">Quiet hours (start)</label><input id="qs" type="time" value="21:00"></div>
@@ -93,6 +93,7 @@ pre.out{background:#000;border:1px solid var(--line);border-radius:14px;padding:
     ["new","Connect a new app or widen access","Security","ask"],
     ["reach","Send outreach to new prospects","Outbound, legal exposure","ask"],
     ["enrich","Spend credits on prospect enrichment","Costs money","ask"],
+    ["op","Let my operator approve routine items for me","Human in the loop","ask"],
     ["del","Delete workflows or data","Irreversible","ask"]
   ];
   var tools=document.getElementById('tools'),rules=document.getElementById('rules');
